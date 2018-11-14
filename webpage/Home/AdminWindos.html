@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>中集装备监控系统</title>
+		<link rel="icon" href="../../static/img/logo_25.png" type="image/x-icon" />
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/cookie/jquery.cookie.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/dialog/dialog.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/adminWindos/index.js"></script>
+		<link href="../../static/lib/adminWindos/css/index.css" rel="stylesheet" />
+		<!--即时通信start-->
+		<script src="../../static/lib/scripts/plugins/signalr/jquery.signalR-2.2.0.min.js"></script>
+		<link href="../../static/lib/styles/learun-im.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<!--即时通信end-->
+		<script>
+			function delCookie() {
+				sessionStorage.clear();
+			}
+
+			function logout() {
+				delCookie();
+				window.location.href = cm.system + "/webpage/login/login.html";
+			}
+		</script>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini" style="overflow: hidden;">
+		<div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
+			<img src="../../static/lib/images/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+		</div>
+		<div class="wrapper" id="body_id">
+			<!--头部信息-->
+			<header class="main-header row">
+				<a href="#" class="logo col-sm-3 col-xs-3">
+					<span class="logo-lg">装备监控系统</span>
+				</a>
+				<nav class="navbar navbar-static-top col-sm-9 col-xs-9">
+					<!--<a class="sidebar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+					</a>-->
+					<div class="navbar-custom-menu row col-sm-12">
+						<!--alvin new menu star-->
+						<div class="newMenu col-sm-10 row">
+
+						</div>
+						<!--alvin new menu end-->
+						<ul class="nav navbar-nav col-sm-2">
+							<li class="dropdown user-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="../../static/lib/images/head/user2-160x160.jpg" class="user-image" alt="User Image">
+									<span class="hidden-xs"><span class="username"></span>
+									<i class="fa fa-caret-down" style="padding-left: 10px;">							
+									</i>
+									</span>
+								</a>
+								<ul class="dropdown-menu pull-right">
+									<em></em>
+									<li>
+										<a class="menuItem person_btn" data-id="userInfo" data-href="/monitorpage/view/personCenter/personCenter"><i class="fa fa-user"></i>个人信息</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="javascript:void();" onclick="$.learunindex.indexOut()"><i class="ace-icon fa fa-power-off"></i>安全退出</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+
+			<!--左边导航-->
+			<div class="sidebar-menu">
+				<div class="sidebar-menu-left">
+					<div class="head">
+						<i class="fa fa-cog"></i>
+					</div>
+					<ul></ul>
+				</div>
+			</div>
+			
+			
+			<!--中间内容-->
+			<div id="content-wrapper" class="content-wrapper">
+				<div class="content-iframe" style="overflow: hidden;">
+					<div class="mainContent" id="content-main" style="">
+						<iframe id="iframe_home" class="LRADMS_iframe" width="100%" height="100%" src="../../webpage/windows/windows.html" frameborder="0" data-id="/windows/windows" onload="Loading(false);"></iframe>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="loading_background" class="loading_background" style="display: none;"></div>
+		<div id="loading_manage">
+			正在拼了命为您加载…
+		</div>
+
+	</body>
+
+	<script>
+		contentPath = cm.domain;
+		var mainPath = '../..';
+		var username = sessionStorage.getItem("username");
+		$(".username").text(username);
+		(function Authorize() {
+			if(!cm.token) {
+				logout();
+			}
+		})();
+	</script>
+	<link href="../../static/css/aws/home/adminWindow.css" rel="stylesheet" />
+	<script src="../../static/js/aws/home/adminWindow.js"></script>
+
+</html>

@@ -1,0 +1,7 @@
+html,
+body {
+	margin: 2px;
+}
+.ui-layout .center-Panel .ui-widget-content{
+	border: none;
+}

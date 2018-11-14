@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<link rel="icon" href="../../static/img/logo_25.png" type="image/x-icon" />
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/simple-line-icons.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap-switch.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2-bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/components.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/plugins.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/login-5.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/cookie/jquery.cookie.js"></script>
+		<script src="../../static/lib/scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-hover-dropdown.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.blockui.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-switch.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.validate.min.js"></script>
+		<script src="../../static/lib/scripts/additional-methods.min.js"></script>
+		<script src="../../static/lib/scripts/select2.full.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.backstretch.min.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/app.min.js"></script>
+		<script src="../../static/lib/scripts/login-5.js"></script>
+
+		<script src="../../static/lib/scripts/plugins/jquery.md5.js"></script>
+		<script src="../../static/lib/scripts/plugins/dialog/dialog.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../static/lib/scripts/plugins/tipso.min.js"></script>
+
+		<!--即时通信start-->
+		<meta name="viewport" content="width=device-width" />
+		<meta charset="utf-8" />
+		<title>聊天室</title>
+
+		<script src="../../static/lib/scripts/plugins/signalr/jquery.signalR-2.2.0.min.js"></script>
+		<script src="http://10.33.140.95:8081/signalr/hubs"></script>
+
+		<style type="text/css">
+			#chatbox {
+				width: 100%;
+				height: 500px;
+				border: 2px solid blue;
+				padding: 5px;
+				margin: 5px 0px;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			
+			.linfo {}
+			
+			.rinfo {
+				text-align: right;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function() {
+
+				var clientName = $("#clientname").val();
+				var eChatBox = $("#chatbox");
+				var eUsers = $("#users");
+
+				var chat = $.connection.MonitorHub;
+				$.connection.hub.url = "http://10.33.140.95:8081/signalr";
+				$.connection.hub.qs = {
+					"clientName": "hs"
+				};
+
+				chat.client.receiveMessage = function(dt, cn, msg) {
+					var clsName = "linfo";
+					if(cn == clientName || cn.indexOf("您对") >= 0) clsName = "rinfo";
+					eChatBox.append("<p class='" + clsName + "'>" + dt + " <strong>" + cn + "</strong> 说：<br/>" + msg + "</p>");
+					eChatBox.scrollTop(eChatBox[0].scrollHeight);
+				}
+
+				chat.client.userChange = function(dt, msg, users) {
+					eChatBox.append("<p>" + dt + " " + msg + "</p>");
+					eUsers.find("option[value!='']").remove();
+					for(var i = 0; i < users.length; i++) {
+						if(users[i].Value == clientName) continue;
+						eUsers.append("<option value='" + users[i].Key + "'>" + users[i].Value + "</option>")
+					}
+				}
+
+				$.connection.hub.start().done(function() {
+
+					$("#btnSend").click(function() {
+						var toUserId = eUsers.val();
+						if(toUserId != "") {
+							chat.server.sendOne(toUserId, $("#message").val())
+								.done(function() {
+									//alert("发送成功！");
+									$("#message").val("").focus();
+								})
+								.fail(function(e) {
+									alert(e);
+									$("#message").focus();
+								});
+						} else {
+							chat.server.send($("#message").val())
+								.done(function() {
+									//alert("发送成功！");
+									$("#message").val("").focus();
+								})
+								.fail(function(e) {
+									alert(e);
+									$("#message").focus();
+								});
+						}
+					});
+
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<h3>大众聊天室</h3>
+		<div id="chatbox">
+		</div>
+		<div>
+			<span>聊天名称：</span>
+			<input type="text" id="clientName" style="width:300px;" value="hs" />
+			<span>聊天对象：</span>
+			<select id="users">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="opel">Opel</option>
+				<option value="audi">Audi</option>
+			</select>
+		</div>
+		<div>
+			<textarea id="message" rows="3" cols="20">
+     </textarea>
+			<input type="button" value="发送消息" id="btnSend" />
+		</div>
+	</body>
+
+</html>

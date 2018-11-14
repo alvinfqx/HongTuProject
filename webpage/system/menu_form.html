@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>系统功能（菜单）新增编辑开窗</title>
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<script src="../../static/lib/util.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../static/lib/page_parameters.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<!--时间控件引用-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+	</head>
+
+	<body>
+		<div class="widget-body">
+			<div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
+				<ul class="steps">
+					<li data-target="#step-1" class="active"><span class="step">1</span>系统功能<span class="chevron"></span></li>
+					<li data-target="#step-2"><span class="step">2</span>系统按钮<span class="chevron"></span></li>
+					<li data-target="#step-3"><span class="step">3</span>系统视图<span class="chevron"></span></li>
+				</ul>
+			</div>
+			<div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none;">
+				<div class="step-pane active" id="step-1" style="margin-left: 0px; margin-top: 15px; margin-right: 30px;">
+					<input id="ModuleId" type="hidden" />
+					<table class="form" id="form1">
+						<tr>
+							<th class="formTitle">编号
+								<font face="宋体">*</font>
+							</th>
+							<td class="formValue">
+								<input id="EnCode" type="text" class="form-control" placeholder="请输入编号" isvalid="yes" checkexpession="NotNull" />
+							</td>
+							<th class="formTitle">名称
+								<font face="宋体">*</font>
+							</th>
+							<td class="formValue">
+								<input id="FullName" type="text" class="form-control" placeholder="请输入名称" isvalid="yes" checkexpession="NotNull" />
+							</td>
+						</tr>
+						<tr>
+							<th class="formTitle">上级</th>
+							<td class="formValue">
+								<div id="ParentId" type="selectTree" class="ui-select">
+								</div>
+							</td>
+							<th class="formTitle">图标</th>
+							<td class="formValue">
+								<input id="Icon" type="text" class="form-control" />
+								<span class="input-button" onclick="model.SelectIcon()" title="选取图标">...</span>
+							</td>
+						</tr>
+						<tr>
+							<th class="formTitle">所属系统</th>
+							<td class="formValue">
+								<div id="Category" type="select" class="ui-select"></div>
+							</td>
+
+						</tr>
+						<tr>
+
+							<th class="formTitle">目标
+								<font face="宋体">*</font>
+							</th>
+							<td class="formValue">
+								<div id="Target" type="select" class="ui-select" isvalid="yes" checkexpession="NotNull">
+									<ul>
+										<li data-value="expand">expand</li>
+										<li data-value="iframe">iframe</li>
+										<li data-value="open">open</li>
+										<li data-value="href">href</li>
+										<li data-value="blank">blank</li>
+									</ul>
+								</div>
+							</td>
+							<th class="formTitle">排序
+								<font face="宋体">*</font>
+							</th>
+							<td class="formValue">
+								<input id="SortCode" type="text" class="form-control" isvalid="yes" checkexpession="Num" />
+							</td>
+						</tr>
+						<tr>
+							<th class="formTitle">地址</th>
+							<td class="formValue" colspan="3">
+								<input id="UrlAddress" type="text" class="form-control" />
+							</td>
+						</tr>
+						<tr>
+							<th class="formTitle" style="height: 37px;">选项</th>
+							<td class="formValue">
+								<div class="checkbox user-select">
+									<label>
+                                <input id="IsMenu" type="checkbox" />
+                                菜单
+                            </label>
+									<label>
+                                <input id="IsPublic" type="checkbox" />
+                                公共
+                            </label>
+									<label>
+                                <input id="AllowExpand" type="checkbox" />
+                                展开
+                            </label>
+									<label>
+                                <input id="EnabledMark" type="checkbox" checked="checked" />
+                                有效
+                            </label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="formTitle" valign="top" style="padding-top: 4px;">描述
+							</th>
+							<td class="formValue" colspan="3">
+								<textarea id="Description" class="form-control" style="height: 70px;"></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="step-pane" id="step-2" style="margin: 5px;">
+					<div style="height: 40px; line-height: 33px; text-align: right;">
+						<div class="btn-group">
+							<a id="lr-add-button" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;新增</a>
+							<a id="lr-edit-button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
+							<a id="lr-delete-button" class="btn btn-default"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+						</div>
+						<div class="btn-group">
+							<a id="lr-copy-button" class="btn btn-default"><i class="fa fa-copy"></i>&nbsp;复制</a>
+						</div>
+					</div>
+					<table id="gridTable-button"></table>
+				</div>
+				<div class="step-pane" id="step-3" style="margin: 5px;">
+					<div style="height: 40px; line-height: 33px; text-align: right;">
+						<div class="btn-group">
+							<a id="lr-add-view" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;新增</a>
+							<a id="lr-edit-view" class="btn btn-default"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
+							<a id="lr-delete-view" class="btn btn-default"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+						</div>
+						<div class="btn-group">
+							<a id="lr-batch-addview" class="btn btn-default"><i class="fa fa-sign-in"></i>&nbsp;批量添加</a>
+						</div>
+					</div>
+					<table id="gridTable-view"></table>
+				</div>
+			</div>
+		</div>
+		<div class="form-button" id="wizard-actions">
+			<a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
+			<a id="btn_next" disabled class="btn btn-default btn-next">下一步</a>
+			<a id="btn_finish" class="btn btn-success">完成</a>
+		</div>
+	</body>
+	<script src="../../static/js/aws/menu/menu_form.js"></script>
+
+</html>

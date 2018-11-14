@@ -1,0 +1,39 @@
+body {
+	font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #333333;
+}
+
+.filter-icon {
+	width: 20%;
+	float: left;
+}
+
+.fontawesome-icon-list .fa-hover a {
+	display: block;
+	color: #222222;
+	line-height: 32px;
+	height: 32px;
+	padding-left: 10px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.fontawesome-icon-list .fa-hover a .fa {
+	width: 32px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.fontawesome-icon-list .fa-hover a:hover {
+	background-color: #286090;
+	color: #fff;
+	cursor: pointer;
+}
+
+.fontawesome-icon-list .fa-hover a:hover i {
+	font-size: 28px;
+	vertical-align: -6px;
+}

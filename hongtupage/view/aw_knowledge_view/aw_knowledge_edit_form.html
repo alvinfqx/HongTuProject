@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/css/basic.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/dropzone.css" />
+		<script src="../../js/dropzone.js" type="text/javascript" charset="utf-8"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<script src="../../js/summernote.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/summernote-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/styles/summernote.css" />
+
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/as/know/js/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/js/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/blue.css" />
+		<script src="../../../static/lib/scripts/as/know/js/global.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/ionicons.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/AdminLTE.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/_all-skins.min.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/page_data.css" />
+		<style type="text/css">
+			.ul_attachment li {
+				float: left;
+				margin: 5px;
+				width: 80px;
+				height: 100px;
+			}
+			
+			.ul_attachment li img {
+				width: 65px;
+				height: 65px;
+			}
+			
+			.ul_attachment li div {
+				width: 65px;
+				text-align: center;
+			}
+			
+			li.up_file img {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<form class="layui-form" action="" id="page-box">
+			<div class="wrapper">
+				<div class="content-wrapper" style="margin-left: 0;">
+					<section class="content">
+						<div class="row">
+							<div class="col-md-8" style="margin: 0 auto;">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">编辑文章</h3>
+									</div>
+									<div class="box-body">
+										<div class="row">
+											<div class="col-md-10">
+												<div class="form-group ">
+													<label>主标题</label>
+													<input id="title" type="text" class="form-control" placeholder="请输入主标题...">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-5">
+												<div class="form-group">
+													<label>上传人</label>
+													<input id="CreateUserName" type="text" class="form-control" placeholder="请输入上传人...">
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group">
+													<label>客户是否可见</label>
+													<select id="isAuthorToClient" class="form-control">
+														<option value="">请选择...</option>
+														<option value="是">是</option>
+														<option value="否">否</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-5">
+												<div class="form-group ">
+													<div class="form-group" style="position: relative;">
+														<label>所属分类</label>
+														<div id="Item_class_Id" type="selectTree" class="ui-select" isvalid="yes" checkexpession="NotNull"></div>
+														<input id="media_type" type="text" class="form-control" style="display:none" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-5">
+												<div class="form-group">
+													<label for="exampleInputFile">知识库缩略图</label>
+													<div class="input-group">
+														<input id="picPath" type="text" class="form-control" style="display:none" />
+														<img src="" id="thumbnailPath" style="width: 200px;height: 150px; " />
+														<button class="layui-btn layui-btn-primary layui-btn-small up-img-but" type="button" onclick="new_model.delte_img(this)">
+                                                        <i class="layui-icon">&#xe640;</i>
+                                                    </button>
+														<div class="up_img_data">
+															<form enctype="multipart/form-data">
+																<input class="file_but" type='button' value='选择文件' onclick='javascript:$(this).next().click();' />
+																<input style="display: none" type="file" name="" onchange="new_model.switch_img(this)" />
+																<button type="button" onclick="new_model.upload(this)">上传图片</button>
+															</form>
+														</div>
+													</div>
+													<p class="help-block">请在此上传文件.</p>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-10">
+												<div class="form-group">
+													<label>文章简介</label>
+													<textarea id="basicInfo" class="form-control" rows="3" placeholder="文章内容..." style="height: 150px;"></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label>详细内容</label>
+													<div id="htmlContent" class="summernote"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="file-list" id="aw_requirementEntityList">
+													<div class="up-data">
+														<div class="form-group col-md-12">
+															<label>附件</label>
+															<div class='col-md-12'>
+																<ul id='ul_attachment' class="ul_attachment"></ul>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="dropzone col-md-12" id="dropzone1" style="display: none;"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</form>
+
+	</body>
+	<script src="../../js/page_data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/aw_knowledge_view/aw_knowledge_edit_form.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

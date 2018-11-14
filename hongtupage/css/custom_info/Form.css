@@ -1,0 +1,115 @@
+.file-item {
+	width: 97%;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-left: 10px;
+	color: #3c8dbc;
+}
+
+.file-element-data {
+	padding: 10px 20px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+.file-element-data p {
+	font-size: 14px;
+	color: #666;
+}
+
+.clearfix li {
+	text-align: center;
+}
+
+.clearfix li img {
+	width: 65px;
+	height: 65px;
+}
+
+.mailbox-attachment-info {
+	padding: 5px;
+}
+
+.mailbox-attachment-icon {
+	font-size: 46px;
+	padding: 0;
+}
+
+.users-list li img {
+	width: 128px;
+	height: 128px;
+}
+
+.cloes-tag {
+	position: absolute;
+	right: 20px;
+	top: 5%;
+	width: 20px;
+	height: 20px;
+	border: none;
+	cursor: pointer;
+	-webkit-transition: all 1s;
+	-ms-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+
+.cloes-tag:before,
+.cloes-tag:after {
+	content: '';
+	position: absolute;
+	background-color: #fff;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+.cloes-tag:before {
+	left: 45%;
+	top: -10%;
+	width: 10%;
+	height: 120%;
+}
+
+.cloes-tag:after {
+	top: 45%;
+	left: -10%;
+	width: 120%;
+	height: 10%;
+}
+
+.popwindow {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 50%;
+	top: 50%;
+	visibility: hidden;
+	opacity: 0;
+	background-color: white;
+	-webkit-transition: all 0.6s;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.6);
+}
+
+.popwindow img {
+  	width: 32%;
+  	height: 95%;
+  	margin-left: 36%;
+  	margin-top: 1.2%;
+  }
+
+.popwindow-show {
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+	opacity: 1;
+	background: rgba(87, 83, 83, 0.3);
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	color: #000000;
+}

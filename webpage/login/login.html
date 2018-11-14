@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<title>智慧客服云-荟服务</title>
+		<link rel="icon" href="../../static/img/logo_25.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/aws/login/login.css" />
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/simple-line-icons.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap-switch.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2-bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/components.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/plugins.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/login-5.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/cookie/jquery.cookie.js"></script>
+		<script src="../../static/lib/scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-hover-dropdown.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.blockui.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-switch.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.validate.min.js"></script>
+		<script src="../../static/lib/scripts/additional-methods.min.js"></script>
+		<script src="../../static/lib/scripts/select2.full.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.backstretch.min.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/app.min.js"></script>
+		<script src="../../static/lib/scripts/login-5.js"></script>
+
+		<script src="../../static/lib/scripts/plugins/jquery.md5.js"></script>
+		<script src="../../static/lib/scripts/plugins/dialog/dialog.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../static/lib/scripts/plugins/tipso.min.js"></script>
+		<script src="../../static/js/aws/login/loging.js"></script>
+		<script>
+			var contentPath = 'http://10.99.27.80:9003';
+		</script>
+		<style type="text/css">
+			#verifycode{position: relative}
+			#login_verifycode{position: absolute;left: 115%;top: 22px;}
+			.copyright {color: #000;position: absolute;bottom: 2%;right: 2%;}
+		</style>
+	</head>
+
+	<body class="login">
+		<div class="imgbg">
+			<div class="center-box">
+				<div class="info-box">
+					<div class="info-left">
+						<img src="../../static/img/login/word.png" alt="">
+					</div>
+				</div>
+				<div class="info-box">
+					<div class="info-right">
+						<div class="login-box">
+							<div class="login-list">
+								<div class="alert alert-danger display-hide" style="margin-bottom: 0px;">
+									<button class="close" data-close="alert"></button>
+									<span>请输入您的账户和密码</span>
+								</div>
+								<ul class="input-ul">
+									<li class=" icon1">
+										<input id="username" class="inputtext" type="text" placeholder="请输入用户名">
+										<!--<p class="tops-text">请输入正确的名字</p>-->
+									</li>
+									<li class=" icon2">
+										<input id="password" class="inputtext" type="password" placeholder="请输入密码">
+										<!--<p class="tops-text">请输入正确的名字</p>-->
+									</li>
+									<li class="codeInput icon3">
+										<input class="inputtext" id='verifycode' type="text" placeholder="请输入验证码">
+										<!--<img class="codeImg" src="./images/codeImg.png" alt="">-->
+										<img id="login_verifycode" class="img_verifycode" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
+										<script>
+											var url_str = contentPath + "/Login/VerifyCode";
+											$("#login_verifycode").attr("src", url_str);
+										</script>
+									</li>
+									<!--<li class="last-checkbox">
+										<label>
+                                        <span class="ivu-checkbox ivu-checkbox-checked">
+                                            <span class="ivu-checkbox-inner"></span>
+                                            <input id='autologin' class="inputCheckbox ivu-checkbox-input" type="checkbox">
+                                        </span>
+                                        <span class="remb">记住密码</span>
+                                    </label>
+									</li>-->
+								</ul>
+								<div class="btn-box" id='btnlogin'>登录</div>
+								<div style="padding-top: 15px;"><a href="http://10.99.27.80">友情链接：装备监控云-荟服务</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				© 深圳中集智能科技有限公司  2018-2022 版权所有
+			</div>
+		</div>
+	</body>
+
+</html>

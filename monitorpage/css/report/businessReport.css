@@ -1,0 +1,77 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background: #126c90;
+	/* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(#126c90, #1d5484, #103982);
+	/* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Firefox 3.6 to 15 */
+	background: radial-gradient(#126c90, #1d5484, #103982);
+	/* Standard syntax */
+}
+#main{
+	background: #0f335780 !important; width:705px;height:260px;margin-top:20px;
+}
+#main_1{
+	background: #0f335780 !important; width:392px;height:540px;margin-top:20px;padding-top: 30px;
+}
+#main_2{
+	background: #0f335780 !important; width:705px;height:260px;margin-top:20px;
+}
+#main_3{
+	background: #0f335780 !important; width:1130px;height:260px;margin-top:20px;margin-left: 12px;
+}
+.panel-heading{color: #fff;padding: 27px 16px;position: absolute;}
+
+
+
+
+
+@media only screen and (max-width:1125px ) {
+	#main{
+	background: #0f335780 !important; width:450px;height:260px;margin-top:20px;
+	}
+	#main_1{
+		background: #0f335780 !important; width:450px;height:540px;margin-top:20px;
+	}
+	#main_2{
+		background: #0f335780 !important; width:450px;height:260px;margin-top:20px;
+	}
+	#main_3{
+		background: #0f335780 !important; width:900px;height:260px;margin-top:20px;
+	}
+}
+@media only screen and (max-width:1024px ) {
+	#main{
+	background: #0f335780 !important; width:450px;height:260px;margin-top:20px;
+	}
+	#main_1{
+		background: #0f335780 !important; width:400px;height:540px;margin-top:20px;
+	}
+	#main_2{
+		background: #0f335780 !important; width:450px;height:260px;margin-top:20px;
+	}
+	#main_3{
+		background: #0f335780 !important; width:850px;height:360px;margin-top:20px;
+	}
+}
+
+@media only screen and (max-width:768px ) {
+	.container{margin: 20px;}
+	#main{
+	background: #0f335780 !important; width:390px;height:260px;margin-top:20px;
+	}
+	#main_1{
+		background: #0f335780 !important; width:310px;height:540px;margin-top:20px;
+	}
+	#main_2{
+		background: #0f335780 !important; width:390px;height:260px;margin-top:20px;
+	}
+	#main_3{
+		background: #0f335780 !important; width:690px;height:360px;margin-top:20px;
+	}
+}

@@ -1,0 +1,56 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background: #126c90;
+	overflow: scroll;
+	/* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(#126c90, #1d5484, #103982);
+	/* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Firefox 3.6 to 15 */
+	background: radial-gradient(#126c90, #1d5484, #103982);
+	/* Standard syntax */
+}
+.collection{
+	padding-bottom: 15px;
+}
+.form-control{height: 28px;}
+.col_caiji{
+	padding: 0;
+}
+/*.btn-group a:active{
+	background: red !important;
+}*/
+.form-group h2 {
+	padding: 30px 0px 25px 17px;
+	color: #fff;
+	font-family: cursive;
+}
+#pressure-chart {
+	width: 1000px;
+	height: 400px;
+}
+#ajax_tip{
+	height: 1300px !important;
+}
+#pressure-temperature {
+	width: 1000px;
+	height: 400px;
+}
+
+.form-group {
+	padding: 18px 10px 11px 15px;
+}
+
+.form-group p {
+	color: #FFFFFF;
+}
+
+.control-label {
+	color: #FFFFFF;
+	float: left;
+	padding-top: 4px;
+}

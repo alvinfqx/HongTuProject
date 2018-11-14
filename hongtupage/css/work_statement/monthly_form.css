@@ -1,0 +1,26 @@
+.enclosure {
+	width: 135px;
+	height: 168px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.style_p {
+	font-size: 15px;
+	color: #565252;
+}
+
+.style_p span {
+	font-size: 15px;
+	color: #565252;
+}
+
+.fa-circle {
+	padding-right: 5px;
+	color: #3c8dbc;
+	/*font-size: 13px;*/
+}
+
+.content {
+	padding-left: 15px;
+}

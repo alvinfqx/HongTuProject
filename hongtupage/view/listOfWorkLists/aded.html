@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>工单列表新增</title>
+		<link rel="stylesheet" type="text/css" href="../../css/listOfWorkLists/added.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/basic.css" />
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/demo.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/select2.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/_all-skins.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/AdminLTE.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ionicons.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select2.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/dropzone.css" />
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../js/dropzone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper" style="margin-left: 0;">
+				<section class="content">
+					<div class="row">
+						<div class="col-md-12" style="padding: 0;">
+							<div class="co_contenrt" style="height:600px;">
+								<div class="row row_co">
+									<div class="col-md-6">
+										<h4>我的工单</h4>
+									</div>
+									<div class="col-md-3" style="padding-bottom: 10px;">
+										<img src="../../images/timg (5).jpg" / style="width: 27px;">&nbsp;&nbsp;拨打热线：01256-412-600
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="box-body">
+											<div class="form-group">
+												<label for="" class="col-sm-1 control-label">服务类型</label>
+												<div class="col-sm-3">
+													<div id="productType" type="select" class="ui-select"></div>
+												</div>
+												<label for="" class="col-sm-1 control-label">产品编号</label>
+												<div class="col-sm-3">
+													<div id="infoType" type="select" class="ui-select"></div>
+												</div>
+												<label for="" class="col-sm-1 control-label">产品型号</label>
+												<div class="col-sm-3">
+													<div id="infoSource" type="select" class="ui-select"></div>
+												</div>
+											</div>
+										</div>
+										<div class="box box-default">
+											<div class="box-header with-border">
+												<h3 class="box-title">问题描述</h3>
+												<div class="box-tools pull-right">
+													<button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-widget="chat-pane-toggle" onclick="show_msage(this)">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+												</div>
+											</div>
+											<div class="box-body">
+												<div class="file-list" id="aw_requirementEntityList">
+													<div class="up-data" style="padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+														<div class="form-group">
+															<textarea class="form-control" rows="3" id="requirementInfo" placeholder="请输入描述信息 ..."></textarea>
+															<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">回复</a>
+                                                                </div>-->
+														</div>
+														<div class="form-group">
+															<div class="dropzone" id="dropzone1" style=""></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/workNew.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/listOfWorkLists/added.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

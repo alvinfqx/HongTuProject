@@ -1,0 +1,71 @@
+.box-body {
+	padding: 15px;
+}
+
+.layui-form select {
+	display: inherit;
+}
+
+.up_img_data {
+	width: 300px;
+}
+
+.show_img {
+	width: 228px;
+	height: 172px;
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+.up_img_data button {
+	width: 90px;
+	height: 40px;
+	margin-left: 30px;
+	background: #D0EEFF;
+	border: 1px solid #99D3F5;
+	border-radius: 5px;
+	font-size: 16px;
+	color: #1E88C7;
+}
+
+.up_img_data button:hover {
+	background: #AADFFD;
+	border-color: #78C3F3;
+	color: #004974;
+	text-decoration: none;
+}
+
+.file_but {
+	width: 90px;
+	height: 40px;
+	background: #D0EEFF;
+	border: 1px solid #99D3F5;
+	border-radius: 4px;
+	overflow: hidden;
+	color: #1E88C7;
+	font-size: 16px;
+	text-decoration: none;
+	text-indent: 0;
+	line-height: 20px;
+	text-align: center;
+}
+
+.file_but:hover {
+	background: #AADFFD;
+	border-color: #78C3F3;
+	color: #004974;
+	text-decoration: none;
+}
+
+.up-img-but {
+	visibility: hidden;
+}
+
+.layui-unselect .layui-form-select {
+	display: none;
+}
+
+.row>.col-md-8 {
+	float: none;
+	margin: 20px auto;
+}

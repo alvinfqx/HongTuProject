@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+		<title>总览界面</title>
+		<script src="../../static/lib/scripts/plugins/flexible.min.js"></script>
+		<link rel="stylesheet" href="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<script src="../../static/lib/util.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content row" style="width: 100%;">
+			<div id="" class="col-sm-4	.col-xs-4 left_div">
+				<div id="information" class="left_class">
+					<div id="" class="basic_msg">
+						基本信息
+					</div>
+					<div id="" class="msg">
+						<div id="" class="msg_content">
+							<span class="basic_name">站点名称 : </span>
+							<span class="basic_value">中集智能</span>
+						</div>
+						<div id="" class="msg_content">
+							<span class="basic_name">规矩名称 : </span>
+							<span class="basic_value">POP</span>
+						</div>
+						<div id="" class="msg_content">
+							<span class="basic_name">资产编号 : </span>
+							<span class="basic_value">022515</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div id="data_graph_one" class="left_class">
+
+					<div id="" class="grap_class">
+						<img src="../../static/lib/Images/window/data.png" />
+						<div class="num">25</div>
+						<div id="" class="text_name">
+							温度(℃)
+						</div>
+					</div>
+				</div>
+				<div id="data_graph_two" class="left_class">
+
+					<div id="" class="grap_class">
+						<img src="../../static/lib/Images/window/data.png" />
+						<div class="num">42</div>
+						<div id="" class="text_name">
+							湿度(%)
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="" class="col-sm-3  center_class">
+				<img src="../../static/lib/Images/window/computer.png" />
+			</div>
+			<div id="" class="col-sm-5 right_div ">
+
+				<div id="" class="right_class div_right_msg">
+					<div id="" class="alarm_msg">
+						告警信息
+					</div>
+					<div id="tableId">
+						<table border="0" cellpadding="10" id="table_detail">
+
+						</table>
+					</div>
+				</div>
+
+				<div id="" class="right_class div_right_sum">
+					<div id="" class="alarm_msg">
+						告警统计
+					</div>
+					<div id="" class="row total_class">
+						<div id="" class="col-sm-3">
+							<div id="" class="circle_div">
+								<p class="circle_one circle">
+									35
+								</p>
+
+							</div>
+							<div id="" class="alarm_text">
+								重要告警
+							</div>
+						</div>
+						<div id="" class="col-sm-3">
+							<div id="" class="circle_div">
+								<p class="circle_two circle">
+									30
+								</p>
+
+							</div>
+							<div id="" class="alarm_text">
+								严重告警
+							</div>
+						</div>
+						<div id="" class="col-sm-3">
+							<div id="" class="circle_div">
+								<p class="circle_three circle">
+									25
+								</p>
+
+							</div>
+							<div id="" class="alarm_text">
+								一般告警
+							</div>
+						</div>
+						<div id="" class="col-sm-3">
+							<div id="" class="circle_div">
+								<p class="circle_four circle">
+									20
+								</p>
+
+							</div>
+							<div id="" class="alarm_text">
+								信息提示
+							</div>
+						</div>
+						<div class="alamt_time">
+							统计时间: 2018/06/15 14:58
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<link href="../../static/css/aws/windows/windows.css" rel="stylesheet" />
+	<script src="../../static/js/aws/windows/windows.js"></script>
+
+</html>

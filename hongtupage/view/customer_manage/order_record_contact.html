@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>工单管理--合同号开窗</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	</head>
+
+	<body>
+		<form id="form1" role="form">
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h5 class="box-title">基本信息</h5>
+						</div>
+						<form>
+							<div class="box-body">
+								<div class="row">
+									<div class="form-group col-md-4">
+										<label for="client" class="col-md-5 col-md-push-1 control-label" style="font-size: 14px;">客户单位: </label>
+										<div class="col-md-6">
+											<input type="text" class="form-control" id="client" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="address" class="col-md-5  control-label" style="font-size: 14px;">客户地址: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="address" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="contractno" class="col-md-5  control-label" style="font-size: 14px;">合同号: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="contractno" readonly="readonly">
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="form-group col-md-4">
+										<label for="contact" class="col-md-5 col-md-push-1 control-label" style="font-size: 14px;">联系人: </label>
+										<div class="col-md-6">
+											<input type="text" class="form-control" id="contact" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="mobile" class="col-md-5  control-label" style="font-size: 14px;">手机号码: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="mobile" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="tel" class="col-md-5  control-label" style="font-size: 14px;">电话: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="tel" readonly="readonly">
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="form-group col-md-4">
+										<label for="signingdate" class="col-md-5 col-md-push-1 control-label" style="font-size: 14px;">合同签订日期: </label>
+										<div class="col-md-6">
+											<input type="text" class="form-control" id="signingdate" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="deliverydate" class="col-md-5  control-label" style="font-size: 14px;">合同结束日期: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="deliverydate" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<!-- pull 向左偏移  push 向右偏移-->
+										<label for="saleman" class="col-md-5  control-label" style="font-size: 14px;">销售经理: </label>
+										<div class="col-md-6 col-md-pull-1">
+											<input class="form-control" id="saleman" readonly="readonly">
+										</div>
+									</div>
+								</div>
+								<input id="organizeid" type="hidden" readonly="readonly" />
+															
+							</div>
+
+						</form>
+					</div>
+				</div>
+
+				<div class="col-md-12 box_class">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h5 class="box-title">产品类型详情</h5>
+						</div>
+						<div id="product_div">
+							<table id="product_table"></table>
+							<div id="product_page"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-12 box_class">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h5 class="box-title">产品详情</h5>
+						</div>
+						<div id="product_detail_div">
+							<table id="product_detail_table"></table>
+							<div id="product_detail_page"></div>
+						</div>
+					</div>
+				</div>
+                
+
+				<div class="col-md-12 box_class">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h5 class="box-title">说明</h5>
+						</div>
+						<div>
+							<textarea class="form-control" id="desciption" readonly="readonly" rows="5" cols="20" style="resize: none;"></textarea>
+						</div>
+					</div>
+				</div>
+
+		</form>
+
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/customer_manage/order_record_contact.css" rel="stylesheet" />
+	<script src="../../js/customer_manage/order_record_contact.js"></script>
+
+</html>

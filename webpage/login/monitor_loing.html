@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>中集装备监控系统</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<link rel="icon" href="../../static/img/logo_25.png" type="image/x-icon" />
+		<!--<link rel="stylesheet" type="text/css" href="../../static/css/aws/login/login.css" />-->
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/simple-line-icons.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap-switch.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/select2-bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/components.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/plugins.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/login-5.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/cookie/jquery.cookie.js"></script>
+		<script src="../../static/lib/scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-hover-dropdown.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.blockui.min.js"></script>
+		<script src="../../static/lib/scripts/bootstrap/bootstrap-switch.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.validate.min.js"></script>
+		<script src="../../static/lib/scripts/additional-methods.min.js"></script>
+		<script src="../../static/lib/scripts/select2.full.min.js"></script>
+		<script src="../../static/lib/scripts/jquery/jquery.backstretch.min.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/app.min.js"></script>
+		<script src="../../static/lib/scripts/login-5.js"></script>
+
+		<script src="../../static/lib/scripts/plugins/jquery.md5.js"></script>
+		<script src="../../static/lib/scripts/plugins/dialog/dialog.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../static/lib/scripts/plugins/tipso.min.js"></script>
+		<link rel="stylesheet" href="../../static/css/aws/login/monitor_loing.css">
+		<script src="../../static/js/aws/login/monitor_loing.js"></script>
+		<script>
+            var contentPath = 'http://10.33.140.95:9005';
+        </script>
+	</head>
+
+	<body>
+		<div class="imgbg">
+			<div class="login-box">
+				<div class="title-name">中集装备监控系统</div>
+				<ul class="login-ul">
+					<li class="icon1">
+						<input class="inputtext" type="text" placeholder="输入名字">
+					</li>
+					<li class="icon2">
+						<input class="inputtext" type="text" placeholder="密码">
+					</li>
+					<li class="codeInput icon2">
+						<input class="inputtext" type="text" placeholder="验证码">
+						<img id="login_verifycode" class="img_verifycode" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
+						<script>
+							var url_str = contentPath + "/Login/VerifyCode";
+							$("#login_verifycode").attr("src", url_str);
+						</script>
+
+					</li>
+				</ul>
+				<div class="info-btn">
+					<div class="tips-info">
+						<label>
+                        <span class="ivu-checkbox ivu-checkbox-checked">
+                            <span class="ivu-checkbox-inner"></span>
+                            <input class="inputCheckbox ivu-checkbox-input" type="checkbox">
+                        </span>
+                        <span class="remb">下次自动登录</span>
+                    </label>
+					</div>
+					<div class="tips-info tips-right">
+						<a href="#">忘记密码</a>
+					</div>
+				</div>
+				<div class="btn-box">登录</div>
+			</div>
+		</div>
+	</body>
+
+</html>

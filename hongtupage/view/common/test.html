@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>测试jqgrid单行新增</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	</head>
+
+	<body>
+		<div class="bills">
+			<table class="form" style="width: 100%; margin-bottom: 10px;">
+				<tr>
+					<td class="formTitle">申请单号<strong>*</strong></td>
+					<td class="formValue">
+						<input id="APPLYCODE" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" value="@DateTime.Now.ToString(" RyyMMdd-HMMss ")" readonly/>
+					</td>
+					<td class="formTitle">申请人员</td>
+					<td class="formValue">
+						<input id="APPLYUSERCODE" type="hidden" value="@_operator.UserId" />
+						<input type="text" class="form-control" readonly value="@_operator.UserName" />
+					</td>
+					<td class="formTitle">申请部门</td>
+					<td class="formValue">
+						<div id="APPLYDEPARTMENT" type="selectTree" class="ui-select" isvalid="yes" checkexpession="NotNull"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="formTitle">申请日期</td>
+					<td class="formValue">
+						<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" id="APPLYDATE" readonly="" class="form-control input-datepicker" type="text">
+					</td>
+					<td class="formTitle">答复日期</td>
+					<td class="formValue">
+						<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" id="REQUIREDATE" readonly="" class="form-control input-datepicker" type="text">
+					</td>
+					<td class="formTitle">有效日期</td>
+					<td class="formValue">
+						<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" id="VALIDDATE" readonly="" class="form-control input-datepicker" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td class="formTitle">项目名称</td>
+					<td class="formValue" colspan="3">
+						<input id="PROJECTNAME" type="text" class="form-control" />
+					</td>
+					<td class="formTitle">单据状态</td>
+					<td class="formValue">
+						<input id="APPLYSTATE" type="text" class="form-control text-success" value="待申请" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="formTitle">项目描述</td>
+					<td class="formValue" colspan="3">
+						<textarea id="PROJECTDESCREBLE" class="form-control" rows="2"></textarea>
+					</td>
+					<td class="formTitle">
+						<a id="lr-uploadify" class="btn btn-default btn-xs" onclick="btn_uploadify()"><i class="fa fa-upload"></i>&nbsp;上传文件</a>
+					</td>
+					<td class="formValue">
+						<ul id="ATTACHMENTS" class="form-control USER"></ul>
+						<input id="ATTACHS" type="hidden">
+					</td>
+				</tr>
+				<tr>
+					<td class="formTitle">审核人列表</td>
+					<td class="formValue" colspan="2">
+						<ul id="CHECKORS2" class="form-control USER"></ul>
+						<span class="input-button" onclick="btn_member('#CHECKORS')" title="选取图标"><i class="fa fa-user"></i></span>
+						<input id="CHECKORS" type="hidden" class="form-control" />
+					</td>
+					<td class="formTitle">查看人列表</td>
+					<td class="formValue" colspan="2">
+						<ul id="VIEWERS2" class="form-control USER"></ul>
+						<span class="input-button" onclick="btn_member('#VIEWERS')" title="选取图标"><i class="fa fa-user"></i></span>
+						<input id="VIEWERS" type="hidden" class="form-control" />
+					</td>
+				</tr>
+				<input id="CHECKORDERSEQ" type="hidden" />
+			</table>
+			<div class="gridPanel">
+				<table id="gridTable"></table>
+			</div>
+		</div>
+		<div id="bottomField">
+			<a id="savaAndAdd" class="btn btn-default" onclick="AcceptClick(1)">保存草稿</a>
+			<a id="save" class="btn btn-success" onclick="AcceptClick(2)">发送申请</a>
+		</div>
+		<div class="contextmenu">
+			<ul>
+				<li>添加一行</li>
+				<li>删除一行</li>
+			</ul>
+		</div>
+
+	</body>
+	<script>
+		var keyValue = request('keyValue'),
+			checkers, attachments = {};
+		$(function() {
+			InitialPage();
+			GetDetailGrid();
+			initControl();
+		});
+		//初始化页面
+		function InitialPage() {
+			$(".bills").height($(window).height() - 88);
+			//resize重设(表格、树形)宽高
+			$(window).resize(function(e) {
+				window.setTimeout(function() {
+					$('#gridTable').setGridWidth(($('.gridPanel').width()));
+					$(".bills").height($(window).height() - 88);
+				}, 200);
+				e.stopPropagation();
+			});
+		}
+		var selectedRowIndex = 0;
+		//初始化控件
+		function initControl() {
+			$("#CHECKORDERSEQ2").sortable({
+				placeholder: "ui-state-highlight ui-corner-all",
+				update: function(event, ui) {
+					$("#CHECKORDERSEQ").val($(this).sortable("toArray").join(","))
+				}
+			});
+			$("#CHECKORDERSEQ2").disableSelection();
+			//加载部门
+			$("#APPLYDEPARTMENT").ComboBoxTree({
+				url: "../../BaseManage/Department/GetTreeJson?organizeId=@_operator.CompanyId",
+				description: "==请选择==",
+				allowSearch: true
+			});
+			//获取表单
+			var $grid = $("#gridTable");
+			if(!!keyValue) {
+				$.SetForm({
+					url: "../../InquiryManage/Apply/GetFormJson",
+					param: {
+						keyValue: keyValue
+					},
+					success: function(data) {
+						//主表
+						var entity = data.entity;
+						$("#form1").SetWebControls(entity);
+						$("#APPLYDEPARTMENT").ComboBoxTreeSetValue(entity.APPLYDEPARTMENT).trigger("change");
+						var attachs = data.aAttach,
+							$a = $("#ATTACHMENTS"),
+							k;
+						for(k in attachs) {
+							$a.append("<li id='attach" + attachs[k].AID + "'><a href='../../InquiryManage/Attachmentapply/DownloadFile?keyValue=" + attachs[k].AID + "' class='btn btn-link btn-xs'>" + attachs[k].ATTACHMENTNAME + "</a></li>")
+						}
+						attachs = data.dAttach;
+						for(var k in attachs) {
+							if(!attachments[attachs[k].DETAILID]) attachments[attachs[k].DETAILID] = "";
+							attachments[attachs[k].DETAILID] += "<a href='../../InquiryManage/Attachmentapplydetail/DownloadFile?keyValue=" + attachs[k].AID + "' class='btn btn-link btn-xs'>" + attachs[k].ATTACHMENTNAME + "</a>";
+						}
+						// 审核查看人
+						var vc = data.checker,
+							checker = [],
+							cs = [],
+							viewer = [],
+							vs = [];
+						for(k in vc) {
+							if(vc[k].PERMISSION == "C") {
+								checker.push(vc[k]);
+							} else {
+								viewer.push(vc[k]);
+							}
+						}
+						setCheckOrderSEQ('#CHECKORS', checker);
+						setCheckOrderSEQ('#VIEWERS', viewer);
+
+						//明细
+						var detail = data.detail;
+						for(var i = 0; i < detail.length; i++) {
+							addRow($grid, detail[i], i)
+						}
+						addRow($grid, {}, i + 1)
+					}
+				})
+			} else {
+				$("#APPLYDEPARTMENT").ComboBoxTreeSetValue("@_operator.DepartmentId").trigger("change");
+				addRow($grid, {}, 0)
+			}
+		}
+		//加载明细
+		function GetDetailGrid() {
+			var $grid = $("#gridTable");
+			$grid.jqGrid({
+				unwritten: false,
+				datatype: "local",
+				height: '100%',
+				autowidth: true,
+				cmTemplate: {
+					sortable: false
+				},
+				colModel: [{
+						label: '自动序号',
+						name: 'AID',
+						index: 'AID',
+						hidden: true
+					},
+					{
+						label: '物料名称',
+						name: 'MATERIELNAME',
+						index: 'MATERIELNAME'
+					},
+					{
+						label: '物料编码',
+						name: 'MATERIELCODE',
+						index: 'MATERIELCODE'
+					},
+					{
+						label: '数量',
+						name: 'QUANTITY',
+						width: 80,
+						index: 'QUANTITY'
+					},
+					{
+						label: '负责询价人',
+						name: 'BUYERACCOUNT',
+						index: 'BUYERACCOUNT'
+					},
+					{
+						label: '交货期',
+						name: 'REQUIREDATE',
+						width: 120,
+						index: 'REQUIREDATE'
+					},
+					{
+						label: '交货地点',
+						name: 'DELEVERYPOSTION',
+						width: 80,
+						index: 'DELEVERYPOSTION'
+					},
+					{
+						label: '物料规格',
+						name: 'GUIGE',
+						index: 'GUIGE'
+					},
+					{
+						label: '物品型号',
+						name: 'MODEL',
+						index: 'MODEL'
+					},
+					{
+						label: '主单位',
+						name: 'UNITCODE',
+						width: 80,
+						index: 'UNITCODE'
+					},
+					//{label:'启用辅助单位', name:'BUYUNITFLAG', index:'BUYUNITFLAG', width: 50, align: "center",
+					//    formatter: function (cellvalue) { return "<i class=\"fa fa-toggle-"+(cellvalue == "Y" ? "on" : "off")+"\"></i>" }},
+					//{ label: '辅单位', name: 'BUYUNITCODE', width: 80, index: 'BUYUNITCODE' },
+					//{label:'ABC分类', name:'ABCTYPE', index:'ABCTYPE', width: 50, align: "center",
+					//    formatter: function (cellvalue) { return "<i class=\"fa fa-toggle-"+(cellvalue == "Y" ? "on" : "off")+"\"></i>" }},
+					{
+						label: '技术条件',
+						name: 'JISHUTIAOJIAN',
+						index: 'JISHUTIAOJIAN'
+					},
+					{
+						label: '类别编码',
+						name: 'MATERIELTYPECODE',
+						width: 80,
+						index: 'MATERIELTYPECODE'
+					},
+					//{label:'备用说明', name:'REMARK2', index:'REMARK2'},
+					{
+						label: '物料描述',
+						name: 'DESCREBLE',
+						index: 'DESCREBLE'
+					},
+					{
+						label: '需求日期（备用）',
+						name: 'NEEDDATE',
+						width: 120,
+						index: 'NEEDDATE'
+					},
+					{
+						label: '备注',
+						name: 'REMARK',
+						index: 'REMARK'
+					},
+					{
+						label: '附件',
+						name: 'ATTACH',
+						index: 'ATTACH',
+						align: "right",
+						width: 320,
+						formatter: function(cellvalue, options, row) {
+							return(attachments[row.AID] || "") +
+								'<input type="hidden" name="ATTACHS" id="att' + options.rowId +
+								'"><a class="btn btn-success btn-xs" onclick="btn_uploadify2(\'' + row.AID + '\',this.rel)" rel="att' +
+								options.rowId + '"><i class="fa fa-upload" style="color: #fff;"></i></a>';
+						}
+					},
+					//{label:'最终出厂价含税', name:'PRICECCHS', index:'PRICECCHS'},
+					//{label:'最终出厂价不含税', name:'PRICECCBHS', index:'PRICECCBHS'},
+					//{label:'最终单价', name:'PRICEUNIT', index:'PRICEUNIT'},
+					//{label:'税率', name:'TAXRATE', index:'TAXRATE'},
+					//{label:'询价单号', name:'INQUIRYCODE', index:'INQUIRYCODE'},
+					//{label:'自填或询价', name:'PRICEFROM', index:'PRICEFROM'},
+					//{label:'有效截止日期', name: 'EFFECTDATE', index: 'EFFECTDATE'},
+					//{label:'单据状态', name:'STATE', index:'STATE'},
+				],
+				cellattr: function() {
+					return ' title=""'
+				},
+				pager: false,
+				rownumbers: true,
+				shrinkToFit: false,
+				gridview: true,
+				gridComplete: function() {
+					//合计
+					//$(this).footerData("set", {
+					//    "UnitId": "合计：",
+					//    "Qty": "<span id='TotalQty'>0.00</span>",
+					//    "Price": "<span id='TotalPrice'>0.00</span>",
+					//    "Amount": "<span id='TotalAmount'>0.00</span>",
+					//    "Taxprice": "<span id='TotalTaxprice'>0.00</span>",
+					//    "Tax": "<span id='TotalTax'>0.00</span>",
+					//    "TaxAmount": "<span id='TotalTaxAmount'>0.00</span>"
+					//});
+					//$('table.ui-jqgrid-ftable td[aria-describedby="gridTable_UnitId"]').prevUntil().css("border-right-color", "#fff");
+				}
+			});
+			//表头合并
+			//$grid.jqGrid('setGroupHeaders', {
+			//    useColSpanStyle: true,
+			//    groupHeaders: [
+			//      { startColumnName: 'ProductName', numberOfColumns: 3, titleText: '商品信息' },
+			//      { startColumnName: 'Qty', numberOfColumns: 7, titleText: '价格信息' }
+			//    ]
+			//});
+			//默认添加13行 空行
+			//for (var i = 0; i < 9; i++) {
+			//    var rowdata = {
+			//        AID: '<input name="AID" type="text" class="editable center" disabled/>',
+			//        //APPLYCODE: '<input name="APPLYCODE" type="text" class="editable center" disabled/>',
+			//        MATERIELCODE: '<input name="MATERIELCODE" type="text" class="editable center" disabled/>',
+			//        QUANTITY: '<input name="QUANTITY" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" disabled/>',
+			//        BUYERACCOUNT: '<div style="position:relative"><input id="b' + i + '" name="BUYERACCOUNT" type="text" class="editable center" disabled/><span class="ui-icon-ellipsis" onclick="btn_buyer(\'#b' + i + '\')"></span></div>',
+			//        REQUIREDATE: '<input name="REQUIREDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" disabled/>',
+			//        DELEVERYPOSTION: '<input name="DELEVERYPOSTION" type="text" class="editable center" disabled/>',
+			//        REMARK: '<input name="REMARK" type="text" class="editable" disabled/>',
+			//        MATERIELNAME: '<div class="product"><input name="MATERIELNAME" type="text" class="editable center" isvalid="no" checkexpession="NotNull" disabled onpaste="csvPaste(event)"/><span class="ui-icon-ellipsis"></span></div>',
+			//        GUIGE: '<input name="GUIGE" type="text" class="editable center" disabled/>',
+			//        MODEL: '<input name="MODEL" type="text" class="editable center" disabled/>',
+			//        UNITCODE: '<input name="UNITCODE" type="text" class="editable center" disabled/>',
+			//        BUYUNITFLAG: '<input name="BUYUNITFLAG" type="checkbox" class="editable center" disabled/>',
+			//        BUYUNITCODE: '<input name="BUYUNITCODE" type="text" class="editable center" disabled/>',
+			//        ABCTYPE: '<input name="ABCTYPE" type="checkbox" class="editable center" disabled/>',
+			//        JISHUTIAOJIAN: '<input name="JISHUTIAOJIAN" type="text" class="editable" disabled/>',
+			//        MATERIELTYPECODE: '<input name="MATERIELTYPECODE" type="text" class="editable center" disabled/>',
+			//        //REMARK2: '<input name="REMARK2" type="text" class="editable" disabled/>',
+			//        DESCREBLE: '<input name="DESCREBLE" type="text" class="editable" disabled/>',
+			//        NEEDDATE: '<input name="NEEDDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" disabled/>',
+			//        //PRICECCHS: '<input name="PRICECCHS" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" disabled/>',
+			//        //PRICECCBHS: '<input name="PRICECCBHS" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" disabled/>',
+			//        //PRICEUNIT: '<input name="PRICEUNIT" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" disabled/>',
+			//        //TAXRATE: '<input name="TAXRATE" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" disabled/>',
+			//        //INQUIRYCODE: '<input name="INQUIRYCODE" type="text" class="editable center" disabled/>',
+			//        //PRICEFROM: '<input name="PRICEFROM" type="text" class="editable center" disabled/>',
+			//        //EFFECTDATE: '<input name="EFFECTDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" disabled/>',
+			//        //STATE: '<input name="STATE" type="text" class="editable center" disabled/>',
+			//    }
+			//    $grid.jqGrid('addRowData', i, rowdata);
+			//};
+
+			$grid.find('.decimal').attr('onfocus', 'IsMoney(this.id)');
+			//$grid.find('input').attr("disabled", "disabled");
+			$grid.find("tbody tr:eq(1)").find('input').removeAttr('disabled').attr("isvalid", "yes");
+			$grid.find('.disabled').attr("disabled", "disabled");
+			//价格文本框事件
+			$grid.find('.decimal').click(function() {
+				$(this).select();
+			});
+		}
+		//商品名称事件
+		function ellipsis(e) {
+			$('.ui-icon-ellipsis').hide();
+			$(e).next('.ui-icon-ellipsis').show();
+		}
+
+		function ellipsisClick(e) {
+			var $ellipsis = $(e).parents('[role=row]');
+			dialogOpen({
+				id: "Materiels",
+				title: '选择商品',
+				url: '../../InquiryManage/Materiel/Index?dialog=true',
+				width: "600px",
+				height: "400px",
+				callBack: function(iframeId) {
+					top.frames[iframeId].AcceptClick(function(data) {
+						var $grid = $("#gridTable"),
+							len = $grid.getDataIDs().length;
+						if($grid.find('.jqgrow').find('[data-value=' + data.MATERIELCODE + ']').length == 0) {
+							updateRow($ellipsis, data);
+							if($ellipsis.index() == len)
+								addRow($grid, {}, len)
+						} else {
+							top.dialogTop('商品信息已存在,不能重复添加', 'error');
+						}
+					});
+				},
+				btn: ['确认选中', '关闭']
+			});
+		}
+
+		function addRow($grid, row, i) {
+			var rowdata = {
+				AID: row.AID,
+				//APPLYCODE: '<input name="APPLYCODE" type="text" class="editable center" value="'+(row.+'"/>',
+				MATERIELCODE: '<input name="AID" type="hidden" class="editable center" value="' + (row.AID || "") + '"/><input name="MATERIELCODE" type="text" class="editable center" value="' + (row.MATERIELCODE || "") + '"/>',
+				QUANTITY: '<input name="QUANTITY" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" value="' + (row.QUANTITY || "") + '"/>',
+				BUYERACCOUNT: '<div style="position:relative"><input id="b' + i + '" name="BUYERACCOUNT" type="text" class="editable center" isvalid="no" checkexpession="NotNull" value="' + (row.BUYERACCOUNT || "") + '" onclick="ellipsis(this)" required/><span class="ui-icon-ellipsis" onclick="btn_buyer(\'#b' + i + '\')"></span></div>',
+				REQUIREDATE: '<input name="REQUIREDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" value="' + (row.REQUIREDATE || "") + '"/>',
+				DELEVERYPOSTION: '<input name="DELEVERYPOSTION" type="text" class="editable center" value="' + (row.DELEVERYPOSTION || "") + '"/>',
+				REMARK: '<input name="REMARK" type="text" class="editable" value="' + (row.REMARK || "") + '"/>',
+				MATERIELNAME: '<div class="product"><input name="MATERIELNAME" type="text" class="editable center" isvalid="no" checkexpession="NotNull" value="' + (row.MATERIELNAME || "") + '" onpaste="csvPaste(event)" onclick="ellipsis(this)"/><span class="ui-icon-ellipsis" onclick="ellipsisClick(this)"></span></div>',
+				GUIGE: '<input name="GUIGE" type="text" class="editable center" value="' + (row.GUIGE || "") + '"/>',
+				MODEL: '<input name="MODEL" type="text" class="editable center" value="' + (row.MODEL || "") + '"/>',
+				UNITCODE: '<input name="UNITCODE" type="text" class="editable center" value="' + (row.UNITCODE || "") + '"/>',
+				BUYUNITFLAG: '<input name="BUYUNITFLAG" type="checkbox" class="editable center" value="' + (row.BUYUNITFLAG || "") + '"/>',
+				BUYUNITCODE: '<input name="BUYUNITCODE" type="text" class="editable center" value="' + (row.BUYUNITCODE || "") + '"/>',
+				ABCTYPE: '<input name="ABCTYPE" type="checkbox" class="editable center" value="' + (row.ABCTYPE || "") + '"/>',
+				JISHUTIAOJIAN: '<input name="JISHUTIAOJIAN" type="text" class="editable" value="' + (row.JISHUTIAOJIAN || "") + '"/>',
+				MATERIELTYPECODE: '<input name="MATERIELTYPECODE" type="text" class="editable center" value="' + (row.MATERIELTYPECODE || "") + '"/>',
+				//REMARK2: '<input name="REMARK2" type="text" class="editable" value="'+(row.||"")+'"/>',
+				DESCREBLE: '<input name="DESCREBLE" type="text" class="editable" value="' + (row.DESCREBLE || "") + '"/>',
+				NEEDDATE: '<input name="NEEDDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" value="' + (row.NEEDDATE || "") + '"/>',
+				//PRICECCHS: '<input name="PRICECCHS" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" value="'+(row.PRICECCHS||"")+'"/>',
+				//PRICECCBHS: '<input name="PRICECCBHS" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" value="'+(row.PRICECCBHS||"")+'"/>',
+				//PRICEUNIT: '<input name="PRICEUNIT" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" value="'+(row.PRICEUNIT||"")+'"/>',
+				//TAXRATE: '<input name="TAXRATE" type="text" class="editable center decimal" isvalid="no" checkexpession="Double" value="'+(row.TAXRATE||"")+'"/>',
+				//INQUIRYCODE: '<input name="INQUIRYCODE" type="text" class="editable center" value="'+(row.INQUIRYCODE||"")+'"/>',
+				//PRICEFROM: '<input name="PRICEFROM" type="text" class="editable center" value="'+(row.PRICEFROM||"")+'"/>',
+				//EFFECTDATE: '<input name="EFFECTDATE" type="text" onclick="WdatePicker({dateFmt:\'yyyy-MM-dd\',qsEnabled:0,isShowClear:0,isShowOK:0,isShowToday:0})" class="editable center  input-datepicker" value="'+(row.EFFECTDATE||"")+'"/>',
+				//STATE: '<input name="STATE" type="text" class="editable center" value="'+(row.STATE||"")+'"/>',
+			}
+			$grid.jqGrid('addRowData', i, rowdata);
+		}
+
+		function updateRow(r, data) {
+			r.find('input[name="AID"]').val(data.AID);
+			//r.find('input[name="APPLYCODE"]').val(data.APPLYCODE);
+			r.find('input[name="MATERIELCODE"]').val(data.MATERIELCODE);
+			r.find('input[name="QUANTITY"]').val(data.QUANTITY);
+			r.find('input[name="BUYERACCOUNT"]').val(data.BUYERACCOUNT);
+			r.find('input[name="REQUIREDATE"]').val(data.REQUIREDATE);
+			r.find('input[name="DELEVERYPOSTION"]').val(data.DELEVERYPOSTION);
+			r.find('input[name="REMARK"]').val(data.REMARK);
+			r.find('input[name="MATERIELNAME"]').val(data.MATERIELNAME);
+			r.find('input[name="GUIGE"]').val(data.GUIGE);
+			r.find('input[name="MODEL"]').val(data.MODEL);
+			r.find('input[name="UNITCODE"]').val(data.UNITCODE);
+			r.find('input[name="BUYUNITFLAG"]').val(data.BUYUNITFLAG);
+			r.find('input[name="BUYUNITCODE"]').val(data.BUYUNITCODE);
+			r.find('input[name="ABCTYPE"]').val(data.ABCTYPE);
+			r.find('input[name="JISHUTIAOJIAN"]').val(data.JISHUTIAOJIAN);
+			r.find('input[name="MATERIELTYPECODE"]').val(data.MATERIELTYPECODE);
+			//r.find('input[name="REMARK2"]').val(data.REMARK2);
+			r.find('input[name="DESCREBLE"]').val(data.DESCREBLE);
+			r.find('input[name="NEEDDATE"]').val(data.NEEDDATE);
+			//r.find('input[name="PRICECCHS"]').val(data.PRICECCHS);
+			//r.find('input[name="PRICECCBHS"]').val(data.PRICECCBHS);
+			//r.find('input[name="PRICEUNIT"]').val(data.PRICEUNIT);
+			//r.find('input[name="TAXRATE"]').val(data.TAXRATE);
+			//r.find('input[name="INQUIRYCODE"]').val(data.INQUIRYCODE);
+			//r.find('input[name="PRICEFROM"]').val(data.PRICEFROM);
+			//r.find('input[name="EFFECTDATE"]').val(data.EFFECTDATE);
+			//r.find('input[name="STATE"]').val(data.STATE);
+			r.find('input').removeAttr('disabled').attr("isvalid", "yes");
+			r.find('a.btn').removeAttr('disabled');
+			r.next().find('input').removeAttr('disabled');
+		}
+		//保存表单
+		function AcceptClick(save_Mode) {
+			if(!$('#form1').Validform()) {
+				return false;
+			}
+			var detailJson = [];
+			$("#gridTable").find('[role=row]').each(function(i) {
+				if(!!$(this).find('input[name="MATERIELCODE"]').val()) {
+					var d = formToJSON(this);
+					d.SortCode = i;
+					detailJson.push(d);
+				}
+			});
+			var postData = $("#form1").GetWebControls(keyValue);
+			postData.APPLYSTATE = save_Mode == 1 ? "待申请" : "待审核";
+			//postData["CustomerName"] = $("#CustomerId").attr('data-text');
+			//postData["SellerName"] = $("#SellerId").attr('data-text');
+			//postData["moduleButtonIds"] = $("#treeview").getCheckedAllNodes().Join(",");
+			postData["detailJson"] = JSON.stringify(detailJson);
+			var checkView = [],
+				i = 1,
+				arr;
+			for(arr = $('#CHECKORS').val().split(","), i = 0; i < arr.length && arr[i]; i++) {
+				checkView.push({
+					APPLYNUMBER: keyValue,
+					USERCODE: arr[i],
+					CHECKORDER: i,
+					PERMISSION: "C"
+				});
+			}
+			for(arr = $('#VIEWERS').val().split(","), i = 0; i < arr.length && arr[i]; i++) {
+				checkView.push({
+					APPLYNUMBER: keyValue,
+					USERCODE: arr[i],
+					CHECKORDER: i,
+					PERMISSION: "V"
+				});
+			}
+			postData["checkViewDetailJson"] = JSON.stringify(checkView);
+			$.ConfirmAjax({
+				msg: "注：您确认要保存此操作吗？",
+				url: "../../InquiryManage/Apply/SaveForm?keyValue=" + keyValue,
+				param: postData,
+				success: function(data) {
+					//if (save_Mode == 1) {
+					//    reload();
+					//} else {
+					var idxFrm = top.frames["iframe1022"];
+					idxFrm && (idxFrm.contentWindow || idxFrm).reload();
+					top.$.removeTab('closeCurrent');
+					//}
+				}
+			});
+		}
+
+		function btn_member(id) {
+			//var keyValue = $("#gridTable").jqGridRowValue("RoleId");
+			//var RoleName = $("#gridTable").jqGridRowValue("FullName");
+			//if (checkedRow(keyValue))
+			{
+				dialogOpen({
+					id: "AllotMember",
+					title: '公司成员',
+					url: '../../BaseManage/Department/AllotMember?organizeId=@_operator.CompanyId&member=' + $(id).val(),
+					width: "800px",
+					height: "520px",
+					callBack: function(iframeId) {
+						top.frames[iframeId].AcceptClick(function(data) {
+							//$(id).val(JSON.stringify(data))
+							SetCHECKORDERSEQ(id, data)
+						})
+					}
+				});
+			}
+		}
+
+		function btn_buyer(id) {
+			dialogOpen({
+				id: "AllotMember",
+				title: '公司成员',
+				url: '../../BaseManage/Department/AllotMember?organizeId=@_operator.CompanyId&member=' + $(id).val(),
+				width: "800px",
+				height: "520px",
+				callBack: function(iframeId) {
+					top.frames[iframeId].AcceptClick(function(data) {
+						$(id).val(data[0].realname)
+					})
+				}
+			});
+		}
+
+		function setCheckOrderSEQ(id, data) {
+			for(var i = 0, c = $(id + "2").html(""), s = []; i < data.length; i++) {
+				s.push(data[i].UserId);
+				c.append("<li id='" + data[i].UserId + "' class='label label-" + (data[i].STATE == "审核中" ? "info" : (data[i].STATE == "已审核" ? "success" : "default")) + "' title='" + data[i].STATE + "'>" + data[i].RealName + "</li>")
+			}
+			$(id).val(s.join(","))
+		}
+
+		function SetCHECKORDERSEQ(id, data) {
+			for(var i = 0, c = $(id + "2").html(""), s = []; i < data.length; i++) {
+				s.push(data[i].userid);
+				c.append("<li id='" + data[i].userid + "' class='label label-default'>" + data[i].realname + "</li>")
+			}
+			$(id).val(s.join(","))
+		}
+
+		function formToJSON(selector) {
+			var form = {};
+			$(selector).find(':input[name]:enabled').each(function() {
+				var self = $(this);
+				var name = self.attr('name');
+				if(form[name]) {
+					form[name] = form[name] + ',' + self.val();
+				} else {
+					form[name] = self.val();
+				}
+			});
+
+			return form;
+		}
+		//上传文件
+		function btn_uploadify() {
+			dialogOpen({
+				id: "UploadifyForm",
+				title: '上传文件',
+				url: '../../InquiryManage/Attachmentapply/UploadifyForm?APPLYCODE=' + keyValue,
+				width: "600px",
+				height: "400px",
+				btn: null
+			});
+		}
+
+		function btn_uploadify2(DETAILCODE, target) {
+			dialogOpen({
+				id: "UploadifyForm",
+				title: '上传文件',
+				url: '../../InquiryManage/Attachmentapplydetail/UploadifyForm?DETAILID=' + DETAILCODE + "&target=" + target,
+				width: "600px",
+				height: "400px",
+				btn: null
+			});
+		}
+		//文件下载
+		function btn_download() {
+			var keyValue = $("#gridTable").jqGridRowValue("FileId");
+			var fileType = $("#gridTable").jqGridRowValue("FileType");
+			if(keyValue) {
+				if(fileType != 'folder') {
+					$.download("../../PublicInfoManage/ResourceFile/DownloadFile", "keyValue=" + keyValue, 'post');
+				} else {
+					top.dialogTop('目前不支持文件夹下载', 'error');
+				}
+			} else {
+				dialogMsg('请选择要下载的文件！', 0);
+			}
+		}
+
+		//复制excel文件到jqgrid中
+		function csvPaste(e) {
+			var clipboardData, pastedData;
+
+			// Stop data actually being pasted into div
+			e.stopPropagation();
+			e.preventDefault();
+
+			// Get pasted data via clipboard API
+			clipboardData = e.clipboardData || window.clipboardData;
+			pastedData = clipboardData.getData('Text');
+			var rows = parseCSV(pastedData);
+			if(rows.length > 0) {
+				var $grid = $("#gridTable"),
+					len = $grid.getDataIDs().length,
+					r = $grid[0].rows;
+				for(var i = 0; i < rows.length; i++) {
+					if(i > 0) addRow($grid, {}, len + i);
+					$(r[r.length - 1]).find(":input").each(function(k, v) {
+						$(v).val(rows[i][k])
+					})
+				}
+				addRow($grid, {}, len + i);
+			}
+		}
+
+		function countQuotes(str) {
+			return str.split('"').length - 1;
+		}
+
+		function parseCSV(str) {
+			var r, rlen, rows, arr = [],
+				a = 0,
+				c, clen, multiline, last;
+			rows = str.split('\n');
+			if(rows.length > 1 && rows[rows.length - 1] === '') {
+				rows.pop();
+			}
+			for(r = 0, rlen = rows.length; r < rlen; r += 1) {
+				rows[r] = rows[r].split('\t');
+				for(c = 0, clen = rows[r].length; c < clen; c += 1) {
+					if(!arr[a]) {
+						arr[a] = [];
+					}
+					if(multiline && c === 0) {
+						last = arr[a].length - 1;
+						arr[a][last] = arr[a][last] + '\n' + rows[r][0];
+						if(multiline && (countQuotes(rows[r][0]) & 1)) { //& 1 is a bitwise way of performing mod 2
+							multiline = false;
+							arr[a][last] = arr[a][last].substring(0, arr[a][last].length - 1).replace(/""/g, '"');
+						}
+					} else {
+						if(c === clen - 1 && rows[r][c].indexOf('"') === 0 && (countQuotes(rows[r][c]) & 1)) {
+							arr[a].push(rows[r][c].substring(1).replace(/""/g, '"'));
+							multiline = true;
+						} else {
+							arr[a].push(rows[r][c].replace(/""/g, '"'));
+							multiline = false;
+						}
+					}
+				}
+				if(!multiline) {
+					a += 1;
+				}
+			}
+			return arr;
+		}
+	</script>
+
+</html>

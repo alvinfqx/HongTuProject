@@ -1,0 +1,147 @@
+	body {
+		background: #fff;
+	}
+	
+	.content-block {
+		padding: 0 10px;
+	}
+	
+	.facility-info-block {}
+	
+	.facility-info-block .facility-info-item {
+		width: 100%;
+		height: 88px;
+		padding: 2px 11px 4px 0;
+		margin-bottom: 15px;
+		text-align: right;
+		color: #fff;
+		background-size: 100% 100%;
+	}
+	.padding_a{
+		    padding: 18px 0 36px 0px;
+	}
+	.group_a{
+		     padding: 0 0 10px 0px;
+	}
+	.facility-info-item h3 {
+		font-size: 22px;
+	}
+	
+	.facility-info-item h4 {
+		font-size: 17px;
+	}
+	
+	.facility-info-block>div {
+		padding: 0;
+		padding-left: 5px;
+	}
+	
+	.facility-info-block .facility-join {
+		background-image: url("../../images/tj1.png");
+	}
+	
+	.facility-info-block .facility-fault {
+		background-image: url("../../images/tj2.png");
+	}
+	
+	.facility-info-block .facility-opera {
+		background-image: url("../../images/tj3.png");
+	}
+	
+	.alarm-stat-block {
+		border: 1px solid #ddd;
+	}
+	
+	.alarm-stat-block h4 {
+		background-color: #0b5b71;
+		color: #fff;
+		margin: 0;
+		padding: 5px;
+	}
+	
+	.alarm-summ-block {
+		padding: 10px;
+	}
+	
+	.alarm-stat-block .alarm-summ-item span:first-child {
+		float: left;
+		display: block;
+		width: 22px;
+		height: 22px;
+		background-position: 100% 100%;
+		background-size: 100% 100%;
+		background-image: url("../../images/Violet.png");
+	}
+	
+	.alarm-stat-block .alarm-summ-item:after {
+		content: ".";
+		width: 0;
+		height: 0;
+		visibility: hidden;
+		display: block;
+		clear: both;
+		overflow: hidden;
+	}
+	
+	.order-summ-block {
+		display: flex;
+		margin-top: 18%;
+	}
+	
+	.order-summ-block .order-summ-item {
+		flex: 1;
+		/*display: inline-block;*/
+		display: flex;
+		height: 180px;
+		border: 1px solid #000;
+	}
+	
+	.order-summ-item>div {
+		flex: 1;
+	}
+	
+	.order-summ-item>div:first-child {
+		padding: 20px 0 40px 0;
+	}
+	
+	.order-summ-left {
+		font-size: 19px;
+		border: 400;
+	}
+	
+	.order-summ-rigth>div {
+		text-align: center;
+	}
+	
+	.order-summ-rigth>div div {
+		line-height: 40px;
+	}
+	
+	.tc {
+		text-align: center;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	
+	.span_a {
+		font-size: 15px;
+		font-weight: bold;
+	}
+	
+	.leiji {
+		font-size: 15px;
+		padding-left: 10px;
+	}
+	
+	.group {
+		position: absolute;
+		/*top: -20px;*/
+	}
+	
+	#area-basic {
+		margin-top: 40px;
+	}
+	
+	#bar_stack {
+		margin-top: 8px;
+	}

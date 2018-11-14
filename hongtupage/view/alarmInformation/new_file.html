@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			td,
+			th {
+				width: 200px;
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="addItem">新增</button>
+		<table>
+			<thead>
+				<tr>
+					<th>操作</th>
+					<th>卡编号</th>
+					<th>卡号码</th>
+					<th>卡物料号</th>
+					<th>类型</th>
+					<th>品牌</th>
+					<th>创建时间</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var list = [];
+			$("#addItem").click(function() {
+				list.push({
+					cardNo: '',
+					cardNumber: '',
+					cardMaterial: '',
+					type: '',
+					brand: '',
+					creatdTime: '',
+				});
+				loadTable();
+			});
+			$("tbody").on('click', '.remove-item', function() {
+				var index = $(this).parent().parent().index();
+				list.splice(index, 1);
+				loadTable()
+			});
+			$("tbody").on('blur', '.card-no', function() {
+				var index = $(this).parent().parent().index();
+				console.log(index)
+				list[index].cardNo = $(this).val();
+			})
+			$("tbody").on('blur', '.card-number', function() {
+				var index = $(this).parent().parent().index();
+				list[index].cardNumber = $(this).val();
+			})
+			$("tbody").on('blur', '.card-material', function() {
+				var index = $(this).parent().parent().index();
+				list[index].cardNumber = $(this).val();
+			})
+			$("tbody").on('blur', '.type', function() {
+				var index = $(this).parent().parent().index();
+				list[index].type = $(this).val();
+			})
+			$("tbody").on('blur', '.brand', function() {
+				var index = $(this).parent().parent().index();
+				list[index].brand = $(this).val();
+			})
+			$("tbody").on('blur', '.creatd-time', function() {
+				var index = $(this).parent().parent().index();
+				list[index].creatdTime = $(this).val();
+				console.log(list)
+			})
+
+			function loadTable() {
+				$('tbody').children().remove();
+				var result = [];
+				for(var i = 0; i < list.length; i++) {
+					result.push("<tr>" +
+						"<td><button class='remove-item'>删除</button></td>" +
+						"<td><input type='text' class='card-no' value='" + list[i].cardNo + "'></td>" +
+						"<td><input type='text' class='card-number' value='" + list[i].cardNumber + "'></td>" +
+						"<td><input type='text' class='card-material' value='" + list[i].cardNumber + "'></td>" +
+
+						"<td><input type='text' class='type' value='" + list[i].type + "'></td>" +
+						"<td><input type='text' class='brand' value='" + list[i].brand + "'></td>" +
+						"<td><input type='text' class='creatd-time' value='" + list[i].creatdTime + "'></td>" +
+						"</tr>")
+				}
+				$('tbody').append(result.join(''));
+			}
+		</script>
+	</body>
+
+</html>

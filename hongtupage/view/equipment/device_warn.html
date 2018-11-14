@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>报警状态</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/echarts/echarts.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	</head>
+
+	<body>
+		<div class="group group_class">
+			<div id="" class="col-xs-5">
+				<div id="" class="one">
+					<h4>
+						<span id="name_id" style="font-size: 20px;"></span>
+						&nbsp;&nbsp;
+						<span style="font-size: 15px;" >编号：<span id="code_id"></span></span> 
+					</h4>
+					<div id="">
+						<div class="titlePanel">
+							<div class="toolbar">
+								<div class="btn-group">
+									<!--<a id="lr-replace" class="btn btn-default" onclick="reload();"><i class="fa fa-refresh"></i>&nbsp;刷新</a>-->
+									<a id="lr-replace" class="btn btn-primary btn-xs" onclick="model.dateTime('本月')">&nbsp;本月</a>
+									<a id="lr-replace" class="btn btn-primary btn-xs" onclick="model.dateTime('本周')">&nbsp;本周</a>
+									<a id="lr-replace" class="btn btn-primary btn-xs" onclick="model.dateTime('昨日')">&nbsp;昨日</a>
+									<a id="lr-replace" class="btn btn-primary btn-xs" onclick="model.dateTime('今日')">&nbsp;今日</a>
+									<!--<a id="lr-controller" class="btn btn-default" onclick="model.btn_controller()"><i class="fa fa-pencil-square-o"></i>&nbsp;监控点类型设置</a>
+									<a id="lr-artwork" class="btn btn-default" onclick="model.btn_artwork()"><i class="fa fa-share-alt"></i>&nbsp;工艺图配置</a>-->
+								</div>
+							</div>
+							
+							<div class="title-search">
+								<table>
+									<tr>
+										<td style="color: #fff;">
+											时间段：
+										</td>
+										<td>
+											<!--<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />-->
+											<input id="begindata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })">
+											
+										</td>
+										<td><input id="enddata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"></td>
+										<td style="padding-left: 5px;">
+											<a id="btn_Search" class="btn btn-primary" onclick="model.btn_Search()"><i class="fa fa-search"></i>查询</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+
+							
+						</div>
+						<div id="shijian">
+							<p>
+								（<span id="Rise_time"></span> -- <span id="End_time"></span>）
+							<span id="status_id">
+							</span>
+							</p>
+							
+						<!--<p id="shijian">（2018/08/16 -- 2018/08/17）</p>-->
+						</div>
+						<div id="status_graph" style="width: 550px;height:250px;"></div>
+						
+						<div class="col-md-12 padding">
+							<div class="col-md-5">
+								<p>掉机/停机：<span id="dropMachine">  </span>小时</p>
+							</div>
+							<div class="col-md-5">
+								<p>待机：<span id="standby">  </span>小时</p>
+							</div>
+						</div>
+						
+						<div class="col-md-12 padding">
+							<div class="col-md-5">
+								<p>运行：<span id="function">  </span>小时</p>
+							</div>
+							<div class="col-md-5">
+								<p>总时间：<span id="time">  </span>小时</p>
+							</div>
+						</div>
+						
+						<div class="col-md-12 padding">
+							<div class="col-md-8">
+								<p>运行率：（运行时间/总时间）：<span id="operationRate"></span></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div id="information_id" class="two">
+					<p>报警信息:</p>
+					<div>
+						<table id="gridTable"></table>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-7 three">
+				<div style="padding: 0px 0px 10px 10px;">
+					<!--<span style="padding-left: 10px;">最新更新时间:</span>
+					<select class="form-control" style="width: 100px;height: 20px;display: inline;">
+						<option value="5">5min</option>
+					</select>-->
+				</div>
+				<div class="btn_toolbar">
+					<a id="lr-replace" class="btn btn-primary btn-xs" onclick="model.reload()"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+				</div>
+
+				<div id="dash_id">
+					<div class="gray_div">
+						<p class="title_type"></p>
+						<table border="0">
+							<tr>
+								<td>
+									<div id="temp_1" style="width: 220px;height:200px;"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="temp_div" style="margin: 10px;">
+						<p class="" style="padding-left: 10px;font-size: 16px;">温度仪表状态</p>
+						<table border="0" cellspacing="" cellpadding="" id="temp_table_id" style="width: 100%;text-align: center;">
+							<tr>
+								<td>
+									<div id="temp_one" style="width: 220px;height:200px;"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="pre_div" style="margin: 20px 10px 10px;">
+						<p class="" style="padding-left: 10px;font-size: 16px;">压力仪表状态</p>
+						<table border="0" cellspacing="" cellpadding="" id="pre_table_id" style="width: 100%;text-align: center;">
+							<tr>
+								<td>
+									<div id="pre_one" style="width: 220px;height:200px;"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="gray_div">
+						<p class="title_type">其他报警状态</p>
+						<div style="padding: 10px;">
+							<table border="0" cellspacing="" cellpadding="" style="width: 100%;">
+								<tr>
+									<td style="text-align: right;padding-right: 5px;">
+										<img src="../../../static/img/dog.png" style="width: 80px;height: 80px;" />
+									</td>
+									<td style="font-size: 16px;text-align: left;">
+										震动：123
+									</td>
+									<td style="text-align: right; padding-right: 5px;">
+										<img src="../../../static/img/home/head/photo4.jpg" style="width: 80px;height: 80px;" />
+									</td>
+									<td style="font-size: 16px; text-align: left;">
+										运行时间：2018-06-05
+									</td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/equipment/device_warn.css" rel="stylesheet" />
+	<script src="../../js/equipment/device_warn.js"></script>
+
+</html>

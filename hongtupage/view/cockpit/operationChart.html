@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>压缩机营运图</title>
+		<link rel="stylesheet" type="text/css" href="../../css/cockpit/operationChart.css" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../js/cockpit/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../js/cockpit/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>-->
+		<script src="../../js/cockpit/ecStat.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/cockpit/dataTool.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/cockpit/china.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<!--<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />-->
+		<!--<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>-->
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--	<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+
+		<script src="../../js/cockpit/anhui.js"></script>
+		<script src="../../js/cockpit/aomen.js"></script>
+		<script src="../../js/cockpit/beijing.js"></script>
+		<script src="../../js/cockpit/chongqing.js"></script>
+		<script src="../../js/cockpit/fujian.js"></script>
+		<script src="../../js/cockpit/gansu.js"></script>
+		<script src="../../js/cockpit/guangdong.js"></script>
+		<script src="../../js/cockpit/guangxi.js"></script>
+		<script src="../../js/cockpit/guizhou.js"></script>
+		<script src="../../js/cockpit/hainan.js"></script>
+		<script src="../../js/cockpit/hebei.js"></script>
+		<script src="../../js/cockpit/heilongjiang.js"></script>
+		<script src="../../js/cockpit/henan.js"></script>
+		<script src="../../js/cockpit/hubei.js"></script>
+		<script src="../../js/cockpit/hunan.js"></script>
+		<script src="../../js/cockpit/jiangsu.js"></script>
+		<script src="../../js/cockpit/jiangxi.js"></script>
+		<script src="../../js/cockpit/jilin.js"></script>
+		<script src="../../js/cockpit/liaoning.js"></script>
+		<script src="../../js/cockpit/neimenggu.js"></script>
+		<script src="../../js/cockpit/ningxia.js"></script>
+		<script src="../../js/cockpit/qinghai.js"></script>
+		<script src="../../js/cockpit/shandong.js"></script>
+		<script src="../../js/cockpit/shanghai.js"></script>
+		<script src="../../js/cockpit/shanxi.js"></script>
+		<script src="../../js/cockpit/shanxi1.js"></script>
+		<script src="../../js/cockpit/sichuan.js"></script>
+		<script src="../../js/cockpit/tianjin.js"></script>
+		<script src="../../js/cockpit/xianggang.js"></script>
+		<script src="../../js/cockpit/xicang.js"></script>
+		<script src="../../js/cockpit/xinjiang.js"></script>
+		<script src="../../js/cockpit/xizang.js"></script>
+		<script src="../../js/cockpit/yunnan.js"></script>
+		<script src="../../js/cockpit/zhejiang.js"></script>
+		<style type="text/css">
+			#charmap,
+			#Province_chart {
+				width: 97%;
+				height: 430px;
+			}
+			
+			#charmap {
+				display: block;
+			}
+			
+			#Province_chart {
+				display: none;
+			}
+			
+			#btn_back {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content-block">
+
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<div class="row">
+						<div class="col-lg-12">
+							<h4 style="font-weight: bold;" class="padding_a">设备管理</h4>
+							<div class="facility-info-block">
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<div class="facility-info-item facility-join">
+										<h3 class="num">134</h3>
+										<h4>接入数</h4>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<div class="facility-info-item facility-fault">
+										<h3 class="faultNum">134</h3>
+										<h4>故障数</h4>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<div class="facility-info-item facility-opera">
+										<h3 class="RunNum">134</h3>
+										<h4>运行数</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="alarm-stat-block">
+								<h4>报警统计</h4>
+								<div>
+									<div style="width:95%;height:150px;" id="pie_tj"></div>
+								</div>
+								<div class="alarm-summ-block">
+									<div class="alarm-summ-item">
+										<span class='alarm-icon'></span>
+										<span>红色告警: 12个</span>
+									</div>
+									<div class="alarm-summ-item">
+										<span class='alarm-icon'></span>
+										<span>橙色告警: 12个</span>
+									</div>
+									<div class="alarm-summ-item">
+										<span class='alarm-icon'></span>
+										<span>蓝色告警: 12个</span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4" style="margin-bottom:60px;position:relative;">
+					<h4 style="    font-weight: bold;" class="padding_a">设备分布图</h4>
+					<div id="charmap"></div>
+					<div id="Province_chart" style="width:330px;background-color: #;"></div>
+					<div id="btn_back"><input type="button" value="返 回" style="position:absolute;top:20px;left: 15px;width:60px;height:30px;color: white;background-color:rgba(18,41,58,0.8);border:0px;font-size:16px;text-align:center;"></div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<!--<h4>统计图</h4>-->
+					<div style="width:95%;height:450px;" id="bar_stack"></div>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<h4 style="font-weight: bold;">2018年各月份累计销售量</h4>
+					<div style="width:95%;height:300px;margin-top:20px;" id="MonthBrokenline"></div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<h4 style="font-weight: bold;">年度目标</h4>
+					<div class="order-summ-block">
+						<div class="order-summ-item order-summ-left">
+							<div>
+								<div class="leiji">
+									今日累计
+								</div>
+								<p class="tc">172</p>
+								<div class="leiji">年度目标</div>
+								<p class="tc">2222</p>
+							</div>
+							<div class="order-summ-icon">
+								<div style="width:50%;height:100%;border:0px solid;" id="main"></div>
+							</div>
+						</div>
+						<div class="order-summ-item order-summ-rigth">
+							<div>
+								<div>回款:<span class="span_a">666</span></div>
+								<div>利润:<span class="span_a">999</span></div>
+								<div>新订单数:<span class="span_a">888</span></div>
+							</div>
+							<div class="order-summ-icon">
+								<div style="float:left;height:70%;margin-top:50px;">
+									<img src="../../images/Rise.png" width="50" height="60" />
+								</div>
+								<div style="float:left;height:70%;width:20px;margin-top:50px;">10%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<div class="group">
+						<h4 style="font-weight: bold;" class="group_a">销售量统计</h4>
+						<a id="lr_replace1" href="javascript:;" class="btn btn-primary btn-xs " onclick="model.getChartsData('6个月')">&nbsp;6个月</a>
+						<a id="lr_replace2" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('一年')">&nbsp;一年</a>
+						<!--<a id="lr_replace3" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('本月')">&nbsp;本月</a>-->
+					</div>
+					<div style="width:95%;height:260px;position: relative;" id="area-basic">
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script src="../../js/cockpit/operationChart.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

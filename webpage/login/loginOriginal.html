@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+ 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" />
+        <title>中集客户服务管理系统</title>
+        <link rel="icon" href="../../static/img/logo_25.png" type="image/x-icon" />
+        <link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/simple-line-icons.css" rel="stylesheet" />
+        <link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="../../static/lib/scripts/bootstrap/bootstrap-switch.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/select2.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/select2-bootstrap.min.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/components.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/plugins.css" rel="stylesheet" />
+        <link href="../../static/lib/styles/login-5.css" rel="stylesheet" />
+        <script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+        <script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+        <script src="../../static/lib/scripts/plugins/cookie/jquery.cookie.js"></script>
+        <script src="../../static/lib/scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../static/lib/scripts/bootstrap/bootstrap-hover-dropdown.min.js"></script>
+        <script src="../../static/lib/scripts/jquery/jquery.blockui.min.js"></script>
+        <script src="../../static/lib/scripts/bootstrap/bootstrap-switch.min.js"></script>
+        <script src="../../static/lib/scripts/jquery/jquery.validate.min.js"></script>
+        <script src="../../static/lib/scripts/additional-methods.min.js"></script>
+        <script src="../../static/lib/scripts/select2.full.min.js"></script>
+        <script src="../../static/lib/scripts/jquery/jquery.backstretch.min.js"></script>
+        <script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+        <script src="../../static/lib/scripts/app.min.js"></script>
+        <script src="../../static/lib/scripts/login-5.js"></script>
+		
+        <script src="../../static/lib/scripts/plugins/jquery.md5.js"></script>
+        <script src="../../static/lib/scripts/plugins/dialog/dialog.js"></script>
+        <script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+        <script src="../../static/lib/scripts/plugins/tipso.min.js"></script>
+        <script src="../../static/js/aws/login/login.js"></script>
+        <script>
+            var contentPath = 'http://10.33.140.95:9005';
+        </script>
+    </head>
+ 
+    <body class="login">
+        <div class="user-login-5">
+            <div class="row bs-reset">
+                <div class="col-md-6 bs-reset">
+                    <div class="login-bg" style="background-image: url(../../static/img/login/bg.jpg)">
+                    </div>
+                </div>
+                <div class="col-md-6 login-container bs-reset">
+                	   <div id="system_type">
+                	   	  <select  id="UItheme">    
+                	   	      <option value="3">中集智能装备监控系统</option>   
+                	   	  	  <option value="2">中集客户服务管理系统</option>
+                	   	  </select>
+                	   </div>
+                    <div class="login-content">
+                        <h1>中集客户服务管理系统</h1>
+                        <p>至始至终，专注打造一体化解决方案，精细化管理，多方支持手机、PC、平板，全面准确的数据统计</p>
+ 
+                        <form action="javascript:;" class="login-form" method="post">
+                            <div class="alert alert-danger display-hide">
+                                <button class="close" data-close="alert"></button>
+                                <span>请输入您的账户和密码</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input id="username" class="px form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="账户" name="username" required />
+                                </div>
+                                <div class="col-xs-6">
+                                    <input id="password" class="px form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="密码" name="password" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input id="verifycode" maxlength="4" type="text" class="form-control form-control-solid placeholder-no-fix form-group" placeholder="图片验证码">
+                                </div>
+                                <div class="col-xs-4">
+                                    <img id="login_verifycode" class="img_verifycode" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
+                                    <script>
+                                        var url_str = contentPath + "/Login/VerifyCode";
+                                        $("#login_verifycode").attr("src",url_str);
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 text-right">
+                                    <div class="forgot-password">
+                                        <span>还没有账号?</span>
+                                        <a id="a_register">立即注册</a>
+                                    </div>
+                                    <button id="btnlogin" class="btn blue" type="button">登录</button>
+ 
+                                </div>
+                            </div>
+                        </form>
+ 
+                        <form id="registerform" class="forget-form" action="javascript:;" method="post">
+                            <h3>注册信息</h3>
+ 
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <input id="txt_register_account" maxlength="11" class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="手机号" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input id="txt_register_code" maxlength="6" class="form-control placeholder-no-fix form-group" type="text" placeholder="短信验证码">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button id="register_getcode" type="button" class="btn blue btn-outline">获取验证码</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <input id="txt_register_name" class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="姓名" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <input id="txt_register_password" type="password" class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="密码" name="" />
+                                    </div>
+                                </div>
+                                <p class="info">密码长度为8~30个字符，需包含字母和数字</p>
+                                <span class="passlevel"><em></em><em></em><em></em></span>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input id="txt_register_verifycode" maxlength="4" type="text" class="form-control form-control-solid placeholder-no-fix form-group" placeholder="图片验证码">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <img id="register_verifycode" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <div class="form-actions" style="width: 440px;">
+                                <button type="button" id="back-btn" class="btn blue btn-outline">返回</button>
+                                <button type="submit" id="btnregister" class="btn blue uppercase pull-right">注册</button>
+                            </div>
+                        </form>
+ 
+                    </div>
+                    <div class="login-footer">
+                        <div class="row bs-reset">
+                            <div class="col-xs-9 bs-reset">
+                                <div class="login-copyright text-right">
+                                    <p>Copyright &copy; 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+ 
+</html>

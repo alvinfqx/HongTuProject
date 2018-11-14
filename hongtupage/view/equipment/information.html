@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>产品控制点设置--产品基本信息</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--<link rel="stylesheet" type="text/css" href="../../uploads/bootstrap-fileinput.css"/>
+		<link rel="stylesheet" type="text/css" href="../../uploads/bootstrap.min.css"/>-->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=bapc5YSA5DNGErNeCG2mvht6O492VyK8"></script>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<section class="content">
+			<form class="form-horizontal" id="form">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">产品大类</label>
+								<div class="col-sm-4 distance">
+									<input id="productType" type="text" class="form-control" />
+								</div>
+								<label for="inputEmail3" class="col-sm-1 control-label">产品名称</label>
+								<div class="col-sm-4 distance">
+									<input id="productName" type="text" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">产品型号</label>
+								<div class="col-sm-4 distance">
+									<input id="model" type="text" class="form-control" />
+								</div>
+								<label for="inputEmail3" class="col-sm-1 control-label">产品编码</label>
+								<div class="col-sm-4 distance">
+									<input id="productCode" type="text" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">产品描述</label>
+								<div class="col-sm-9 distance">
+									<input id="describe" type="text" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">客户名称</label>
+								<div class="col-sm-9 distance">
+									<input id="customerName" type="text" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">联系人</label>
+								<div class="col-sm-9 distance">
+									<input id="contacts" type="text" class="form-control" />
+								</div>
+							</div>
+							<table>
+								<tr>
+									<label for="" class="col-sm-2 control-label">公司地点</label>
+									<td class="formValue" colspan="3">
+										<div style="float: left; width: 255px;margin-bottom: 2px;;">
+											<div id="ProvinceId" type="select" class="ui-select" style="float: left; width: 84px; margin-right: 1px;"></div>
+											<div id="CityId" type="select" class="ui-select" style="float: left; width: 84px; margin-right: 1px;"></div>
+											<div id="CountyId" type="select" class="ui-select" style="float: left; width: 84px; margin-right: 1px;"></div>
+										</div>
+										<div style="margin: 0 auto; width: 100%;">
+											<input id="Address" type="text" class="form-control" style="float: left; width: 355px;margin-top: 3px;" />
+										</div>
+									</td>
+								</tr>
+							</table>
+							<div class="row">
+								<div class="box-body div_status">
+									<div class="form-group">
+										<label for="" class="col-sm-2 control-label">地址</label>
+										<div class="col-sm-7 distance">
+											<input type="text" class="form-control" id="address">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">经纬度</label>
+								<div class="col-sm-7 distance">
+									<input type="text" class="form-control" id="longlatitude">
+								</div>
+								<div class="col-sm-1">
+									<a id="mapBtn" class="btn btn-primary">地图</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</section>
+
+		<div id="showBox">
+			<div style=" margin:auto;height:470px;border:2px solid gray;z-index: 99999;top: 13px;" id="container"></div>
+			<div style="margin-top: 10px;">
+				输入地点：<input id="where" name="where" type="text" placeholder="请输入地址">
+				<input id="but" type="button" value="查找" onClick="sear(document.getElementById('where').value);" /> 经纬度：
+				<input type="text" id="inputMapShow">
+				<button id="return_button">返回按钮</button>
+			</div>
+		</div>
+
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/equipment/information.css" rel="stylesheet" />
+	<script src="../../js/equipment/information.js"></script>
+
+</html>
+<script type="text/javascript">
+	var jin = '';
+	var wei = '';
+	$(function() { //调用百度地图js
+			var mapBtn = $('#mapBtn');
+			var showBox = $('#showBox');
+			var return_button = $('#return_button');
+			mapBtn.click(function() {
+
+				var valaddress = $('#address').val();
+				$('#where').val(valaddress);
+				showBox.show();
+			});
+			var points = "";
+			return_button.click(function() {
+				/*点击返回*/
+				console.log("jin" + jin)
+				console.log("wei" + wei)
+				var valueInput = $('#where').val();
+				$('#address').val(valueInput);
+				$('#inputMapShow').val(jin + ',' + wei);
+				$('#longlatitude').val(jin + ',' + wei);
+
+				showBox.hide();
+			});
+		}
+
+	) //如果经纬度没有给个默认值
+	var longitude = 105.386515;
+	var latitude = 28.91124;
+	var map = new BMap.Map("container");
+	map.setDefaultCursor("crosshair");
+	map.enableScrollWheelZoom();
+	var point = new BMap.Point(longitude, latitude);
+	map.centerAndZoom(point, 13);
+	var gc = new BMap.Geocoder();
+	map.addControl(new BMap.NavigationControl());
+	map.addControl(new BMap.OverviewMapControl());
+	map.addControl(new BMap.ScaleControl());
+	map.addControl(new BMap.MapTypeControl());
+	map.addControl(new BMap.CopyrightControl());
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);
+	marker.addEventListener("click", function(e) {
+			jin = e.point.lng;
+			wei = e.point.lat;
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+		}
+
+	);
+	marker.enableDragging();
+	marker.addEventListener("dragend", function(e) {
+			gc.getLocation(e.point, function(rs) {
+				showLocationInfo(e.point, rs);
+			});
+		}
+
+	);
+
+	function showLocationInfo(pt, rs) {
+		var opts = {
+			width: 250,
+			height: 150,
+			title: "当前位置"
+		};
+		var addComp = rs.addressComponents;
+		var addr = "当前位置：" + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber + "<br/>";
+		addr += "经纬度：" + pt.lng + ',' + pt.lat;
+		var infoWindow = new BMap.InfoWindow(addr, opts);
+		marker.openInfoWindow(infoWindow);
+	}
+
+	map.addEventListener("click", function(e) {
+			//点击事件
+			jin = e.point.lng;
+			wei = e.point.lat;
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+			var marker = new BMap.Marker(new BMap.Point(jin, wei)); // 创建标注，为要查询的地方对应的经纬度
+			map.addOverlay(marker);
+		}
+
+	);
+	var traffic = new BMap.TrafficLayer();
+	map.addTileLayer(traffic);
+
+	function iploac(result) {
+		var cityName = result.name;
+	}
+
+	var myCity = new BMap.LocalCity();
+	myCity.get(iploac);
+
+	function sear(result) {
+		var localSearch = new BMap.LocalSearch(map);
+		localSearch.setSearchCompleteCallback(function(searchResult) {
+			var poi = searchResult.getPoi(0);
+			jin = poi.point.lng;
+			wei = poi.point.lat;
+			console.log('经度：' + poi.point.lng + '');
+			console.log('纬度：' + poi.point.lat + '');
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+		});
+		localSearch.search(result);
+		console.log(result)
+		var local = new BMap.LocalSearch(map, {
+			renderOptions: {
+				map: map
+			}
+		});
+		local.search(result);
+	}
+</script>

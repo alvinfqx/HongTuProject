@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>系统日志</title>
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<script src="../../static/lib/util.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--	<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ui-layout" id="layout" style="height: 100%; width: 100%;">
+			<div class="ui-layout-west">
+				<div class="west-Panel">
+					<div class="profile-nav">
+						<ul style="padding-top: 20px;">
+							<li class="active" data-value="1">登录日志</li>
+							<li data-value="2">访问日志</li>
+							<li data-value="3">操作日志</li>
+							<div class="divide"></div>
+							<li data-value="4">异常日志</li>
+							<li data-value="5">授权日志</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="ui-layout-center">
+				<div class="center-Panel">
+					<div class="titlePanel">
+						<div class="title-search">
+							<table>
+								<tr>
+									<td>查询条件</td>
+									<td style="padding-left: 10px;">
+										<div class="ui-filter" style="width: 200px;">
+											<div class="ui-filter-text">
+												<strong id="SelectedStartTime"></strong> 至 <strong id="SelectedEndTime"></strong>
+											</div>
+											<div class="ui-filter-list" style="width: 350px;">
+												<table class="form" id="filter-form">
+													<tr>
+														<th class="formTitle">操作时间：</th>
+														<td class="formValue">
+															<input id="Category" type="hidden" value="1" />
+															<div style="float: left; width: 45%;">
+																<input id="StartTime" readonly type="text"  class="form-control input-wdatepicker" onfocus="WdatePicker({maxDate:'%y-%M-%d'})">
+															</div>
+															<div style="float: left; width: 10%; text-align: center;">至</div>
+															<div style="float: left; width: 45%;">
+																<input id="EndTime" readonly type="text"  class="form-control input-wdatepicker" onfocus="WdatePicker({maxDate:'%y-%M-%d'})">
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td class="formTitle">操作用户：</td>
+														<td class="formValue">
+															<input id="OperateAccount" type="text" class="form-control">
+														</td>
+													</tr>
+													<tr>
+														<td class="formTitle">IP地址：</td>
+														<td class="formValue">
+															<input id="IPAddress" type="text" class="form-control">
+														</td>
+													</tr>
+													<tr>
+														<td class="formTitle">操作类型：</td>
+														<td class="formValue">
+															<input id="OperateType" type="text" class="form-control">
+														</td>
+													</tr>
+													<tr>
+														<td class="formTitle">功能模块：</td>
+														<td class="formValue">
+															<input id="Module" type="text" class="form-control">
+														</td>
+													</tr>
+												</table>
+												<div class="ui-filter-list-bottom">
+													<a id="btn_Reset" class="btn btn-default">&nbsp;重&nbsp;&nbsp;置</a>
+													<a id="btn_Search" class="btn btn-primary">&nbsp;查&nbsp;&nbsp;询</a>
+												</div>
+											</div>
+										
+										</div>
+									</td>
+									<td style="padding-left: 10px;">
+										<div id="time_horizon" class="btn-group">
+											<a class="btn btn-default" data-value="1">今天</a>
+											<a class="btn btn-default active" data-value="2">近7天</a>
+											<a class="btn btn-default" data-value="3">近1个月</a>
+											<a class="btn btn-default" data-value="4">近3个月</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					
+					<div class="toolbar">
+							<div class="btn-group">
+								<a id="lr-replace" class="btn btn-default" onclick="reload();"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+							</div>
+							<div class="btn-group">
+								<a id="lr-removelog" class="btn btn-default" onclick="model.btn_RemoveLog()"><i class="fa fa-eraser"></i>&nbsp;清空</a>
+								<a id="lr-export" class="btn btn-default" onclick="model.btn_export()"><i class="fa fa-sign-out"></i>&nbsp;导出</a>
+							</div>		
+						</div>
+					</div>
+					<div class="gridPanel">
+						<table id="gridTable"></table>
+						<div id="gridPager"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../static/js/aws/log/log.js"></script>
+</html>

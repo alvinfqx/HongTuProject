@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>质量分析 </title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			body {
+				margin: 10px;
+				margin-bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="">
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class="titlePanel gridPanel" id="gridpanel">
+						<div class="gridP">
+
+							<div class="title-search">
+								<table>
+									<tr>
+
+										<td style="padding-left: 5px;">
+											<a id="" class="btn btn-primary" onclick="model.show_hs()">查询条件展开</a>
+										</td>
+									</tr>
+								</table>
+
+							</div>
+							<div class="toolbar">
+								<div class="btn-group">
+									<a id="shuaxin" class="btn btn-default" onclick="reload()"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+									<a id="daochu" class="btn btn-default" onclick="model.export_a()"><i class="fa fa-pencil-square-o"></i>&nbsp;导出</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="gridPanel">
+						<div class="filter-block hs-block">
+							<form>
+								<table class="flyout-table">
+									<tr>
+										<td align="right">开始时间: &nbsp;&nbsp;</td>
+										<td><input id="begindata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"></td>
+										<td align="right">&nbsp;&nbsp; &nbsp;&nbsp;结束时间：&nbsp;&nbsp;</td>
+										<td><input id="enddata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"></td>
+										<!--<td style="padding-left: 5px;">
+										&nbsp;&nbsp;
+										<a id="btn_Search" onclick="model.getChartsData()" class="btn btn-primary"><i class="fa fa-search"></i>查询</a>
+									</td>-->
+										<td>
+											<td align="right">&nbsp;&nbsp; &nbsp;&nbsp;客户名称:&nbsp;&nbsp;</td>
+											<td><input type="text" class="form-control" id="client"></td>
+										</td>
+									</tr>
+									<tr>
+										<!--<td>-->
+										<td align="right">&nbsp;&nbsp; &nbsp;&nbsp;产品号:&nbsp;&nbsp;</td>
+										<td><input type="text" class="form-control" id="productCode" style="width:198px;"></td>
+										<td align="right">&nbsp;&nbsp; &nbsp;&nbsp;地域:&nbsp;&nbsp;</td>
+										<td><input type="text" class="form-control" id="address" style="width: 198px;"></td>
+										
+										
+										<!--</td>-->
+
+									</tr>
+									<tr>
+										<td align="right">服务类型:&nbsp;&nbsp;</td>
+										<td>
+											<div id="serviceType" type="select" class="ui-select"></div>
+										</td>
+										<td align="right">服务人员：&nbsp;&nbsp;</td>
+										<td>
+											<select id="serviceStaffNames" class="form-control select2" multiple="multiple" data-placeholder="请选择" style="width: 100%;"></select>
+										</td>
+									</tr>
+								</table>
+								<div class="file-buts">
+									<a id="" class="btn btn-primary" id="submitSelect" onclick="model.submitdata()">查询</a>
+									<button class="btn btn-primary rt-but" type="reset">重置</button>
+									<a class="btn btn-white btn-bitbucket" title="收起" onclick="model.show_hs()">
+										<i class="fa fa-chevron-up"></i>
+									</a>
+								</div>
+							</form>
+						</div>
+						<table id="gridTable"></table>
+						<div id="gridPager"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<link rel="stylesheet" type="text/css" href="../../css/statistics/qualityAnalysis.css" />
+	<script src="../../js/statistics/qualityAnalysis.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

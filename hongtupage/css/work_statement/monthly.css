@@ -1,0 +1,15 @@
+.co_left{	
+	border: 1px solid #ccc;
+	    background: #FFFFFF;
+}
+.co_right{
+	    border: 1px solid #ccc;
+	    background: #FFFFFF;
+	    
+}
+.content{
+	margin-top: 10px;
+}
+.fa {
+	padding-right: 5px;
+}

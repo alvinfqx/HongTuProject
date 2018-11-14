@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<title>设备监控</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=bapc5YSA5DNGErNeCG2mvht6O492VyK8"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			
+			#layout .slide-left {
+				width: 20%!important;
+				left: 0!important;
+			}
+			
+			#layout .slide-left-on {
+				width: 0%!important;
+				left: 0!important;
+			}
+			
+			#layout .slide-right {
+				width: 80%!important;
+				right: 0!important;
+			}
+			
+			#layout .slide-right-on {
+				width: 100%!important;
+				left: 0!important;
+			}
+			
+			#layout>div {
+				transition: all .5s;
+			}
+			
+			.btn-primary {
+				padding: 2px 5px 2px 5px;
+			}
+			
+			.map_ids {
+				width: 1125px !important;
+			}
+			
+			#map_id {
+				width: 1125px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ui-layout" id="layout" style="height: 100%; width: 100%;">
+			<div class="ui-layout-west slide-left" id="slideLeft">
+				<div class="west-Panel">
+					<div class="panel-Title">
+						<table style="width: 237px;">
+							<tr>
+								<td>
+									<p>地域客户</p>
+								</td>
+								<td>
+									<button id="toggleBtn" class="btn btn-primary"><i class="fa fa-bars"></i></button>
+
+								</td>
+							</tr>
+
+						</table>
+					</div>
+					<div id="itemTree"></div>
+				</div>
+			</div>
+			<div class="ui-layout-center slide-right" id="slideRight">
+				<div class="center-Panel">
+					<table style="margin: 8px;">
+						<tbody>
+							<tr>
+								<td>
+									<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;">
+								</td>
+								<td style="padding-left: 5px;">
+									<a id="btn_Search" class="btn btn-primary" onclick="model.query_a()"><i class="fa fa-search"></i>查询</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="panel-Title">
+					<span>地图</span>	
+					</div>
+					<div class="titlePanel" style="height: 40px;">
+						<div class="title-search" style="line-height: 40px;">
+							<img src="../../../static/img/map/4.gif" />
+						</div>
+						<div class="toolbar" style="line-height: 30px;margin-top: 5px;">
+							<a id="lr-replace" class="btn btn-default" onclick="reload();"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+						</div>
+					</div>
+					<div class="map">
+						<div id="map_id"></div>
+						<style>
+							/*百度地图版权文字隐藏*/
+							
+							#map_id .anchorBL {
+								display: none!important;
+							}
+							
+							#map_id .BMap_cpyCtrl {
+								display: none!important;
+							}
+							
+							.map {
+								width: 1000px;
+							}
+						</style>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var toggle = document.getElementById('toggleBtn');
+			var slideLeft = document.getElementById('slideLeft');
+			var slideRight = document.getElementById('slideRight');
+			$('#toggleBtn').click(function() {
+				$('#slideLeft').removeClass('slide-left').addClass('slide-left-on');
+				$('#slideRight').removeClass('slide-right').addClass('slide-right-on');
+				$('#map_id').addClass('map_ids');
+			})
+			$("#slideRight").click(function() {
+				$('#slideLeft').removeClass('slide-left-on').addClass('slide-left');
+				$('#slideRight').removeClass('slide-right-on').addClass('slide-right');
+			})
+		</script>
+	</body>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=bapc5YSA5DNGErNeCG2mvht6O492VyK8"></script>
+	<!--独立界面引用-->
+	<link href="../../css/equipment/device_monitor.css" />
+	<script src="../../js/equipment/device_monitor.js"></script>
+
+</html>

@@ -1,0 +1,18 @@
+.co_contenrt {
+	/*border: 1px solid #ccc;*/
+	background: #FFFFFF;
+	padding-top: 20px;
+}
+
+label {
+	text-align: right;
+	line-height: 25px;
+	padding: 0;
+}
+.up_img_data {
+    margin-top: 10px;
+}
+.right{
+	    float: right;
+    margin-right: 55px;
+}

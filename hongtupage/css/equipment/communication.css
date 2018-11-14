@@ -1,0 +1,78 @@
+html,
+body {
+	margin: 10px;
+}
+
+.timeline-body img {
+	width: 100px;
+	height: 100px;
+}
+
+#content {
+	padding: 15px 10px 10px 5px;
+	overflow: hidden;
+}
+
+#content img {
+	width: 100%;
+}
+
+.title_text {
+	border: 1px solid #eee;
+	background-color: #f7f7f7;
+	padding: 5px;
+	font-size: 15px;
+	color: #737171;
+	font-weight: bold;
+}
+
+.table td {
+	color: #212020;
+}
+
+#thead_s th {
+	width: 200px;
+	color: #212020;
+	text-align: center;
+}
+
+.table {
+	margin-bottom: 0;
+}
+
+#thead_s td {
+	color: #212020;
+}
+
+#tbody_td tr {
+	height: 30px;
+}
+
+.lr-remove {
+	background-color: rgb(51, 122, 183);
+	color: #fff;
+	border-radius: 3px;
+	padding: 2px 8px 2px 8px;
+	border: none;
+}
+
+#thead_s button {
+	padding: 4px;
+	border: none;
+	margin: 5px;
+}
+
+.fa-pencil {
+	padding-right: 3px;
+}
+.control-label{
+    text-align: right;
+    padding-left: 0;
+}
+.bianju{
+	padding-left: 0;
+}
+.form-group {
+	margin: 0;
+	padding-top: 40px;
+}

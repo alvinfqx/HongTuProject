@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>产品控制点新增</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/plugins/iCheck/all.css" />
+		<script type="text/javascript" src="../../../static/lib/scripts/plugins/iCheck/icheck.min.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	</head>
+
+	<body>
+		<form id="form1" style="text-align: center;" class="form">
+			<table width="100%" height="100%" border="1">
+				<tr>
+					<!--<td>序号</td>
+					<td>
+						<input type="" name="" id="" value="" class="form-control" />
+					</td>-->
+					<td>产品类型名称</td>
+					<td colspan="3">
+						<input type="hidden" id="product_NODE_ID" />
+						<input type="hidden" id="productInfoId" />
+						<input type="text" id="productType" class="form-control"  disabled="disabled"/>
+					</td>
+				</tr>
+				<tr>
+					<td><span style="color: red;">*</span>节点代码</td>
+					<td>
+						<input type="text" name="" id="NODE_CODE" value="" class="form-control"  isvalid="yes" checkexpession="NotNull" />
+					</td>
+					<td>关联节点代码</td>
+					<td>
+						<input type="text" name="" id="RELA_CODE" value="" class="form-control" />
+					</td>
+				</tr>
+				<tr>
+					<td>PLC地址</td>
+					<td>
+						<input type="text" name="" id="PARA_ADD" value="" class="form-control" />
+					</td>
+					<td>检测项目名称</td>
+					<td>
+						<input type="text" name="" id="NODE_NAME" value="" class="form-control" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>数据类型</td>
+					<td>
+						<select class="form-control" id="DATA_TYPE">
+							<option value="0">BIT(1位)</option>
+							<option value="1">BYTE(8位)</option>
+							<option value="2">SHORT(16位)</option>
+							<option value="3">LONG(32位)</option>
+							<option value="4">FLOAT(32位)</option>
+						</select>
+					</td>
+					<td>是否可读</td>
+					<td class="radio_class">
+						<label style="margin-right: 10px;">
+							<input type="radio" name="ENABLE_R_W" id="ENABLE_R" checked value="0" />
+							只读
+						</label>
+						<label>
+							<input type="radio" name="ENABLE_R_W" id="ENABLE_W"  value="1"/>
+							可读写
+						</label>
+						
+					</td>
+
+					<tr>
+						<td>度量单位</td>
+						<td>
+							<input type="text" name="" id="UnitMeasure" value="" class="form-control" />
+						</td>
+						<td>节点类型</td>
+						<td>
+							<select class="form-control" id="NODE_FLAG">
+								<option value="0">模拟数据</option>
+								<option value="1">开关量</option>
+								<option value="3">故障信息</option>
+								<option value="2">其它节点</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td>标准值</td>
+						<td>
+							<input type="text" name="" id="NODE_VALUE" value="" class="form-control" />
+						</td>
+						<td>状态</td>
+						<td>
+							<select class="form-control" id="NODE_STATE">
+								<option value="1">使用中</option>
+								<option value="0">不可用</option>
+								<option value="2">暂停使用</option>
+								<option value="9">废弃点</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td>报警下限</td>
+						<td>
+							<input type="text" name="" id="ALARM_VAL1" value="" class="form-control" />
+						</td>
+						<td>报警上限</td>
+						<td>
+							<input type="text" name="" id="ALARM_VAL2" value="" class="form-control" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>停机下限</td>
+						<td>
+							<input type="text" name="" id="STOP_VAL1" value="" class="form-control" />
+						</td>
+						<td>停机上限</td>
+						<td>
+							<input type="text" name="" id="STOP_VAL2" value="" class="form-control" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>所属分类</td>
+						<td colspan="3">
+							<div id="NODE_Belong_TYPE" type="selectTree" class="ui-select">
+							</div>
+						</td>
+
+					</tr>
+
+				</tr>
+			</table>
+		</form>
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/equipment/monitor_art_con_set_add.css" rel="stylesheet" />
+	<script src="../../js/equipment/monitor_art_con_set_add.js"></script>
+
+</html>

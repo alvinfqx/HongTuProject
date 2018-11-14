@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Baidu Map </title>
+		<style type="text/css">
+			body,
+			html,
+			#allmap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=bapc5YSA5DNGErNeCG2mvht6O492VyK8"></script>
+	</head>
+
+	<body>
+		<div id="allmap"></div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap"); // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 15); // 初始化地图,设置中心点坐标和地图级别
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes: [
+			BMAP_NORMAL_MAP,
+			BMAP_HYBRID_MAP
+		]
+	}));
+	map.setCurrentCity("北京"); // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+
+    /*运动轨迹*/
+	var json = [
+		[116.388171, 39.928713],
+		[116.388315, 39.927054],
+		[116.388315, 39.923789],
+		[116.388315, 39.918698],
+		[116.389249, 39.914824],
+		[116.389321, 39.913496],
+		[116.393274, 39.913607],
+		[116.398663, 39.913773],
+		[116.404053, 39.913994],
+		[116.404053, 39.91499],
+		[116.400747, 39.916651]
+	];
+	var arrs = [];
+	var Point;
+	for(var i = 0; i < json.length; i++) {
+		Point = new BMap.Point(json[i][0], json[i][1]);
+		arrs.push(Point);
+	}
+	var line = new BMap.Polyline(arrs, {
+		strokeColor: "#df2d31",
+		strokeWeight: 4,
+		strokeOpacity: 0.7
+	}); //创建弧线对象  
+	map.addOverlay(line); //添加到地图中
+
+    /*记录的开始坐标和结束坐标*/
+	var firstPoint = new BMap.Point(116.388171, 39.928713); //开始点  
+	var lastPoint = new BMap.Point(116.400747, 39.916651); //结束点  
+	//起点标注  
+	var marker1 = new BMap.Marker(firstPoint); //将起点转化成标注点  
+	map.addOverlay(marker1); //将起点标注点添加到地图上  
+	var label1 = new BMap.Label("起点", {
+		offset: new BMap.Size(20, -10)
+	});
+	marker1.setLabel(label1);
+	//终点标注  
+	var marker2 = new BMap.Marker(lastPoint); //将终点转化成标注点  
+	map.addOverlay(marker2); //将终点标注点添加到地图上  
+	var label2 = new BMap.Label("终点", {
+		offset: new BMap.Size(20, -10)
+	});
+	marker2.setLabel(label2);
+</script>

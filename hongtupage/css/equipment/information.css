@@ -1,0 +1,26 @@
+.box-body {
+	margin-top: 20px;
+}
+
+.distance {
+	padding-left: 0;
+}
+
+.formTitle {
+	padding-right: 15px;
+}
+
+#showBox {
+	display: none;
+	position: fixed;
+	top: -10px;
+	left: 131px;
+	bottom: 0;
+	right: 0;
+	width: 80%;
+	height: 100%;
+	background: #fff;
+}
+.form-group{
+	margin-bottom: 25px;
+}

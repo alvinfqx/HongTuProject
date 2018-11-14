@@ -1,0 +1,253 @@
+/*table {
+	padding-left: 10px;
+}
+
+td,
+th {
+	padding: 20px;
+}*/
+
+
+/*.fa {
+	padding-right: 5px;
+}*/
+
+.titlePanel .toolbar i {
+	color: #fff;
+}
+
+.lr-remove {
+	padding: 2px 3px 2px 8px;
+	background-color: #367fa9;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+}
+
+#tab-remove {
+	padding: 2px 3px 2px 8px;
+}
+
+.box-header.with-border {
+	border-bottom: 1px solid #CCC;
+}
+
+.titlePanelZ {
+	margin: 10px;
+}
+
+.btn-group {
+	margin-right: 25px;
+}
+
+.btns {
+	margin-top: 22px;
+}
+
+#ti-border {
+	border-top: none;
+}
+
+.control-label {
+	padding-right: 0;
+}
+
+.titlePanel {
+	border-left: none;
+	border-right: none;
+}
+
+.up_img_data {
+	margin-top: 10px;
+}
+
+.box-header {
+	padding: 15px;
+}
+
+.form-group-h {
+	padding: 28px;
+}
+
+.col_table {
+	padding-bottom: 30px;
+	padding-right: 0;
+}
+
+.imgs_yiji img {
+	width: 249px;
+}
+
+.imgs_yiji {
+	padding: 30px;
+}
+
+.box-radios {
+	margin: 16px;
+}
+
+ul li {
+	list-style: none;
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+	border: 1px solid #ccc;
+}
+
+.col_left {
+	background: #FFFFFF;
+}
+
+.col_right {
+	background: #FFFFFF;
+}
+
+#lrs_logistics {
+	background: #fff;
+}
+
+#lrs_shuaxin {
+	background: #fff;
+}
+
+.col_right .titlePanel {
+	border: none;
+}
+
+.right {
+	float: right;
+}
+
+#productType-option {
+	z-index: 11111111;
+}
+
+.col_left {
+	background: #FFFFFF;
+}
+
+.col_right {
+	background: #FFFFFF;
+}
+
+.col_right .titlePanel {
+	border: none;
+}
+
+.right {
+	float: right;
+}
+
+
+/*
+ * alvin 
+ * table属性
+ * star
+ */
+
+.toolbar a {
+	background: #fff;
+}
+
+.gridPanel .ui-jqgrid tr.jqgrow td {
+	border-right: 1px solid #ccc;
+}
+
+.gridPanel .ui-jqgrid .form-control {
+	padding: 12px;
+}
+
+.gridPanel .ui-state-highlight,
+.gridPanel .ui-widget-content .ui-state-highlight,
+.gridPanel .ui-widget-header .ui-state-highlight {
+	background: #fff;
+	color: #000;
+}
+
+.gridPanel .btn_class {
+	padding: 2px 5px;
+}
+
+.class_btn_ext {
+	background-color: #367fa9!important;
+}
+
+#ext_pro_id tr,
+#ext_pro_id td {
+	padding: 10px 20px;
+}
+
+#ext_pro_id button {
+	padding: 5px 10px;
+}
+
+#specif_id .ui-jqgrid-bdiv {
+	overflow: hidden;
+}
+
+.btn_position,.btn_position_modelTwo{
+	position: absolute;
+	top:-20px;
+	right: 110px;
+}
+
+#specif_table_id tbody td {
+	border-right: 1px solid #ccc;
+}
+
+#specif_id .ui-state-highlight,
+#specif_id .ui-widget-content .ui-state-highlight,
+#specif_id .ui-widget-header .ui-state-highlight {
+	background: #fff;
+	color: #000;
+}
+
+#specif_id button{
+	margin: 3px;
+}
+
+.td_btn_class{
+	padding-left: 10px;
+	width: 50px;
+}
+
+
+#content_id table{
+	width: 100%;
+}
+
+.type-group{
+	
+}
+
+.type-group table:first-child{
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+
+#content_id table:last-child tbody td {
+	border-right: 1px solid #ccc;
+}
+
+#content_id .ui-state-highlight,
+#content_id .ui-widget-content .ui-state-highlight,
+#content_id .ui-widget-header .ui-state-highlight {
+	background: #fff;
+	color: #000;
+}
+
+.remove_btn_specif_two{
+	margin: 2px;
+    padding: 5px 8px;
+}
+
+
+/*
+ * end
+ */

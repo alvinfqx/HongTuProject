@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>设备监控---曲线图展示</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<script src="../../../static/lib/scripts/plugins/echarts/echarts.min.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+
+		<!--<script src="../../../static/lib/scripts/plugins/signalr/jquery.signalR-2.2.0.min.js"></script>
+		<script src="http://10.33.140.95:9008/signalr/hubs"></script>-->
+		
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="col-xs-4" style="height: 100%;">
+				<div class="div_left_one">
+					<div style="color: #fff;margin: 5px;">
+						<span id="eq_name" style="font-size: 20px;"></span> 
+						&nbsp;&nbsp;
+						<span  style="font-size: 15px;">编号：<span id="eq_code">BC001</span></span> 
+					</div>
+			
+					<div id="" class="top_left">
+						<img alt="..." id="img_id" src="" />
+					</div>
+				</div>
+				<div class="div_left_two">
+					<div id="tableId">
+						<table border="1" cellpadding="10" id="table_detail" width="100%">
+
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-8 div_right_one">				
+				<div class="btn_toolbar">
+					<span style="padding-left: 10px;color:#fff;">历史时间:</span>
+					<select id="getTime" class="form-control" onchange="model.changeSelect(this.options[this.options.selectedIndex].value);" style="width: 140px;height: 25px;display: inline;">
+						<option value="30">0.5 h</option>
+						<option value="60">1 h</option>
+						<option value="120">2 h</option>
+						<option value="180">3 h</option>
+						<option value="240">4 h</option>
+					</select>
+					<span style="padding-left: 10px;color:#fff;">历史时间段:</span>
+					<input id="historyStarTim" type="text" onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm', maxDate:'#F{$dp.$D(\'historyEndTim\')||\'%y-%M-%d %H:%m\'}' })" class="form-control input-wdatepicker" style="width: 160px;display: inline-block;height: 25px;border-radius: 5px;" />
+					<span style="color:#fff;"> 至 </span>
+					<input id="historyEndTim" type="text"  onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm', minDate:'#F{$dp.$D(\'historyStarTim\')}',maxDate:'%y-%M-%d %H:%m' })" class="form-control input-wdatepicker" style="width: 160px;display: inline-block;height: 25px;border-radius: 5px;" />
+					<a id="lr-search" class="btn btn-default btn-xs" onclick="model.searchBtn()"><i class="fa fa-search"></i>&nbsp;查询</a>
+					<a id="lr-replace" class="btn btn-default btn-xs" onclick="model.reload()"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+				</div>
+				<table border="0" id="graph_show" style="margin-top: 25px;"></table>
+			</div>
+		</div>
+
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/equipment/device_graph.css" rel="stylesheet" />
+	<script src="../../js/equipment/device_graph.js"></script>
+</html>

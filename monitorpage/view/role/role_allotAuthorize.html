@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>角色权限</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<!--	<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+	</head>
+
+	<body>
+		<div class="widget-body">
+			<div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
+				<ul class="steps">
+					<li data-target="#step-1" class="active"><span class="step">1</span>系统功能<span class="chevron"></span></li>
+					<li data-target="#step-2"><span class="step">2</span>系统按钮<span class="chevron"></span></li>
+					<li data-target="#step-3"><span class="step">3</span>系统视图<span class="chevron"></span></li>
+					<li data-target="#step-4"><span class="step">4</span>数据权限<span class="chevron"></span></li>
+				</ul>
+			</div>
+			<div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none;">
+				<div class="step-pane active" id="step-1">
+					<div id="ModuleTree" style="margin: 10px;"></div>
+				</div>
+				<div class="step-pane" id="step-2">
+					<div id="ModuleButtonTree" style="margin: 10px;"></div>
+				</div>
+				<div class="step-pane" id="step-3">
+					<div id="ModuleColumnTree" style="margin: 10px;"></div>
+				</div>
+				<div class="step-pane" id="step-4" style="margin: 15px; margin-bottom: 0px;">
+					<div>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<div class="radio">
+									<label>
+                                <input name="authorizeType" type="radio" checked="checked" value="-1" />&nbsp;
+                                    仅限本人
+                            </label>
+								</div>
+							</li>
+							<li class="list-group-item">
+								<div class="radio">
+									<label>
+                                <input name="authorizeType" type="radio" value="-2" />&nbsp;
+                                    仅限本人及下属
+                            </label>
+								</div>
+							</li>
+							<li class="list-group-item">
+								<div class="radio">
+									<label>
+                                <input name="authorizeType" type="radio" value="-3" />&nbsp;
+                                    所在部门
+                            </label>
+								</div>
+							</li>
+							<li class="list-group-item">
+								<div class="radio">
+									<label>
+                                <input name="authorizeType" type="radio" value="-4" />&nbsp;
+                                    所在公司
+                            </label>
+								</div>
+							</li>
+							<li class="list-group-item">
+								<div class="radio">
+									<label>
+                                <input name="authorizeType" type="radio" value="-5" />&nbsp;
+                                    自定义设置
+                            </label>
+								</div>
+								<div id="OrganizeTree" style="margin: 10px; margin-bottom: 0px;"></div>
+								<div id="OrganizeTreebackground" style="position: fixed; top: 296px; left: 15px; z-index: 2; width: 670px; height: 210px; background: #000; filter: alpha(opacity=10); opacity: 0.1;"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-button" id="wizard-actions">
+			<a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
+			<a id="btn_next" class="btn btn-default btn-next">下一步</a>
+			<a id="btn_finish" disabled class="btn btn-success">完成</a>
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<script src="../../js/role/role_allotAuthorize.js"></script>
+
+</html>

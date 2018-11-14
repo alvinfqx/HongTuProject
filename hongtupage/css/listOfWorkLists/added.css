@@ -1,0 +1,20 @@
+.co_contenrt{
+	    background: #FFFFFF;
+    padding-top: 20px;
+}
+.co_contenrt h4{
+	    padding-bottom: 10px;
+}
+.row_co{
+	 border-bottom: 2px solid #7dbcd4;
+    margin: 20px
+}
+.box-body{
+	margin-bottom:20px ;
+}
+  .control-label {
+  	padding-top: 7px;
+  	margin-bottom: 0;
+  	text-align: right;
+  	color: #444444;
+  }

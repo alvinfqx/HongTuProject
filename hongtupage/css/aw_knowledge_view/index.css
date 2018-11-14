@@ -1,0 +1,61 @@
+.search-div {
+	position: absolute;
+	left: 26%;
+	top: 0;
+	padding: 10px 10px 10px 0;
+}
+
+.search-div input {
+	width: 230px;
+}
+
+.search-div .layui-btn {
+	background-color: #4491c4;
+}
+
+.list li {
+	float: left;
+	list-style: none;
+}
+
+.list-inline {
+	margin-top: 16px;
+}
+
+.list-inline>li {
+	padding-left: 0;
+}
+
+.tab-pane {
+	border-bottom: 1px solid #ddd;
+	margin-top: 5px;
+	margin-bottom: 12px;
+}
+
+.user-block {
+	margin-bottom: 0;
+	padding-top: 5px;
+}
+
+.user-block img {
+	width: 175px;
+	height: 120px;
+	border-radius: 0;
+	margin-right: 25px;
+}
+
+.username {
+	margin-bottom: 10px;
+}
+
+.description {
+	margin-left: 0;
+}
+
+body .layui-tree-skin-blue .layui-tree-branch {
+	color: #3c8dbc;
+}
+.list-inline{
+	float: right;
+	font-weight: 500;
+}

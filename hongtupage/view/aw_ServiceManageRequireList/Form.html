@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>工单信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aw_ServiceManageRequireList/Form.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/basic.css" />
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/demo.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/select2.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/_all-skins.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/AdminLTE.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ionicons.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select2.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/dropzone.css" />
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../js/dropzone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="#" class="logo">
+					<!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini"><b>A</b>LT</span>
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg"><b>Admin</b>LTE</span>
+				</a>
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top">
+					<!-- Sidebar toggle button-->
+					<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- Messages: style can be found in dropdown.less-->
+							<!--<li class="dropdown messages-menu">
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                        </li>-->
+							<li onclick="up_form_data()">
+								<a href="#">����</a>
+							</li>
+							<li>
+								<a href="#">�ύ</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<aside class="main-sidebar">
+				<section class="sidebar">
+					<ul class="sidebar-menu" data-widget="tree" id="tab">
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-files-o"></i>
+								<span>������Ϣ</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-th"></i>
+								<span>��������</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-pie-chart"></i>
+								<span>��Ա��Ϣ</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</aside>
+			<div class="content-wrapper" id="main_body">
+				<div class="content-header">
+					<div class="content-header" id="slSeq"></div>
+				</div>
+				<section class="content">
+					<form class="form-horizontal" id="form">
+						<!--<div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-default">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">������ˮ��</label>
+                                        <div class="col-sm-4">
+                                            <input id="slSeq" type="text" class="form-control" value="@ViewBag.EnCode" isvalid="yes" checkexpession="NotNull" />
+                                        </div>
+                                        <label for="inputEmail3" class="col-sm-1 control-label">����״̬</label>
+                                        <div class="col-sm-4">
+                                            <div id="workStatus" type="selectTree"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">������Ϣ</h3>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">�ͻ���λ</label>
+											<div class="col-sm-3">
+												<input id="client" type="text" class="form-control" />
+											</div>
+											<label for="" class="col-sm-1 control-label">�ͻ���ַ</label>
+											<div class="col-sm-3">
+												<input id="address" type="text" class="form-control" />
+
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputPassword3" class="col-sm-1 control-label">��ϵ��</label>
+											<div class="col-sm-3">
+												<input id="linkman" type="text" class="form-control" />
+											</div>
+											<label for="inputEmail3" class="col-sm-1 control-label">�ֻ�</label>
+											<div class="col-sm-3">
+												<input type="tel" class="form-control" id="cellPhone" placeholder="�ֻ�">
+											</div>
+											<label for="inputPassword3" class="col-sm-1 control-label">�̶��绰</label>
+											<div class="col-sm-3">
+												<input id="phone" type="text" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">��Ϣ������</label>
+											<div class="col-sm-3">
+												<div id="receiver" type="selectTree" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">�������</label>
+											<div class="col-sm-3">
+												<input id="receiverNo" type="text" class="form-control" />
+											</div>
+											<label for="" class="col-sm-1 control-label">����ʱ��</label>
+											<div class="col-sm-3">
+												<input id="receiverTime" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">��Ʒ�ͺ�</label>
+											<div class="col-sm-3">
+												<div id="productType" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">��Ϣ����</label>
+											<div class="col-sm-3">
+												<div id="infoType" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">��Ϣ��Դ</label>
+											<div class="col-sm-3">
+												<div id="infoSource" type="select" class="ui-select"></div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="box box-default">
+													<div class="box-header with-border">
+														<h3 class="box-title">�ͻ�����������ϢժҪ</h3>
+														<div class="box-tools pull-right">
+															<button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-widget="chat-pane-toggle" onclick="model.show_msage(this)">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+														</div>
+													</div>
+													<div class="box-body">
+														<div class="file-list" id="aw_requirementEntityList">
+															<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+																<div class="form-group">
+																	<textarea class="form-control" rows="3" id="requirementInfo" placeholder="������������Ϣ ..."></textarea>
+																	<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">�ظ�</a>
+                                                                </div>-->
+																</div>
+																<div class="form-group">
+																	<div class="dropzone" id="dropzone1" style="display: none;"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">���÷�ʽ</h3>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">���ղ���</label>
+											<div class="col-sm-3">
+												<div id="assistantDept" type="select " class="ui-select "></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">������</label>
+											<div class="col-sm-3">
+												<div id="assistant" type="selectTree "></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">����ʱ��</label>
+											<div class="col-sm-3">
+												<input id="assistantTime" class="form-control input-wdatepicker " onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' }) " />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">�����ʽ</label>
+											<div class="col-sm-3">
+												<input id="processWay" type="text " class="form-control " />
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info collapsed-box">
+									<div class="box-header with-border">
+										<h3 class="box-title">������Ϣһ</h3>
+										<div class="box-tools pull-right">
+											<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">�ӵ���</label>
+											<div class="col-sm-3">
+												<div id="acceptor" type="selectTree"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">�ӵ�ʱ��</label>
+											<div class="col-sm-3">
+												<input id="acceptTime" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputPassword3" class="col-sm-1 control-label">��Ʒ����</label>
+											<div class="col-sm-3">
+												<input id="productCode" type="text" class="form-control" />
+											</div>
+											<label for="inputEmail3" class="col-sm-1 control-label">��Ʒ����</label>
+											<div class="col-sm-3">
+												<input id="productName" type="text" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">��������</label>
+											<div class="col-sm-3">
+												<input id="productionDate" class="form-control input-wdatepicker" onfocus="WdatePicker()" />
+											</div>
+											<label for="" class="col-sm-1 control-label">��������</label>
+											<div class="col-sm-3">
+												<div id="serviceNature" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">��������</label>
+											<div class="col-sm-3">
+												<div id="serviceType" type="select" class="ui-select"></div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">����ʽ</label>
+											<div class="col-sm-3">
+												<div id="serviceMode" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">���񼶱�</label>
+											<div class="col-sm-3">
+												<div id="serviceClass" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">�Ƿ�����</label>
+											<div class="col-sm-3">
+												<div id="isNeededClaim" type="select" class="ui-select"></div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputPassword3" class="col-sm-1 control-label">�ɹ�ʱ��</label>
+											<div class="col-sm-3">
+												<input id="dispatchingTime" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" />
+											</div>
+											<label for="inputEmail3" class="col-sm-1 control-label">�ɹ���Ա</label>
+											<div class="col-sm-3">
+												<div id="dispatchingPerson" type="select" class="ui-select"></div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="box box-default">
+													<div class="box-header with-border">
+														<h3 class="box-title">��������</h3>
+														<div class="box-tools pull-right">
+															<button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-widget="chat-pane-toggle" onclick="model.show_msage(this)">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+														</div>
+													</div>
+													<div class="box-body">
+														<div class="file-list " id="aw_servicedescEntityList">
+															<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+																<div class="form-group">
+																	<textarea class="form-control" rows="3" id="serviceDesc" placeholder="������������Ϣ ..."></textarea>
+																	<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">�ظ�</a>
+                                                                </div>-->
+																</div>
+																<div class="form-group">
+																	<div class="dropzone" id="dropzoneDesc" style="display: none;"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="box box-default">
+													<div class="box-header with-border">
+														<h3 class="box-title">ԭ�����</h3>
+														<div class="box-tools pull-right">
+															<button type="button" class="btn btn-box-tool" data-toggle="tooltip" onclick="model.show_msage(this)" data-widget="chat-pane-toggle">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+														</div>
+													</div>
+													<div class="box-body">
+														<div class="file-list " id="aw_causeconclusionEntityList">
+															<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+																<div class="form-group">
+																	<textarea class="form-control" rows="3" id="causeConclusion" placeholder="������������Ϣ ..."></textarea>
+																	<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">�ظ�</a>
+                                                                </div>-->
+																</div>
+																<div class="form-group">
+																	<div class="dropzone" id="dropzoneCause" style="display: none;"></div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="box box-default">
+													<div class="box-header with-border">
+														<h3 class="box-title">���÷���</h3>
+														<div class="box-tools pull-right">
+															<button type="button" class="btn btn-box-tool" data-toggle="tooltip" onclick="model.show_msage(this)" data-widget="chat-pane-toggle">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+														</div>
+													</div>
+													<div class="box-body">
+														<div class="file-list " id="aw_solutionEntityList">
+															<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+																<div class="form-group">
+																	<textarea class="form-control" rows="3" id="actionPlan" placeholder="������������Ϣ ..."></textarea>
+																	<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">�ظ�</a>
+                                                                </div>-->
+																</div>
+																<div class="form-group">
+																	<div class="dropzone" id="dropzoneSolution" style="display: none;"></div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info collapsed-box">
+									<div class="box-header with-border">
+										<h3 class="box-title">������Ϣ��</h3>
+										<div class="box-tools pull-right">
+											<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">������Ա</label>
+											<div class="col-sm-3">
+												<div id="serviceStaff" type="selectTree" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">����ʼʱ��</label>
+											<div class="col-sm-3">
+												<input id="serviceDateFrom" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" />
+											</div>
+											<label for="" class="col-sm-1 control-label">�������ʱ��</label>
+											<div class="col-sm-3">
+												<input id="serviceDateTo" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputPassword3" class="col-sm-1 control-label">�Ƿ����</label>
+											<div class="col-sm-3">
+												<div id="isNeededTrip" type="select" class="ui-select"></div>
+											</div>
+											<label for="inputEmail3" class="col-sm-1 control-label">��������</label>
+											<div class="col-sm-3">
+												<input id="tripDays" type="text" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">����״̬</label>
+											<div class="col-sm-3">
+												<div id="serviceStatus" type="select" class="ui-select"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">���ȷ��</label>
+											<div class="col-sm-3">
+												<div id="resultConfirm" type="select" class="ui-select"></div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="box box-default">
+													<div class="box-header with-border">
+														<h3 class="box-title">����ʵʩ���</h3>
+														<div class="box-tools pull-right">
+															<button type="button" class="btn btn-box-tool" data-toggle="tooltip" onclick="model.show_msage(this)" data-widget="chat-pane-toggle">
+                                                            <i class="fa fa-comments"></i>
+                                                        </button>
+														</div>
+													</div>
+													<div class="box-body">
+														<div class="file-list">
+															<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+																<div class="form-group">
+																	<textarea class="form-control" id="serviceConclusion" rows="3" placeholder="������ ..."></textarea>
+																	<!--<div class="reply_buts">
+                                                                    <a class="reply_but ">�ظ�</a>
+                                                                </div>-->
+																</div>
+																<div class="form-group">
+																	<div class="dropzone4"></div>
+																</div>
+															</div>
+															<div class="file-item">
+																<div class="file-item_time">һ����ǰ</div>
+																<div class="file-element-data ">
+																	<p>�����ֶβ�����ֶβ��Բ����ֶβ�����ֶβ��Բ����ֶβ�����ֶβ��Բ����ֶβ�����ֶβ��Բ����ֶβ�����ֶβ���</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.box -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info collapsed-box">
+									<div class="box-header with-border">
+										<h3 class="box-title">����ȵ���</h3>
+										<div class="box-tools pull-right">
+											<button type="button" class="btn btn-default " onclick="model.show_msage(this)">����</button>
+											<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="file-list" id="aw_requirementEntityList">
+											<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+												<div class="form-group">
+													<label for="" class="col-sm-1 control-label">�ط���Ա</label>
+													<div class="col-sm-3">
+														<div id="returnVisitStaff" type="selectTree " class="ui-select "></div>
+													</div>
+													<label for="" class="col-sm-1 control-label">�ط�ʱ��</label>
+													<div class="col-sm-3">
+														<input id="returnVisitTime" class="form-control input-wdatepicker " onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' }) " />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="" class="col-sm-1 control-label">����ʱ��</label>
+													<div class="col-sm-3">
+														<div id="serviceInTime" type="select " class="ui-select "></div>
+													</div>
+													<label for="" class="col-sm-1 control-label">����淶��</label>
+													<div class="col-sm-3">
+														<div id="serviceNormal" type="select " class="ui-select "></div>
+													</div>
+													<label for="" class="col-sm-1 control-label">������Ч��</label>
+													<div class="col-sm-3">
+														<div id="serviceEffective" type="select " class="ui-select "></div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label for="" class="col-sm-1 control-label">�ͻ����</label>
+													<div class="col-sm-10">
+														<textarea id="clientComments" class="form-control " style="height:150px; "></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="nav-tabs-custom" id="visitentity">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info collapsed-box">
+									<div class="box-header with-border">
+										<h3 class="box-title">补充说明</h3>
+										<div class="box-tools pull-right">
+											<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="file-list" id="aw_requirementEntityList">
+											<div class="up-data" style=" padding-bottom 10px;border-bottom 1px solid #ddd;">
+
+												
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="nav-tabs-custom" id="visitentity_memo1">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</section>
+				<section class="content" style="display: none;">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- The time line -->
+							<ul class="timeline">
+								<!--<li>
+                                <i class="fa fa-envelope bg-blue"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i>&nbsp;���ʱ��: 2017-8-16 17:11:14</span>
+                                    <h3 class="timeline-header">��������ID: w002333</h3>
+                                    <div class="timeline-body">
+                                        <h6>����������: test</h6>
+                                        <p>��д����: test</p>
+                                        <p>����������: 1</p>
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <i class="fa "></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+
+                                    <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+
+                                    <div class="timeline-body">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o bg-gray"></i>
+                            </li>-->
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section class="content" style="display: none;">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">��Ա�б�</h3>
+									<div class="box-tools pull-right">
+										<button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+									</div>
+								</div>
+								<div class="box-body no-padding">
+									<ul class="users-list clearfix">
+										<li>
+											<img src="../../dist/img/user3-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Nadia</a>
+											<span class="users-list-date">15 Jan</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- jQuery 3 -->
+
+	</body>
+	<script src="../../js/aw_ServiceManageRequireList/Form.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/workNew.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

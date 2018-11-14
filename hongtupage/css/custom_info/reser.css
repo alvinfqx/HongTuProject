@@ -1,0 +1,48 @@
+.filter-block {
+	width: 100%;
+	margin: 0px auto 10px;
+	border: 1px solid #b7b6b6;
+	background-color: #fff;
+	height: 250px;
+	position: relative;
+}
+
+.hs-block {
+	display: none;
+}
+
+.flyout-table {
+	margin-left: 3%;
+	margin-top: 1%;
+}
+
+.flyout-table tbody tr {
+	margin: 10px;
+}
+
+.flyout-table tbody tr td {
+	text-align: center;
+	padding: 10px;
+}
+
+.file-buts {
+	margin: 30px auto 20px;
+}
+
+.btn_position{
+	position: absolute;
+	right: 50px;
+	bottom: 30px;
+}
+
+.btn-white {
+ 	color: inherit;
+ 	background: #fff;
+ 	border: 1px solid #e7eaec;
+ }
+ 
+ .btn-gray {
+ 	background-color: #c2c2c2;
+ 	border-color: #c2c2c2;
+ 	color: #FFF;
+ }

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>个人中心</title>
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--<link href="../../../static/lib/styles/learun-im.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/adminLTE/css/index.css" rel="stylesheet" />
+		<link href="../../../static/lib/adminLTE/css/skins/_all-skins.css" rel="stylesheet" />-->
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/开发包/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/开发包/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/开发包/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/开发包/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/开发包/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/开发包/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/开发包/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jquery.md5.js"></script>
+		<script src="../../../static/lib/scripts/plugins/uploadify/ajaxfileupload.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ui-layout" id="layout" style="height: 100%; width: 100%;">
+			<div class="ui-layout-west">
+				<div class="west-Panel">
+					<div class="profile-nav">
+						<ul style="padding-top: 20px;">
+							<li class="active" onclick="model.profileSwitch('BaseInfo')">基本信息</li>
+							<li onclick="model.profileSwitch('ContactInfo')">联系方式</li>
+							<li onclick="model.profileSwitch('MyheadIcon')">我的头像</li>
+							<li onclick="model.profileSwitch('RevisePassword')">修改密码</li>
+							<div class="divide"></div>
+							<li onclick="model.profileSwitch('SystemLog')">系统日志</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="ui-layout-center">
+				<div class="center-Panel">
+					<div class="profile-content" style="background: #fff;">
+						<div id="BaseInfo" class="flag">
+							<div class="title">
+								基本信息
+							</div>
+							<table class="form" style="margin-top: 20px;">
+								<tr>
+									<td class="formTitle">账户</td>
+									<td class="formValue">
+										<input id="Account" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">工号</td>
+									<td class="formValue">
+										<input id="EnCode" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">姓名</td>
+									<td class="formValue">
+										<input id="RealName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">性别</td>
+									<td class="formValue">
+										<div class="radio">
+											<label>
+                                        <input name="Gender" type="radio" checked="checked" value="1" />
+                                        男
+                                    </label>
+											<label>
+                                        <input name="Gender" type="radio" value="0" />
+                                        女
+                                    </label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">公司</td>
+									<td class="formValue">
+										<input id="CompanyName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">部门</td>
+									<td class="formValue">
+										<input id="DepartmentName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">主管</td>
+									<td class="formValue">
+										<input id="ManagerName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">岗位</td>
+									<td class="formValue">
+										<input id="DutyName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">职位</td>
+									<td class="formValue">
+										<input id="PostName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">角色</td>
+									<td class="formValue">
+										<input id="RoleName" readonly type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle" valign="top" style="padding-top: 4px;">自我介绍</td>
+									<td class="formValue">
+										<textarea id="Description" class="form-control input-profile" style="height: 70px;"></textarea>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="ContactInfo" class="flag" style="display: none;">
+							<div class="title">
+								联系方式
+							</div>
+							<table class="form" style="margin-top: 20px;">
+								<tr>
+									<td class="formTitle">手机</td>
+									<td class="formValue">
+										<input id="Mobile" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">电话</td>
+									<td class="formValue">
+										<input id="Telephone" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">邮箱</td>
+									<td class="formValue">
+										<input id="Email" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">微信</td>
+									<td class="formValue">
+										<input id="WeChat" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">QQ</td>
+									<td class="formValue">
+										<input id="OICQ" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">MSN</td>
+									<td class="formValue">
+										<input id="MSN" type="text" class="form-control input-profile" />
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle"></td>
+									<td class="formValue">
+										<br />
+										<a class="btn btn-primary" onclick="model.SaveContactPanel()"><i class="fa fa-save"></i>&nbsp;保&nbsp;存</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="MyheadIcon" class="flag" style="display: none;">
+							<div class="title">
+								我的头像
+							</div>
+							<div style="width: 300px;">
+								<div style="margin-top: 40px; text-align: center;">
+									<div class="file" style="width: 100px; height: 100px;">
+										<img id="uploadPreview" style="width: 100px; height: 100px; border-radius: 100px;" src="../../../static/img/logo-headere47d5.png" />
+										<input type="file" name="uploadFile" id="uploadFile">
+									</div>
+									<div style="margin-top: 30px; line-height: 14px; color: #75777A; text-align: center;color: #fff;">
+										建议上传图片尺寸为100x100，大小不超过2M。
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="RevisePassword" class="flag" style="display: none;">
+							<div class="title">
+								修改密码
+							</div>
+							<table class="form" style="margin-top: 20px;">
+								<tr>
+									<td class="formTitle" style="height: 20px;"></td>
+									<td>
+										<p style="color: #959393; padding-left: 8px;color: #fff;">为了保护您的帐号安全，操作前请您进行安全验证</p>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">旧密码
+										<font face="宋体">*</font>
+									</td>
+									<td class="formValue">
+										<input id="OldPassword" type="password" class="form-control input-profile" style="float: left;" />
+										<div style="width: 300px; float: left"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">新密码
+										<font face="宋体">*</font>
+									</td>
+									<td class="formValue">
+										<input id="NewPassword" type="password" class="form-control input-profile" style="float: left;" />
+										<div style="width: 300px; float: left"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">重复新密码
+										<font face="宋体">*</font>
+									</td>
+									<td class="formValue">
+										<input id="RedoNewPassword" type="password" class="form-control input-profile" style="float: left;" />
+										<div style="width: 300px; float: left"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle">验证码
+										<font face="宋体">*</font>
+									</td>
+									<td class="formValue">
+										<div style="float: left;">
+											<input id="VerifyCode" maxlength="4" type="text" class="form-control input-profile" style="width: 100px;" />
+										</div>
+										<div style="float: left; width: 200px;">
+											<img id="VerifyCodeImag" width="100" height="30" alt="点击切换验证码" title="点击切换验证码" style="cursor: pointer; padding-top: 2px; padding-left: 5px;" />
+											<script>
+												var url_str = cm.domain + "/Login/VerifyCode";
+												$("#VerifyCodeImag").attr("src", url_str);
+											</script>
+										</div>
+										<div class="VerifyCodemsg" style="width: 300px; float: left"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="formTitle"></td>
+									<td class="formValue">
+										<br />
+										<a id="btn_RevisePassword" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;提&nbsp;交</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="SystemLog" class="flag" style="display: none;">
+							<div style="margin-top: 10px;">
+								<ul id="SystemLogType" class="nav nav-tabs">
+									<li class="active" data-value="1">
+										<a href="#LoginLog" data-toggle="tab">登录日志</a>
+									</li>
+									<li data-value="2">
+										<a href="#VisitLog" data-toggle="tab">访问日志</a>
+									</li>
+									<li data-value="3">
+										<a href="#OperationLog" data-toggle="tab">操作日志</a>
+									</li>
+								</ul>
+								<div class="titlePanel">
+									<div class="title-search">
+										<table>
+											<tr>
+												<td>查询条件</td>
+												<td style="padding-left: 10px;">
+													<div class="ui-filter" style="width: 200px;">
+														<div class="ui-filter-text">
+															<strong id="SelectedStartTime"></strong> 至 <strong id="SelectedEndTime"></strong>
+														</div>
+
+														<div class="ui-filter-list" style="width: 350px;">
+															<table class="form" id="filter-form">
+																<tr>
+																	<th class="formTitle">操作时间：</th>
+																	<td class="formValue">
+																		<input id="Category" type="hidden" value="1" />
+																		<div style="float: left; width: 45%;">
+																			<input id="StartTime" readonly type="text" class="form-control input-wdatepicker" onfocus="WdatePicker({maxDate:'%y-%M-%d'})">
+																		</div>
+																		<div style="float: left; width: 10%; text-align: center;">至</div>
+																		<div style="float: left; width: 45%;">
+																			<input id="EndTime" readonly type="text" class="form-control input-wdatepicker" onfocus="WdatePicker({maxDate:'%y-%M-%d'})">
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="formTitle">IP地址：</td>
+																	<td class="formValue">
+																		<input id="IPAddress" type="text" class="form-control">
+																	</td>
+																</tr>
+																<tr>
+																	<td class="formTitle">操作类型：</td>
+																	<td class="formValue">
+																		<input id="OperateType" type="text" class="form-control">
+																	</td>
+																</tr>
+																<tr>
+																	<td class="formTitle">功能模块：</td>
+																	<td class="formValue">
+																		<input id="Module" type="text" class="form-control">
+																	</td>
+																</tr>
+															</table>
+															<div class="ui-filter-list-bottom">
+																<a id="btn_Reset" class="btn btn-default">&nbsp;重&nbsp;&nbsp;置</a>
+																<a id="btn_Search" class="btn btn-primary">&nbsp;查&nbsp;&nbsp;询</a>
+															</div>
+														</div>
+													</div>
+												</td>
+
+												<td style="padding-left: 10px;">
+													<div id="time_horizon" class="btn-group">
+														<a class="btn btn-default" data-value="1">今天</a>
+														<a class="btn btn-default active" data-value="2">近7天</a>
+														<a class="btn btn-default" data-value="3">近1个月</a>
+														<a class="btn btn-default" data-value="4">近3个月</a>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="gridPanel">
+									<table id="gridTable"></table>
+									<div id="gridPager"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<link href="../../css/personCenter/personCenter.css" rel="stylesheet" />
+	<script src="../../js/personCenter/personCenter.js"></script>
+
+</html>

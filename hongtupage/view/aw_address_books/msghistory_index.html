@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>短息发送记录</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			body {
+				margin: 0px;
+				margin-bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="titlePanel">
+			<div class="title-search">
+				<table>
+					<tr>
+						<td>
+							<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />
+						</td>
+						<td style="padding-left: 5px;">
+							<a id="btn_Search" class="btn btn-primary"><i class="fa fa-search"></i>查询</a>
+							<a id="" class="btn btn-primary" onclick="model.show_hs()">高级查询</a>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="toolbar">
+				<div class="btn-group">
+					<a id="lr-replace" class="btn btn-default" onclick="reload()"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+					<a id="lr-edit" class="btn btn-default" onclick="model.btn_view()"><i class="fa fa-pencil-square-o"></i>&nbsp;查看</a>
+					<a id="lr-delete" class="btn btn-default" onclick="model.btn_delete()"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+				</div>
+			</div>
+		</div>
+		<div class="gridPanel">
+			<div class="filter-block hs-block">
+				<form name="ceshiform" method="post" action="">
+					<table class="flyout-table">
+						<tbody>
+							<tr>
+								<td>发送类型:</td>
+								<td>
+									<select class="form-control m-b" name="" id="SendType">
+										<option value="" style="color: #b6b6b6">不选择</option>
+										<option value="节日问候">节日问候</option>
+										<option value="温馨提醒">温馨提醒</option>
+										<option value="其他">其他</option>
+									</select>
+								</td>
+
+								<td style="display:none"> 发送状态:</td>
+								<td style="display:none">
+									<select name="" id="SendStatus">
+										<option value="" style="color: #b6b6b6" disabled selected>请选择发送状态</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									
+								</td>
+
+							</tr>
+							<tr>
+								<td>发送人:</td>
+								<td><input type="text" class="form-control" id="SendMan"></td>
+								<td>接收人姓名:</td>
+								<td><input type="text" class="form-control" id="RecMan"></td>
+								<td>接收人电话:</td>
+								<td><input type="text" class="form-control" id="RecManPhone"></td>
+							</tr>
+							<tr>
+								<td>发送时间段: </td>
+								<td>
+									<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="form-control input-wdatepicker">
+								</td>
+								<td>--</td>
+								<td>
+									<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="form-control input-wdatepicker">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				
+					<div class="file-buts">
+						<button type="button" class="btn btn-w-m  button-success" onclick="model.submitdata()">查询</button>
+						<button type="reset" class="btn btn-w-m btn-default btn-gray">重置</button>
+						<a class="btn btn-white btn-bitbucket" title="收起" onclick="model.show_hs()">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+						
+						<!--<a id="" class="btn btn-primary" id="submitSelect" onclick="model.submitdata()">查询</a>
+						<button class="btn btn-primary rt-but" type="reset">重置</button> 
+						<span class="hidden-text" style="position: absolute;right: -66px;top: 18px;cursor: pointer;" onclick="model.show_hs()">&and;&nbsp;收起</span>-->
+					</div>
+				</form>
+			</div>
+			<table id="gridTable"></table>
+			<div id="gridPager"></div>
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/aw_address_books/msghistory_index.css" rel="stylesheet" />
+	<script src="../../js/aw_address_books/msghistory_index.js"></script>
+</html>

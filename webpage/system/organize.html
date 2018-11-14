@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>机构管理</title>
+		<!--<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>-->		
+	     <link rel="stylesheet" href="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<script src="../../static/lib/util.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--	<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			body {
+				margin: 10px;
+				margin-bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="titlePanel">
+			<div class="title-search">
+				<table>
+					<tr>
+						<td>
+							<div id="queryCondition" class="btn-group">
+								<a class="btn btn-default dropdown-text" data-toggle="dropdown">选择条件</a>
+								<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<a data-value="FullName">公司名称</a>
+									</li>
+									<li>
+										<a data-value="EnCode">外文名称</a>
+									</li>
+									<li>
+										<a data-value="ShortName">中文名称</a>
+									</li>
+									<li>
+										<a data-value="Manager">负责人</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+						<td style="padding-left: 2px;">
+							<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />
+						</td>
+						<td style="padding-left: 5px;">
+							<a id="btn_Search" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;查询</a>
+						</td>
+						<td style="padding-left: 5px;">
+							<input type="checkbox" id="cbx_filter" class="" checked="checked" /> 只看本公司
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="toolbar">
+				<div class="btn-group">
+					<a id="lr-replace" class="btn btn-default" onclick="reload();"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+					<a id="lr-add" class="btn btn-default" onclick="model.btn_add()"><i class="fa fa-plus"></i>&nbsp;新增</a>
+					<a id="lr-edit" class="btn btn-default" onclick="model.btn_edit()"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
+					<a id="lr-delete" class="btn btn-default" onclick="model.btn_delete()"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+				</div>			
+			</div>
+		</div>
+		<div class="gridPanel">
+			<table id="gridTable"></table>
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<script src="../../static/js/aws/organize/organize.js"></script>
+
+</html>

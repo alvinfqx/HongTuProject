@@ -1,0 +1,180 @@
+  <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width" />	
+		<title>我的桌面</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../static/lib/adminLTE/css/index.css" rel="stylesheet" /		
+		<link href="../../static/lib/scripts/plugins/tree/tree.css"  rel="stylesheet"/>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+        <link href="../../static/css/aws/home/homeDesktop.css" rel="stylesheet">
+        
+	</head>
+	<body style="overflow: hidden; margin: 0px;">
+		<form id="form1">
+			<div id="areascontent" style="margin: 10px 10px 0 10px; margin-bottom: 0px; overflow: auto;">
+				<div class="rows" style="margin-bottom: 0.8%; overflow: hidden;">
+					<div style="float: left; width: 62.2%;">
+						<div style="height: 100%; border: 1px solid #e6e6e6; overflow: hidden;">
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item" href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=受理客户需求" style="background-color: #359add;">
+									<div class="stat-icon">
+										<i class="fa fa-clock-o"></i>
+									</div>
+									<h2 class="m-top-none">
+                   <div id="demand" type="select" class="ui-select"></div>
+                  </h2>
+									<h5 id="customer">受理客户需求</h5>
+								</div>
+							</div>
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item" href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=已回访" style="background-color: #e84f5a;">
+									<h2 class="m-top-none"> <div id="Single" type="select" class="ui-select"></div></h2>
+									<h5>已回访</h5>
+									<div class="stat-icon">
+										<i class="fa fa-bell"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dashboard-stats" id="Formulate">
+								<div class="dashboard-stats-item" href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=制定方案"  style="background-color: #32c8d2;">
+									<h2 class="m-top-none"> <div id="Customized" type="select" class="ui-select"></div></h2>
+									<h5>制定方案</h5>
+									<div class="stat-icon">
+										<i class="fa fa-envelope-o"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item"] href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=现场实施" style="background-color: #8d46ac; margin-right: 0px;">
+									<h2 class="m-top-none"> <div id="scene" type="select" class="ui-select"></div></h2>
+									<h5>现场实施</h5>
+									<div class="stat-icon">
+										<i class="fa fa-gavel"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item" href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=客户回访"  style="background-color: #77a784; margin-bottom: 0px;">
+									<h2 class="m-top-none"> <div id="Customer" type="select" class="ui-select"></div></h2>
+									<h5>客户回访</h5>
+									<div class="stat-icon">
+										<i class="fa fa-shopping-cart"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item"   href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=关闭"  style="background-color: #eca94e; margin-bottom: 0px;">
+									<h2 class="m-top-none"> <div id="Close" type="select" class="ui-select"></div></h2>
+									<h5>关闭</h5>
+									<div class="stat-icon">
+										<i class="fa fa-file-text-o"></i>
+									</div>
+								</div>
+							</div>
+							<div class="dashboard-stats">
+								<div class="dashboard-stats-item" href="../../hongtupage/view/transferWorkList/acceptingCustomer.html?keyValue=其它" style="background-color: #63a9dd; margin-bottom: 0px;">
+									<h2 class="m-top-none"> <div id="suspend" type="select" class="ui-select"></div></h2>
+									<h5>其它</h5>
+									<div class="stat-icon">
+										<i class="fa fa-coffee"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="float: right; width: 37%;">
+						<div style="height: 290px; border: 1px solid #e6e6e6; background-color: #fff;">
+							<div class="panel panel-default">
+
+								<div class="panel-heading"><strong class="panel_xinxi"><i class="fa fa-pie-chart fa-lg" style="padding-right: 5px;"></i>信息分类<strong>
+								<strong class="panel_xinxi">历史数据统计时间段：
+								<a id="lr_replace1" href="javascript:;" class="btn btn-primary btn-xs "  onclick="model.getChartsData('上个月')">&nbsp;上个月</a>
+										<a id="lr_replace2" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('本月')">&nbsp;本月</a>
+								</strong>
+								</div>
+								<div class="panel-body">
+									<div id="Canvas1" style="height: 250px; width: 100%; margin-top: 10px;"></div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="rows" style="margin-bottom: 0.8%; overflow: hidden;">
+					<div style="float: left; width: 62.2%;">
+						<div style="height:610px; border: 1px solid #e6e6e6; background-color: #fff;">
+							<div class="panel panel-default">
+								<div class="panel-heading panel_xinxi">	<div><span id="Start_time"></span>至<span id="End_time"></span>故障类型量分析</div></div>
+								<div class="panel-body">
+								
+									<div id="Canvas3" style="height: 300px; width: 100%; margin-top: 10px;">
+										
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading panel_xinxi">工单统计折线图报表：
+								<a id="lr_Month1" href="javascript:;" class="btn btn-primary btn-xs "  onclick="model.getChartsMonth('6个月')">&nbsp;6个月</a>
+										<a id="lr_Month2" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsMonth('一年')">&nbsp;一年</a>
+								</div>
+								<div class="panel-body">
+									<div id="Canvas6" style="height: 190px; width: 100%; margin-top: 10px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="float: right; width: 37%;">
+						<div style="height:300px; border: 1px solid #e6e6e6; background-color: #fff;">
+							<div class="panel panel-default">
+								<div class="panel-heading panel_xinxi"><i class="fa fa-area-chart fa-lg" style="padding-right: 5px;"></i>服务信息分类</div>
+								<div class="panel-body">
+									<div id="Canvas4" style="height: 250px; width: 100%; margin-top: 10px;"></div>
+								</div>
+							</div>
+						</div>
+						<div style="height:300px; border: 1px solid #e6e6e6; background-color: #fff;">
+							<div class="panel panel-default">
+								<div class="panel-heading panel_xinxi"><i class="fa fa-area-chart fa-lg" style="padding-right: 5px;"></i>服务进度执行</div>
+								<div class="panel-body">
+									<div id="Canvas2" style="height: 250px; width: 100%; margin-top: 10px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</form>
+	</body>
+    <script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script src="../../static/lib/cm.js"></script> 
+	<script src="../../static/lib/scripts/plugins/charts/Chart.js"></script>
+	<script src="../../static/lib/scripts/jquery/echarts.js"></script>
+	<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-ui.js"></script>	
+	<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>	
+	
+	<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+	<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+	<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+	<!--<script src="../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+	<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+	<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		
+	<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+	<!--<script src="../../static/lib/scripts/utils/learun-webApp.js"></script>
+	<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>-->
+	<script src="../../static/js/aws/home/homeDesttop.js"></script>
+</html>

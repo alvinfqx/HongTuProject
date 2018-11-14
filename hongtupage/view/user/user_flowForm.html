@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>用户管理--新增编辑</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-webApp.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/simditor/css/simditor.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/cxColor/css/jquery.cxcolor.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/uploadify/uploadify.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/uploadify/uploadify.extension.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/flow-ui/flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/simditor/js/module.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/simditor/js/uploader.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/simditor/js/hotkeys.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/simditor/js/simditor.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/cxColor/js/jquery.cxcolor.js"></script>
+		<script src="../../../static/lib/scripts/plugins/uploadify/jquery.uploadify.min.js"></script>
+		<!--无法找到该引用-->
+		<!--<link href="../../../static/lib/styles/learun-flowall.css" rel="stylesheet" />
+		<script src="~/Content/scripts/flow/js"></script>-->
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />		
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		
+	</head>
+
+	<body>
+		<form id="form1">
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#BaseInfo" data-toggle="tab">基本信息</a>
+					</li>
+					<!--<li>
+						<a href="#ExpandInfo" data-toggle="tab">扩展属性</a>
+					</li>-->
+				</ul>
+				<div class="tab-content" style="padding-top: 15px;">
+					<div id="BaseInfo" class="tab-pane active" style=" padding-right: 30px;">
+						<table class="form">
+							<tr>
+								<td class="formTitle">账户
+									<font face="宋体">*</font>
+								</td>
+								<td class="formValue">
+									<input id="Account" type="text" onblur="$.ExistField(this.id,'/BaseManage/User/ExistAccount')" class="form-control" placeholder="请输入账户" isvalid="yes" checkexpession="NotNull" />
+								</td>
+								<td class="formTitle">密码
+									<font face="宋体">*</font>
+								</td>
+								<td class="formValue">
+									<input id="Password" type="text" class="form-control" placeholder="请输入密码" isvalid="yes" checkexpession="NotNull" />
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">公司
+									<font face="宋体">*</font>
+								</td>
+								<td class="formValue">
+									<div id="OrganizeId" type="selectTree" class="ui-select" isvalid="yes" checkexpession="NotNull"></div>
+								</td>
+								<td class="formTitle">部门
+									<font face="宋体">*</font>
+								</td>
+								<td class="formValue">
+									<div id="DepartmentId" type="selectTree" class="ui-select" isvalid="yes" checkexpession="NotNull"></div>
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">岗位</td>
+								<td class="formValue">
+									<div id="DutyId" type="select" class="ui-select"></div>
+								</td>
+								<td class="formTitle">职位</td>
+								<td class="formValue">
+									<div id="PostId" type="select" class="ui-select"></div>
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">角色</td>
+								<td class="formValue">
+									<div id="RoleId" type="select" class="ui-select"></div>
+								</td>
+								<td class="formTitle">主管</td>
+								<td class="formValue">
+									<div id="ManagerId" type="select" class="ui-select"></div>
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">工号</td>
+								<td class="formValue">
+									<input id="EnCode" type="text" class="form-control" /></td>
+								<td class="formTitle">姓名</td>
+								<td class="formValue">
+									<input id="RealName" type="text" class="form-control" />
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">性别</td>
+								<td class="formValue">
+									<div id="Gender" type="select" class="ui-select">
+										<ul>
+											<li data-value="1">男</li>
+											<li data-value="0">女</li>
+										</ul>
+									</div>
+								</td>
+								<td class="formTitle">生日</td>
+								<td class="formValue">
+									<input id="Birthday" type="text" class="form-control input-wdatepicker" onfocus="WdatePicker()" />
+								</td>
+							</tr>
+							<tr>
+								<td class="formTitle">手机</td>
+								<td class="formValue">
+									<input id="Mobile" type="text" class="form-control" /></td>
+								<td class="formTitle">电话</td>
+								<td class="formValue">
+									<input id="Telephone" type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<td class="formTitle">邮箱</td>
+								<td class="formValue">
+									<input id="Email" type="text" class="form-control" /></td>
+
+								<td class="formTitle">微信</td>
+								<td class="formValue">
+									<input id="WeChat" type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<td class="formTitle">QQ</td>
+								<td class="formValue">
+									<input id="OICQ" type="text" class="form-control" /></td>
+								<td class="formTitle">MSN</td>
+								<td class="formValue">
+									<input id="MSN" type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<th class="formTitle" valign="top" style="padding-top: 4px;">备注
+								</th>
+								<td class="formValue" colspan="3">
+									<textarea id="Description" class="form-control" style="height: 50px;"></textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="ExpandInfo" class="tab-pane">
+						<div class="app_layout app_preview" style="border-top: 1px solid #ccc;" id="frmpreview">
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<!--独立界面引用-->
+	<script src="../../js/user/user_flowForm.js"></script>
+
+</html>

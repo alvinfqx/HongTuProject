@@ -1,0 +1,73 @@
+.toolbar {
+	margin: 10px;
+}
+
+#img {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center 50;
+	background-size: 100%;
+}
+
+
+.drag_div {
+	padding: 2px 10px;
+	font-weight: bold;
+	font-size: 12px;
+	position: absolute;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	/*position: relative;*/
+}
+
+.drag_div_red {
+	animation: glow 500ms ease-out infinite alternate;
+	background: #fff;
+	background: linear-gradient(#fff, #fff);
+	border-color: #fff;
+	box-shadow: 0 0 5px rgba(255, 0, 0, .5), inset 0 0 5px rgba(255, 0, 0, .3), 0 2px 0 #fff;
+	color: red;
+	outline: none;
+}
+
+@-webkit-keyframes glow {
+	0% {
+		color: #d84c29;
+		border-color: #d84c29;
+		box-shadow: 0 0 5px rgba(255, 0, 0, .5), inset 0 0 5px rgba(255, 0, 0, .3), 0 2px 0 #fff;
+	}
+	100% {
+		color: #f42301;
+		border-color: #f42301;
+		box-shadow: 0 0 20px rgba(255, 0, 0, .8), inset 0 0 10px rgba(255, 0, 0, .6), 0 2px 0 #fff;
+	}
+}
+
+.drag_div_green {
+	animation: greenName 500ms ease-out infinite alternate;
+	background: #fff;
+	background: linear-gradient(#fff, #fff);
+	border-color: #fff;
+	box-shadow: 0 0 5px rgba(0, 255, 0, .5), inset 0 0 5px rgba(0, 255, 0, .3), 0 2px 0 #fff;
+	color: green;
+	outline: none;
+}
+
+@-webkit-keyframes greenName {
+	0% {
+		color:#76d837;
+		border-color: #76d837;
+		box-shadow: 0 0 5px rgba(0, 255, 0, .5), inset 0 0 5px rgba(0, 255, 0, .3), 0 2px 0 #fff;
+	}
+	100% {
+		color: green;
+		border-color: green;
+		box-shadow: 0 0 20px rgba(0, 255, 0, .8), inset 0 0 10px rgba(0, 255, 0, .6), 0 2px 0 #fff;
+	}
+}
+
+#lr-replace {
+	margin: 10px;
+	display: inline-block;
+	float: right;
+}

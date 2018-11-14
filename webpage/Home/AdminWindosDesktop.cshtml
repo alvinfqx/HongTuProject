@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LeaRun敏捷开发框架</title>
+    <link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../static/lib/adminWindos/css/index.css" rel="stylesheet" />
+    <script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script src="../../static/lib/adminWindos/index.js"></script>
+    <script>
+        $(function () {
+            $.learunindex.loadDesktop();
+            $.learuntab.init();
+            $(".slidebox-slider ul").css('left', ($(window).width() - $(".slidebox-slider ul").width()) / 2);
+        })
+    </script>
+</head>
+<body style="overflow: hidden;">
+    <div class="slidebox-slider">
+        <ul>
+            <li><i class="fa fa-reorder"></i></li>
+        </ul>
+    </div>
+    <div class="slidebox">
+        <ul>
+        </ul>
+    </div>
+</body>
+</html>

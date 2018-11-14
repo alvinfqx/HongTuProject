@@ -1,0 +1,105 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background: #126c90;
+	/* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(#126c90, #1d5484, #103982);
+	/* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Firefox 3.6 to 15 */
+	background: radial-gradient(#126c90, #1d5484, #103982);
+	/* Standard syntax */
+}
+
+.col-xs-4,
+.col-xs-8 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.col-xs-8 {
+	width: 66%;
+}
+
+.div_left_one {
+	height: 345px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border: 1px solid #4c80a1;
+}
+
+.div_left_two {
+	border: 1px solid #4c80a1;
+	overflow: auto;
+}
+
+.div_right_one {
+	height: 300px;
+	margin-top: 5px;
+	border: 1px solid #4c80a1;
+	overflow: auto;
+}
+
+.tip {
+	color: #FFF;
+	margin: 5px;
+}
+
+.top_left {
+	text-align: center;
+}
+
+.top_left img {
+	width: 70%;
+	height: 60%;
+}
+
+#tableId table {
+	text-align: center;
+	color: #fff;
+	border: 1px solid #fff;
+}
+
+#tableId table th,
+#tableId table td {
+	border: 1px solid #fff;
+	word-wrap: break-word;
+    white-space: normal !important;
+}
+
+#tableId table tbody {
+	display: block;
+	/*height: 300px;*/
+	overflow-y: scroll;
+}
+
+#tableId table thead {
+	background-color: #0e245f;
+}
+
+#tableId table thead,
+#tableId tbody tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+#tableId table thead {
+	width: calc( 100% - 1.3em);
+}
+
+.div_right_one table{
+	width: 100;
+	text-align: center;
+	color: #fff;
+}
+
+.btn_toolbar{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 99999;
+}

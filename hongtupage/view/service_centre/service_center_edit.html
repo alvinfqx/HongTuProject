@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>编辑</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<script src="../../js/summernote.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/summernote-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/styles/summernote.css" />
+
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/as/know/js/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/js/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/blue.css" />
+		<script src="../../../static/lib/scripts/as/know/js/global.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/ionicons.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/AdminLTE.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/_all-skins.min.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/page_data.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../../css/service_centre/service_center_edit.css" />
+		<link rel="stylesheet" type="text/css" href="../../uploads/bootstrap-fileinput.css"/>
+		<link rel="stylesheet" type="text/css" href="../../uploads/bootstrap.min.css"/>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=bapc5YSA5DNGErNeCG2mvht6O492VyK8"></script>
+		<style type="text/css">
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			
+			#allmap {
+				width: 100%;
+				height: 500px;
+			}
+			
+			#showBox {
+				display: none;
+				position: fixed;
+				top: 20px;
+				left: 131px;
+				bottom: 0;
+				right: 0;
+				width: 80%;
+				height: 100%;
+				background: #fff;
+			}
+		</style>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper" style="margin-left: 0;">
+				<section class="content">
+					<div class="row">
+						<div class="col-md-12" style="padding: 0;">
+							<div class="co_contenrt">
+								<div class="row">
+									<div class="right">
+										<a class="btn btn-primary" onclick="model.newPreservation()"><i class="fa fa-pencil"></i>保存</a>
+									</div>
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">服务中心名称：</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control" id="name" placeholder="请输入服务中心名称">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">电话：</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control" id="phone" placeholder="请输入电话">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">负责人：</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control" id="principal" placeholder="请输入负责人">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">地址：</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control" id="address">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">经纬度：</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control" id="longlatitude">
+											</div>
+											<div class="col-sm-1">
+												<a id="mapBtn" class="btn btn-primary" onclick="model.returns()">地图</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<!--<div class="box-header with-border">
+										<h3 class="box-title">图片</h3>
+									</div>-->
+									<div class="row" style="margin: 25px;">
+										<div class="container">
+									    <div class="page-header">
+									        <form id="uploadForm" enctype='multipart/form-data'>
+									            <div class="form-group">
+									            	<label for="" class="col-sm-2 control-label">图片：</label>
+									                <div class="fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
+									                    <div class="fileinput-new thumbnail" style="width: 200px;height: auto;height:150px;">
+									                        <img id='picImg' style="width: 100%;height: auto;height: 140px;" src="" alt="" />
+									                    </div>
+									                    <div class="fileinput-preview fileinput-exists thumbnail" style="width: 200px; height: 150px;"></div>
+									                    
+									                    <div>
+									                        <span class="btn btn-primary btn-file">
+									                            <span class="fileinput-new">选择文件</span>
+									                            <span class="fileinput-exists">换一张</span>
+									                            <input type="file" name="pic1" id="picID" accept="image/gif,image/jpeg,image/x-png"/>
+									                        </span>
+									                        <a href="javascript:;" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
+									                        <button type="button" id="uploadSubmit" class="btn btn-info">提交</button>
+									                    </div>
+									                </div>
+									            </div>
+									        </form>
+									    </div>
+									</div>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body div_status">
+										<div class="form-group">
+											<label for="" class="col-sm-2 control-label">描述</label>
+											<div class="col-sm-9">
+												<textarea id="description" class="form-control " style="height:100px; "></textarea>
+											</div>
+										</div>
+									</div>
+									<!---->
+								</div>
+								<div id="showBox">
+									<div style=" margin:auto;height:560px;border:2px solid gray;" id="container"></div>
+									<div style="margin-top: 10px;">
+										输入地点：<input id="where" name="where" type="text" placeholder="请输入地址">
+										<input id="but" type="button" value="查找" onClick="sear(document.getElementById('where').value);" />
+										<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 经度：
+									<input id="lonlat" name="lonlat" type="number" maxlength="10">纬度：
+									<input id="lonlat2" name="lonlat2" type="number" maxlength="9">-->
+										经纬度：<input type="text" id="inputMapShow">
+										<button id="return_button">返回按钮</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../uploads/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../uploads/bootstrap-fileinput.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="../../../static/lib/scripts/as/know/js/page_data.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="../../js/service_centre/service_center_edit.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
+<script type="text/javascript">
+	var jin = '';
+	var wei = '';
+	$(function() {//调用百度地图js
+			var mapBtn = $('#mapBtn');
+			var showBox = $('#showBox');
+			var return_button = $('#return_button');
+			mapBtn.click(function() {
+				showBox.show();
+				var valaddress = $('#address').val();
+				$('#where').val(valaddress);
+			});
+			var points = "";
+			return_button.click(function() {
+				/*点击返回*/
+				showBox.hide();
+				console.log("jin" + jin) 
+				console.log("wei" + wei)
+				var valueInput = $('#where').val();
+				$('#address').val(valueInput);
+				$('#inputMapShow').val(jin + ',' + wei);
+				$('#longlatitude').val(jin + ',' + wei);
+			});
+		}
+
+	) //如果经纬度没有给个默认值
+	var longitude = 105.386515;
+	var latitude = 28.91124;
+	var map = new BMap.Map("container");
+	map.setDefaultCursor("crosshair");
+	map.enableScrollWheelZoom();
+	var point = new BMap.Point(longitude, latitude);
+	map.centerAndZoom(point, 13);
+	var gc = new BMap.Geocoder();
+	map.addControl(new BMap.NavigationControl());
+	map.addControl(new BMap.OverviewMapControl());
+	map.addControl(new BMap.ScaleControl());
+	map.addControl(new BMap.MapTypeControl());
+	map.addControl(new BMap.CopyrightControl());
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);
+	marker.addEventListener("click", function(e) {
+			jin = e.point.lng;
+			wei = e.point.lat;
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+		}
+
+	);
+	marker.enableDragging();
+	marker.addEventListener("dragend", function(e) {
+			gc.getLocation(e.point, function(rs) {
+				showLocationInfo(e.point, rs);
+			});
+		}
+
+	);
+
+	function showLocationInfo(pt, rs) {
+		var opts = {
+			width: 250,
+			height: 150,
+			title: "当前位置"
+		};
+		var addComp = rs.addressComponents;
+		var addr = "当前位置：" + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber + "<br/>";
+		addr += "经纬度：" + pt.lng + ',' + pt.lat;
+		var infoWindow = new BMap.InfoWindow(addr, opts);
+		marker.openInfoWindow(infoWindow);
+	}
+
+	map.addEventListener("click", function(e) {
+			//点击事件
+			jin = e.point.lng;
+			wei = e.point.lat;
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+			var marker = new BMap.Marker(new BMap.Point(jin, wei)); // 创建标注，为要查询的地方对应的经纬度
+			map.addOverlay(marker);
+		}
+
+	);
+	var traffic = new BMap.TrafficLayer();
+	map.addTileLayer(traffic);
+
+	function iploac(result) {
+		var cityName = result.name;
+	}
+
+	var myCity = new BMap.LocalCity();
+	myCity.get(iploac);
+
+	function sear(result) {
+		var localSearch = new BMap.LocalSearch(map);
+		localSearch.setSearchCompleteCallback(function(searchResult) {
+			var poi = searchResult.getPoi(0);
+			jin = poi.point.lng;
+			wei = poi.point.lat;
+			console.log('经度：' + poi.point.lng + ''); 
+			console.log('纬度：' + poi.point.lat + ''); 
+			document.getElementById("inputMapShow").value = jin + ',' + wei;
+		});
+		localSearch.search(result);
+		console.log(result) 
+		var local = new BMap.LocalSearch(map, {
+			renderOptions: {
+				map: map
+			}
+		});
+		local.search(result);
+	}
+</script>

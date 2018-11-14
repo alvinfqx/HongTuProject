@@ -1,0 +1,33 @@
+body{
+	overflow: hidden;
+}
+
+#img {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center 50;
+	background-size: 100%;
+	
+}
+
+
+
+.drag_div {
+	padding: 2px;
+	font-weight: bold;
+	font-size: 12px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+    width: 80px;
+    position: absolute;
+   
+}
+
+.delete_class {
+	cursor: pointer;
+}
+
+/*不可随便改，控制配置地图的高度*/
+.toolbar{
+	padding: 6px 5px;
+}

@@ -1,0 +1,46 @@
+.box-body {
+	margin-top: 20px;
+}
+
+.distance {
+	padding-left: 0;
+}
+
+.formTitle {
+	padding-right: 15px;
+}
+
+#showBox {
+	display: none;
+	position: fixed;
+	top: -10px;
+	left: 131px;
+	bottom: 0;
+	right: 0;
+	width: 80%;
+	height: 100%;
+	background: #fff;
+}
+.form-group{
+	margin-bottom: 25px;
+}
+#where{
+	width: 250px;height: 35px; margin-top: 15px;
+}
+#inputMapShow{
+	width: 250px;height: 35px; margin-top: 15px;
+}
+#but{
+	height: 35px;
+    width: 46px;
+    background: rgb(51, 122, 183);;
+    border: navajowhite;
+    color: #fff;
+}
+#return_button{
+	height: 35px;
+    width:66px;
+    background: rgb(51, 122, 183);;
+    border: navajowhite;
+    color: #fff;
+}

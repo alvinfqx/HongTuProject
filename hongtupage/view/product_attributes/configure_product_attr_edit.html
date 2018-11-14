@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>单个产品配置</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link rel="stylesheet" type="text/css" href="../../css/product_attributes/configure_product_attr_edit.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/basic.css" />
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/demo.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/select2.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/css/dropzone.css" />
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../js/dropzone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<link href="../../../static/lib/styles/learun-bill.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/css/blue.css" />
+		<script src="../../../static/lib/scripts/as/know/js/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/as/know/js/layui/css/layui.css" />
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<script src="../../js/summernote.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/summernote-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../../static/lib/styles/summernote.css" />
+		<script src="../../../static/lib/scripts/as/know/js/global.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/_all-skins.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/page_data.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/AdminLTE.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ionicons.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select2.min.css" />
+		
+		
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<header class="main-header">
+				<a href="#" class="logo">
+					<span class="logo-mini"><b id="simple_id"></b></span>
+					<span class="logo-lg"><b id="logo_id"></b></span>
+				</a>
+				<nav class="navbar navbar-static-top">
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<li onclick="dialogClose()">
+								<a href="#">关闭</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<aside class="main-sidebar">
+				<section class="sidebar">
+					<ul class="sidebar-menu" data-widget="tree" id="tab">
+						<li>
+							<a href="#">
+								<i class="fa fa-files-o"></i>
+								<span>基本信息配置 </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-th"></i>
+								<span>规格参数配置</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-th"></i>
+								<span>bom配置</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-pie-chart"></i>
+								<span>售后服务、质保期政策配置</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-pie-chart"></i>
+								<span>文档资料</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</aside>
+			<div class="content-wrapper" id="main_body">
+				<section class="content">
+					<form class="form-horizontal" id="form">
+						<input type="hidden" name="productInfoId" id="productInfoId" />
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info">
+									<!--<div class="titlePanelZS">-->
+									<div class="box-header with-border">
+										<h3 class="box-title">基本信息配置</h3>
+										<div class="right">
+											<a class="btn btn-primary" onclick="model.preservation_b()"><i class="fa fa-pencil"></i>保存</a>
+										</div>
+									</div>
+									<!--</div>-->
+									<div class="titlePanelZ">
+										<div class="form-group">
+											<label class="col-sm-2  col-sm-pull-1 control-label">产品名称：</label>
+
+											<div class="col-sm-4 col-sm-pull-1">
+												<input type="text" class="form-control" id="productName" placeholder="请输入产品名称">
+											</div>
+											<label for="" class="col-sm-2 col-sm-pull-1 control-label ">产品类别</label>
+											<div class="col-sm-4 col-sm-pull-1 formValue">
+												<div id="productCatId" type="selectTree" class="ui-select" readonly></div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 col-sm-pull-1 control-label">产品代号：</label>
+
+											<div class="col-sm-4 col-sm-pull-1">
+												<input class="form-control" id="productCode" placeholder="请输入产品代号">
+												<input class="form-control" type="hidden" id="producttoken">
+											</div>
+											<label for="" class="col-sm-2 col-sm-pull-1 control-label">工作令</label>
+											<div class="col-sm-4 col-sm-pull-1">
+												<input class="form-control" id="workorder" placeholder="请输入工作令">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 col-sm-pull-1 control-label">产品批号：</label>
+											<div class="col-sm-4 col-sm-pull-1">
+												<input class="form-control" id="batchno" placeholder="请输入产品批号">
+											</div>
+											<label class="col-sm-2 col-sm-pull-1 control-label">下次质保提醒时间：</label>
+											<div class="col-sm-4 col-sm-pull-1 ">
+												<input id="nextwarrantdate" type="text" readonly="readonly" onfocus="WdatePicker()" class="form-control input-wdatepicker" />
+											</div>
+										</div>
+									</div>
+									<div style="margin-bottom: 8px;margin-top:60px;position: relative;">
+										<div class="box-header with-border">
+											<h3 class="box-title">扩展属性</h3>
+											<div style="position: absolute;right: -5px;top:10px;">
+												<div class="btn-group">
+													<a id="lrs_addeds" class="btn btn-primary class_btn_ext" onclick="model.add_ext_pro()"><i class="fa fa-pencil"></i>新增</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="title-search">
+											<table id="ext_pro_id">
+												<tr class="addtr" id="ext0">
+													<td>
+														<input type="hidden" />
+														<input type="text" class="form-control" placeholder="请输入英文code" style="width: 200px;" />
+													</td>
+													<td>
+														<input type="text" checkexpession="NotNull" isvalid="yes" class="form-control" placeholder="请输入中文名称" style="width: 200px;" />
+													</td>
+													<td>
+														<input type="text" class="form-control" placeholder="请输入值" style="width: 200px;" />
+
+													</td>
+													<td>
+														<button class="lr-remove" type="button" class="btn btn-block btn-primary"><i class="fa  fa-trash-o"></i></button>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div class="toolbars">
+											<div class="btn-group">
+												<!--<a id="lr-remove" class="btn btn-primary"><i class="fa  fa-trash-o"></i></a>-->
+											</div>
+										</div>
+									</div>
+
+									<div class="box-header with-border">
+										<h3 class="box-title">产品缩略图</h3>
+									</div>
+									<div class="row" style="margin: 25px;">
+										<div class="col-md-5">
+											<div class="form-group">
+												<!--<label for="exampleInputFile">知识库缩略图</label>-->
+												<div class="input-group">
+													<input id="picPath" type="text" class="form-control" style="display:none" />
+													<img src=" " id="photoUrl" style="width: 200px;height: 150px; " />
+													<button class="layui-btn layui-btn-primary layui-btn-small up-img-but" type="button" onclick="new_model.delte_img(this)">
+                                                      <i class="fa  fa-trash-o"></i>
+                                                    </button>
+													<div class="up_img_data">
+														<form enctype="multipart/form-data">
+															<input class="file_but" type='button' value='选择文件' onclick='javascript:$(this).next().click();' />
+															<input style="display: none" type="file" name="" onchange="new_model.switch_img(this)" />
+															<button type="button" onclick="new_model.upload(this)">上传图片</button>
+														</form>
+													</div>
+												</div>
+												<p class="help-block">请在此上传文件.</p>
+											</div>
+										</div>
+									</div>
+									<div class="box-header with-border">
+										<h3 class="box-title">产品介绍：</h3>
+									</div>
+									<div class="row ">
+										<div class="col-md-12 form-group-h">
+											<div class="form-group">
+												<div id="htmlContent" class="summernote"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</section>
+				<section class="content" style="display: none;">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">规格参数配置</h3>
+								</div>
+								<div class="box-radios">
+									<div class="radio_a">
+										<input type="radio" id-data="class_a" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> 一级显示
+										</label>
+										<input type="radio" id-data="second_level" name="optionsRadios" id="optionsRadios2" value="option2"> 二级显示
+										</label>
+									</div>
+
+									<div class="row" style="position: relative;">
+
+										<div class="cent">
+											<div class="class_a">
+												<div class="btn_position">
+													<a id="lrs_add_model_one" class="btn btn-primary" onclick="model.add_specif()"><i class="fa fa-pencil"></i> 新增</a>
+													<a id="lrs_save_model_one" class="btn btn-primary" onclick="model.save_specif_one()"><i class="fa fa-save"></i> 保存模式1</a>
+												</div>
+												<div class="imgs_yiji">
+													<div class="col-md-5 col_table">
+														<img src="../../common/tree/images/624670193149865136(1).jpg" />
+													</div>
+													<div class="col-md-7" style="padding-left: 0;">
+
+														<div id="specif_id">
+															<table id="specif_table_id"></table>
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="second_level" style="display: none;position: relative;">
+												<div class="btn_position_modelTwo">
+													<a id="lrs_add_model_two" class="btn btn-primary" onclick="model.add_classification()"><i class="fa fa-pencil"></i> 新增分类</a>
+													<a id="lrs_save_model_two" class="btn btn-primary" onclick="model.save_specif_two()"><i class="fa fa-save"></i> 保存模式2</a>
+												</div>
+												<div class="imgs_yiji">
+													<div class="col-md-5 col_table">
+														<img src="../../common/tree/images/133731010127854078(1).jpg" />
+													</div>
+													<div class="col-md-7" style="padding-left: 0;">
+														<div id='content_id'>
+
+															<div class="type-group index_group" id="table_0">
+
+																<table id="table_type_0">
+																	<tr class="addtr_0">
+																		<td>
+																			<input type="text" class="form-control" placeholder="请输入分类名称" />
+																			<input type="hidden" />
+																		</td>
+																		<td class="td_btn_class">
+																			<!--新增某table的某一行-->
+																			<button id="addRow_0" type="button" class="btn btn-block btn-primary add_row_spe">
+																			 <i class="fa fa-plus"></i>
+																			</button>
+																		</td>
+																		<td class="td_btn_class">
+																			<!--删除整个div-->
+																			<button id="removeRow_0" type="button" class="btn btn-block btn-primary remove_class_spe">
+																			 <i class="fa  fa-trash-o"></i>
+																			</button>
+																		</td>
+																	</tr>
+																</table>
+
+																<div id="table_div_0">
+																	<table id="table_id_0" data-id="table_id_0"></table>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--</form>-->
+				</section>
+				<section class="content" style="display: none;">
+					<!--<form class="form-horizontal" id="form_3">-->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">bom配置</h3>
+									<div class="right">
+										<a class="btn btn-primary" onclick="model.save_bom_table()"><i class="fa fa-pencil"></i>保存</a>
+
+									</div>
+								</div>
+
+								<div class="col-md-2 col_left">
+									<div class="co_left">
+										<div class="ui-layout-west">
+											<div class="west-Panel">
+												<!--<div class="panel-Title">产品分类</div>-->
+												<div id="itemTree"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-10 col_right">
+									<div class="titlePanel">
+										<div class="toolbar">
+											<div class="btn-group">
+												<a id="lrs_shuaxin" class="btn btn-default" onclick="reload()"><i class="fa fa-refresh" style="color: #666;"></i>刷新</a>
+												<a id="lrs_addbom" class="btn btn-default" onclick="model.btn_add_bom()"><i class="fa fa fa-tags" style="color: #666;"></i>新增</a>
+												<a id="lrs_logistics" class="btn btn-default" onclick="model.btn_logistics()"><i class="fa fa fa-tags" style="color: #666666;"></i>物料类型字典</a>
+											</div>
+										</div>
+									</div>
+
+									<!--alvin star-->
+									<div class="gridPanel" id="bom_table_id" style="overflow: auto;">
+										<table id="gridTable"></table>
+										<!--<div id="gridPager"> </div>-->
+									</div>
+									<!--alvin end-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--</form>-->
+				</section>
+				<section class="content" style="display: none;">
+					<!--<form class="form-horizontal" id="form_4">-->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">售后服务、质保期政策配置 </h3>
+									<div class="right">
+										<a class="btn btn-primary" onclick="model.save_servece()"><i class="fa fa-pencil"></i>保存</a>
+									</div>
+								</div>
+								<div class="box-header with-border">
+									<h3 class="box-title">售后服务政策：</h3>
+								</div>
+								<div class="row ">
+									<div class="col-md-12 form-group-h">
+										<div class="form-group">
+											<!--<label>&nbsp;&nbsp;&nbsp;产品介绍</label>-->
+											<div id="htmlContent1" class="summernote"></div>
+										</div>
+									</div>
+								</div>
+								<div class="box-header with-border">
+									<h3 class="box-title">质保期政策：</h3>
+								</div>
+								<div class="row ">
+									<div class="col-md-12 form-group-h">
+										<div class="form-group">
+											<!--<label>&nbsp;&nbsp;&nbsp;产品介绍</label>-->
+											<div id="htmlContent2" class="summernote"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--</form>-->
+				</section>
+				<section class="content" style="display: none;">
+					<!--<form class="form-horizontal" id="form_4">-->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">文档资料</h3>
+										<div class="right">
+										<a class="btn btn-primary" onclick="model.documents_saving()"><i class="fa fa-pencil"></i>保存</a>
+									</div>
+								</div>
+								<div class="row borders">
+									<div class="col-md-12">
+										<div class="box box-default">
+											<div class="box-header with-border">
+												<h3 class="box-title">文档资料</h3>
+												<div class="box-tools pull-right">
+													<button type="button" class="btn btn-box-tool" data-toggle="tooltip" data-widget="chat-pane-toggle" onclick="model.show_msage(this)">
+                                          <i class="fa fa-comments"></i>
+                                      </button>
+												</div>
+											</div>
+											<div class="box-body">
+												<div class="file-list" id="aw_requirementEntityList">
+													<div class="up-data" style="display: none; padding-bottom: 10px;border-bottom: 1px solid #ddd;">
+														<!--<div class="form-group">
+															<textarea class="form-control" rows="3" id="requirementInfo" placeholder="请输入描述信息 ..."></textarea>
+
+														</div>-->
+														<div class="form-group">
+															<div class="dropzone" id="dropzoneCause" style="display: none;"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--</form>-->
+				</section>
+			</div>
+			<div class="control-sidebar-bg"></div>
+			<div class="popwindow">
+				<div class="cloes-tag" onclick="model.exit_img()"></div>
+				<img src="">
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/product_attributes/configure_product_attr_edit.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../common/uploadImg/uploadImg.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

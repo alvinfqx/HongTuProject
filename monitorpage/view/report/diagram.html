@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>压力、温度曲线图</title>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<script src="../../../static/lib/scripts/plugins/charts/Chart.js"></script>
+		<script src="../../../static/lib/scripts/jquery/echarts.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../../hongtupage/js/select2.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/plugins/layout/jquery.layout.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../hongtupage/css/select2.min.css" />
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--	<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<!--<div class="row">-->
+
+					<div class="form-group">
+						<h2>压力曲线图</h2>
+						<div class="col-sm-4">
+							<p>设备编码：
+								<select id="select_c" style="color: #000;width: 198px;height: 25px;" >
+									<!--<option value="volvo">Volvo</option>
+									<option value="saab">Saab</option>
+									<option value="opel">Opel</option>-->
+								</select>
+							</p>
+						</div>
+						<div class="title-search">
+							<table>
+								<tr>
+									<td style="color: #fff;">
+										自定义：
+									</td>
+									<td>
+										<!--<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />-->
+										<input id="begindata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })">
+
+									</td>
+									<td><input id="enddata" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"></td>
+									<td style="padding-left: 5px;">
+										<a id="btn_Search" class="btn btn-primary" onclick="model.getChartsData()"><i class="fa fa-search"></i>查询</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+					</div>
+					<div class="row collection">
+						<div class="col-md-12">
+							<div class="col-md-1 time" style="color: #fff;">采集时间:</div>
+							<div class="col-md-3 col_caiji">
+								<div class="toolbar">
+									<div class="btn-group">
+										<a id="lr_replace1" href="javascript:;" class="btn btn-primary btn-xs "  onclick="model.getChartsData('半小时')">&nbsp;半小时</a>
+										<a id="lr_replace2" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('1小时')">&nbsp;1小时</a>
+										<a id="lr_replace3" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('4小时')">&nbsp;4小时</a>
+										<a id="lr_replace4" href="javascript:;" class="btn btn-primary btn-xs" onclick="model.getChartsData('一天')">&nbsp;一天</a>
+
+									</div>
+								</div>
+							</div>
+							<!--<div class="col-md-6">-->
+							<label for="" class=" control-label" style="">采集点</label>
+							<div class="col-sm-3">
+								<select id="receiver" class="form-control select2" multiple="multiple" data-placeholder="请选择" style="width: 100%;"></select>
+							</div>
+							<a id="btn_Search" class="btn btn-primary" onclick="model.getChartsData()"><i class="fa fa-search"></i>查询</a>
+							<!--</div>-->
+						</div>
+					</div>
+					<!--</div>-->
+				
+						<div id="pressure-chart"></div>
+					
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<!--<div class="row">-->
+
+					<div class="form-group">
+						<h2>温度曲线图</h2>
+						<div class="col-sm-4">
+							<p>设备编码：
+								<select id="equipment" style="color: #000;width: 198px;height: 25px;" onchange="model.getTemperatureData()">
+									<!--<option value="volvo">Volvo</option>
+									<option value="saab">Saab</option>
+									<option value="opel">Opel</option>-->
+								</select>
+							</p>
+						</div>
+						<div class="title-search">
+							<table>
+								<tr>
+									<td style="color: #fff;">
+										自定义：
+									</td>
+									<td>
+										<!--<input id="txt_Keyword" type="text" class="form-control" placeholder="请输入要查询关键字" style="width: 200px;" />-->
+										<input id="begindata_a" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })">
+
+									</td>
+									<td><input id="enddata_a" class="form-control input-wdatepicker" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"></td>
+									<td style="padding-left: 5px;">
+										<a id="btn_Search" class="btn btn-primary" onclick="model.getTemperatureData()"><i class="fa fa-search"></i>查询</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+					</div>
+					<div class="row collection">
+						<div class="col-md-12">
+							<div class="col-md-1 time" style="color: #fff;">采集时间:</div>
+							<div class="col-md-3 col_caiji">
+								<div class="toolbar">
+									<div class="btn-group">
+										<a id="lr-replace1" href="javascript:;" class="btn btn-primary btn-xs lr_replace" onclick="model.getTemperatureData('半小时')">&nbsp;半小时</a>
+										<a id="lr-replace2" href="javascript:;" class="btn btn-primary btn-xs lr_replace" onclick="model.getTemperatureData('1小时')">&nbsp;1小时</a>
+										<a id="lr-replace3" href="javascript:;" class="btn btn-primary btn-xs lr_replace" onclick="model.getTemperatureData('4小时')">&nbsp;4小时</a>
+										<a id="lr-replace4" href="javascript:;" class="btn btn-primary btn-xs lr_replace" onclick="model.getTemperatureData('一天')">&nbsp;一天</a>
+
+									</div>
+								</div>
+							</div>
+							<!--<div class="col-md-6">-->
+							<label for="" class=" control-label" style="">采集点</label>
+							<div class="col-sm-3">
+								<select id="receiver_a" class="form-control select2" multiple="multiple" data-placeholder="请选择" style="width: 100%;"></select>
+							</div>
+							<a id="btn_Search" class="btn btn-primary" onclick="model.getTemperatureData()"><i class="fa fa-search"></i>查询</a>
+							<!--</div>-->
+						</div>
+						
+					</div>
+						<div style="height: 500px;">
+					<div id="pressure-temperature"></div>
+					</div>
+					<!--</div>-->
+					
+				</div>
+			</div>
+			
+		</div>
+	</body>
+	<!--独立界面引用-->
+	<link href="../../css/report/diagram.css" rel="stylesheet" />
+	<script src="../../js/report/diagram.js"></script>
+
+</html>

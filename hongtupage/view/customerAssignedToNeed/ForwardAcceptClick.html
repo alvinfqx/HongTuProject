@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>内部处理</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+		<link rel="stylesheet" type="text/css" href="../../../static/css/basic.css" />
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/demo.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/select2.full.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/zh-CN.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../js/dropzone.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>-->
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<link href="../../common/tree/tree.css" rel="stylesheet" />
+		<script src="../../common/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<script src="../../js/adminlte.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css"/>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--<script src="../../js/workNew.js" type="text/javascript" charset="utf-8"></script>-->
+		<link rel="stylesheet" type="text/css" href="../../css/_all-skins.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/AdminLTE.min.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../../css/ionicons.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/select2.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../static/css/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/custom_ToNeed/FormWorkorderForward.css" />
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<div class="content-wrapper" id="main_body" style="margin-left:0">
+				<div class="content-header">
+					<div class="content-header" id="slSeqStr"></div>
+				</div>
+				<section class="content">
+					<form class="form-horizontal" id="form">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box box-info">
+									<div class="box-header with-border">
+										<h3 class="box-title">流程转发</h3>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">转发给：</label>
+											<div class="col-sm-3">
+												<!-- <input id="dispatchingPerson" type="text" class="form-control" />-->
+												<!--<select id="dispatchingPerson" class="form-control select2"  data-placeholder="请选择" style="width: 100%;"></select>-->
+												<div id="forwarded" class="receiverss" onclick="model.dianji('forwarded')" style="width:100%;"></div>
+											</div>
+											<label for="" class="col-sm-1 control-label">状态：</label>
+											<div class="col-sm-3">
+												<!--@*<input id="forwardStatus" type="text" class="form-control" />*@-->
+												<!--<div id="forwardStatus" type="select" class="ui-select"></div>-->
+												  <input type="text" value="部门内部处理" readonly="readonly" style="height: 28px;padding-left: 8px;"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">说明：</label>
+											<div class="col-sm-10">
+												<textarea id="memo" class="form-control " style="height:150px; "></textarea>
+											</div>
+										</div>
+										<!--@*
+										<div class="form-group">
+											<label for="" class="col-sm-1 control-label">转发给1：</label>
+											<div class="col-sm-3">
+												<input id="dispatchingPerson2" type="text" class="form-control" />
+
+											</div>
+											<label for="" class="col-sm-1 control-label">状态2：</label>
+											<div class="col-sm-3">
+												<input id="forwardStatus3" type="text" class="form-control" />
+
+											</div>
+										</div>*@-->
+										<div class="layui-form-item">
+											<div class="layui-input-block" style="text-align: center;margin-top: 40px;">
+												<button type="button" id="#confim'" class="layui-btn layui-btn-su" onclick="model.AcceptClick();">确定</button>
+												<button type="reset" class="layui-btn layui-btn-bg" onclick="dialogClose(); dialogClose();">关闭</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</section>
+
+			</div>
+			<div class="control-sidebar-bg"></div>
+			<div class="popwindow">
+				<div class="cloes-tag" onclick="exit_img()"></div>
+				<img src="">
+			</div>
+		</div>
+		<div id="dropzone1"></div>
+		<div id="dropzoneSolution"></div>
+		<div id="dropzoneCause"></div>
+		<div id="dropzoneDesc"></div>
+	</body>
+	<script src="../../js/custom_ToNeed/ForwardAcceptClick.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

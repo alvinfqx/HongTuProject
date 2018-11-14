@@ -1,0 +1,29 @@
+ .file-item {
+ 	width: 97%;
+ 	padding: 10px;
+ 	box-sizing: border-box;
+ 	margin-left: 10px;
+ 	color: #3c8dbc;
+ }
+ 
+ .file-element-data {
+ 	padding: 10px 20px;
+ 	margin-bottom: 15px;
+ 	border-bottom: 1px solid #ddd;
+ }
+ 
+ .file-element-data p {
+ 	font-size: 14px;
+ 	color: #666;
+ }
+ 
+ .file-element-data img {
+ 	width: 65px;
+ 	height: 65px;
+ 	margin-left: 10px;
+ }
+ 
+ .users-list li img {
+ 	width: 128px;
+ 	height: 128px;
+ }

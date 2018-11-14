@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>角色管理--时段过滤</title>
+		<link rel="stylesheet" href="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../static/lib/cm.js"></script>
+		<script src="../../static/lib/util.js"></script>
+		<link href="../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../static/lib/scripts/bootstrap/bootstrap.extension.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<link href="../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<!--	<script src="../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+	</head>
+
+	<body>
+		<div class="alert alert-danger" style="text-align: left; margin: 0px; border-radius: 0px; border-left: none; border-top: none; border-right: none;">
+			<i class="fa fa-question-circle" style="position: relative; top: 1px; font-size: 15px; padding-right: 5px;"></i> 声明：已勾选的时段不允许访问!
+		</div>
+		<div style="margin-left: 10px; margin-right: 10px;" id="form1">
+			<input id="ObjectId" type="hidden" />
+			<input id="ObjectType" type="hidden" />
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#WeekDay1" data-toggle="tab">星期一</a>
+				</li>
+				<li>
+					<a href="#WeekDay2" data-toggle="tab">星期二</a>
+				</li>
+				<li>
+					<a href="#WeekDay3" data-toggle="tab">星期三</a>
+				</li>
+				<li>
+					<a href="#WeekDay4" data-toggle="tab">星期四</a>
+				</li>
+				<li>
+					<a href="#WeekDay5" data-toggle="tab">星期五</a>
+				</li>
+				<li>
+					<a href="#WeekDay6" data-toggle="tab">星期六</a>
+				</li>
+				<li>
+					<a href="#WeekDay7" data-toggle="tab">星期日</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div id="WeekDay1" class="tab-pane active" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay2" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay3" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay4" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay5" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay6" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+				<div id="WeekDay7" class="tab-pane" style="margin-left: 15px; margin-top: 15px;">
+					<ul class="sys_spec_text">
+						<li>
+							<a data-value="00:00">00:00</a>
+						</li>
+						<li>
+							<a data-value="01:00">01:00</a>
+						</li>
+						<li>
+							<a data-value="02:00">02:00</a>
+						</li>
+						<li>
+							<a data-value="03:00">03:00</a>
+						</li>
+						<li>
+							<a data-value="04:00">04:00</a>
+						</li>
+						<li>
+							<a data-value="05:00">05:00</a>
+						</li>
+						<li>
+							<a data-value="06:00">06:00</a>
+						</li>
+						<li>
+							<a data-value="07:00">07:00</a>
+						</li>
+						<li>
+							<a data-value="08:00">08:00</a>
+						</li>
+						<li>
+							<a data-value="09:00">09:00</a>
+						</li>
+						<li>
+							<a data-value="10:00">10:00</a>
+						</li>
+						<li>
+							<a data-value="11:00">11:00</a>
+						</li>
+						<li>
+							<a data-value="12:00">12:00</a>
+						</li>
+						<li>
+							<a data-value="13:00">13:00</a>
+						</li>
+						<li>
+							<a data-value="14:00">14:00</a>
+						</li>
+						<li>
+							<a data-value="15:00">15:00</a>
+						</li>
+						<li>
+							<a data-value="16:00">16:00</a>
+						</li>
+						<li>
+							<a data-value="17:00">17:00</a>
+						</li>
+						<li>
+							<a data-value="18:00">18:00</a>
+						</li>
+						<li>
+							<a data-value="19:00">19:00</a>
+						</li>
+						<li>
+							<a data-value="20:00">20:00</a>
+						</li>
+						<li>
+							<a data-value="21:00">21:00</a>
+						</li>
+						<li>
+							<a data-value="22:00">22:00</a>
+						</li>
+						<li>
+							<a data-value="23:00">23:00</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<!--独立界面引用-->
+	<script src="../../static/js/aws/role/role_filterTime.js"></script>
+
+</html>

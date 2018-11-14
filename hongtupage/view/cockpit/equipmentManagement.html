@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设备经营分析图</title>
+		<link rel="stylesheet" type="text/css" href="../../css/cockpit/equipmentManagement.css" />
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<!--<script src="../../js/cockpit/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../../../static/lib/scripts/jquery/jquery-1.10.2.min.js"></script>
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<script src="../../js/cockpit/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>-->
+		<script src="../../js/cockpit/ecStat.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/cockpit/dataTool.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/cockpit/china.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<script src="../../../static/lib/scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="../../../static/lib/cm.js"></script>
+		<script src="../../../static/lib/util.js"></script>
+		<link href="../../../static/lib/styles/font-awesome.min.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.css" />
+		<script src="../../../static/lib/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>-->
+		<link href="../../../static/lib/scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/bootstrap/bootstrap.min.js"></script>
+		<link href="../../../static/lib/scripts/plugins/tree/tree.css" rel="stylesheet" />
+		<!--<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />-->
+		<!--<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />-->
+		<script src="../../../static/lib/scripts/plugins/tree/tree.js"></script>
+		<script src="../../../static/lib/scripts/plugins/validator/validator.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-clientdata.js"></script>
+		<!--<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>-->
+		<!--<script src="../../../static/lib/scripts/utils/learun-form.js"></script>-->
+		<script src="../../../static/lib/scripts/utils/learun-im.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-webAppData.js"></script>
+		<link href="../../../static/lib/scripts/plugins/jqgrid/jqgrid.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/jqgrid/grid.locale-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/jqgrid/jqgrid.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datetime/pikaday.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>
+		<link href="../../../static/lib/scripts/plugins/wizard/wizard.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/plugins/wizard/wizard.js"></script>
+		<link href="../../../static/lib/styles/learun-ui.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-ui.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-form.js"></script>
+		<script src="../../../static/lib/scripts/plugins/printTable/jquery.printTable.js"></script>
+		<link href="../../../static/lib/styles/learun-ckbox-radio.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-applayout.css" rel="stylesheet" />
+		<link href="../../../static/lib/styles/learun-flow.css" rel="stylesheet" />
+		<script src="../../../static/lib/scripts/utils/learun-applayout.js"></script>
+		<script src="../../../static/lib/scripts/plugins/flow-ui/flow.js"></script>
+		<script src="../../../static/lib/scripts/utils/learun-flowlayout.js"></script>
+		<script src="../../../static/lib/page_parameters.js"></script>
+		<!--时间控件引用-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<!--	<script src="../../../static/lib/scripts/plugins/datetime/pikaday.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/en.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-cn.js"></script>
+		<script src="../../../static/lib/scripts/plugins/datepicker/lang/zh-tw.js"></script>
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/default/datepicker-dev.css" />
+		<link href="../../../static/lib/scripts/plugins/datepicker/skin/whyGreen/datepicker.css" />
+		<link href="../../../../static/lib/scripts/plugins/datepicker/skin/WdatePicker.css" />
+		<script src="../../../static/lib/scripts/plugins/datepicker/DatePicker.js"></script>
+		<!--未知道原因报错-->
+		<!--<script src="../../../static/lib/scripts/plugins/datepicker/calendar.js"></script>-->
+		<script src="../../../static/lib/scripts/plugins/datepicker/WdatePicker.js"></script>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="containers">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-3">
+						<div class="header_1">
+							<div class="header_1a">
+								<p class="ReturnMoney">1349</p>
+								<p>回款</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="header_2">
+							<div class="header_1a">
+								<p>234</p>
+								<p>利润</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="header_3">
+							<div class="header_1a">
+								<p class="num">549</p>
+								<p>新订单数</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="header_4">
+							<div class="header_1a">
+								<p class="ST_Capacity">88吨</p>
+								<p>污水总处理量</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:20px;">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="Month">
+							<div id="Monthaccumulate"></div>
+						</div>
+
+					</div>
+					<div class="col-md-6">
+						<div id="BusinessAccumulate">
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-md-12">
+					<div class="col-md-4">
+						<div class="">
+							<div id="YearElectricityfees"></div>
+						</div>
+
+					</div>
+					<div class="col-md-4">
+						<div id="MonthElectricityfees">
+
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div id="CompanyElectricityfees">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/cockpit/equipmentManagement.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

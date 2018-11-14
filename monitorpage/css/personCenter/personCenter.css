@@ -1,0 +1,54 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background: #126c90;
+	/* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(#126c90, #1d5484, #103982);
+	/* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(#126c90, #1d5484, #103982);
+	/* For Firefox 3.6 to 15 */
+	background: radial-gradient(#126c90, #1d5484, #103982);
+	/* Standard syntax */
+}
+.profile-nav li.active{border-left: 3px solid #2c3849;background: #174883;color: #fff;}
+.profile-nav li.hover{background: #174883;color: #FFF;border-left: 3px solid #0e2439;}
+.profile-nav{background: #174883;color: #FFF;}
+.profile-nav li{border-left: 3px solid #0e2439;}
+.profile-content{background: rgb(23, 72, 131) !important;color:#fff;}
+.titlePanel{background: #174883;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{background: #174783 !important;
+    color: #fff;}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+background: #1c6fd287; color: #fff;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+	 background: #1c6fd287;
+    color: #fff;
+}
+ .file {
+ 	position: relative;
+ 	display: inline-block;
+ 	overflow: hidden;
+ 	text-decoration: none;
+ 	text-indent: 0;
+ 	cursor: pointer !important;
+ }
+ 
+ .file input {
+ 	position: absolute;
+ 	font-size: 100px;
+ 	right: 0;
+ 	top: 0;
+ 	opacity: 0;
+ 	cursor: pointer !important;
+ }
+ 
+ .file:hover {
+ 	text-decoration: none;
+ 	cursor: pointer !important;
+ }
+ 
+ 

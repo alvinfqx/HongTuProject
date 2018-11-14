@@ -1,0 +1,208 @@
+
+input::-webkit-input-placeholder {
+	color: #ccc !important;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #ccc !important;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #ccc !important;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #ccc !important;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body,html{
+    height: 100%;
+    width: 100%;
+}
+.imgbg{
+    height: 100%;
+    width: 100%;
+    background: url("../../../img/login/bg.png") no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.center-box{
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    margin-left:-400px;
+    top:50%;
+    margin-top:-200px;
+}
+.info-box{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.info-left{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items:center;
+    justify-content:center;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.25)
+}
+.info-left img{
+    width: 60%;
+}
+.info-right{
+    height: 100%;
+    background-color: #fff;
+}
+.login-box{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items:center;
+    justify-content:center;
+    height: 100%;
+}
+.login-list{
+    width: 80%;
+}
+.input-ul{
+    color: #9a9899;
+    font-size: 14px;
+}
+.input-ul li{
+    list-style: none;
+    border-bottom: 1px solid #ccc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+}
+.input-ul .tops-text{
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    color: red;
+    font-size: 12px;
+}
+.input-ul li .inputtext{
+    height: 30px;
+    width: 100%;
+    border: none;
+}
+.input-ul li input:focus { outline:none;} 
+.input-ul .icon1{
+    background:url("../../../img/login/name.png") no-repeat left 25px;
+    background-size: 16px 16px;
+}
+.input-ul .icon2{
+    background:url("../../../img/login/code.png") no-repeat left 25px;
+    background-size: 12px 15px;
+}
+.input-ul .icon3{
+    background:url("../../../img/login/number.png") no-repeat left 30px;
+    background-size: 14px 10px;
+}
+.input-ul .codeInput{
+    width: 50%;
+}
+.input-ul .codeImg{
+    position: absolute;
+    right:-70px;
+    top:14px;
+    width: 60px;
+    height: 30px;
+}
+.input-ul .last-checkbox{
+    border-bottom: none;
+    padding-top: 10px;
+    padding-left: 0;
+}
+.ivu-checkbox{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 1;
+    position: relative;
+}
+.ivu-checkbox-inner{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px solid #dcdee2;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: border-color .2s ease-in-out,background-color .2s ease-in-out,box-shadow .2s ease-in-out;
+}
+.ivu-checkbox-inner:after{
+    content: "";
+    display: table;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    -webkit-transform: rotate(45deg) scale(0);
+    transform: rotate(45deg) scale(0);
+    transition: all .2s ease-in-out;
+}
+.ivu-checkbox-input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+}
+.ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: #2d8cf0;
+    background-color: #2d8cf0;
+}
+.ivu-checkbox-checked .ivu-checkbox-inner:after{
+    content: "";
+    display: table;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    -webkit-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    transition: all .2s ease-in-out;
+}
+.input-ul .remb{
+    color: #9a9899;
+    font-size: 14px;
+}
+.btn-box{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background-color: #2d8cf0;
+    border-radius: 40px;
+
+}
